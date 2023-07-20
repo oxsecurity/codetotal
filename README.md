@@ -1,2 +1,402 @@
-# codetotal
-Code Total Repository
+# CodeTotal
+
+![Alt text](docs/screen.jpg "A screenshot from the app")
+
+- [CodeTotal](#codetotal)
+  - [Development Mode](#development-mode)
+  - [Available Scripts](#available-scripts)
+  - [Config](#config)
+  - [Building For Production](#building-for-production)
+  - [Debugging in VSCode](#debugging-in-vscode)
+  - [Messages from MegaLinter server](#messages-from-megalinter-server)
+    - [Start Megalinter analysis](#start-megalinter-analysis)
+    - [Start Linter analysis](#start-linter-analysis)
+    - [Complete Linter analysis](#complete-linter-analysis)
+    - [Complete Megalinter analysis](#complete-megalinter-analysis)
+    - [MegaLinter server error](#megalinter-server-error)
+
+## Development Mode
+
+- Clone this repo
+- Run `npm i` to install dependencies
+- Start megalinter server `npm run start:megalinter`
+- Run `npm start`
+- Open [`codetotal app`](http://localhost:3000)
+
+## Available Scripts
+
+- `npm start` start all projects in development mode
+- `npm run lint` lint all projects
+- `npm run build:be` build the backend (used by `launch.json` file for debugging)
+- `npm run start:fe` start the FE in development mode
+- `npm test` run all unit tests
+
+## Config
+- Backend config `packages/backend/src/config.json`
+- Fronend config `packages/app/src/config.json`
+
+## Building For Production
+- Config files must be set before the build (see `Config` section)
+- Run `npm run build` at the root folder
+- This will create a `dist` folder with the backend code
+- The frontend code will be under `dist/public`
+- Run using `npm run prodction` (equivilant to `node dist/index.js`)
+
+## Debugging in VSCode
+
+Add a `launch.json` file under the `.vscode` folder with the following content:
+
+```typescript
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Build Project",
+      "program": "${workspaceFolder}/packages/backend/dist/index.js",
+      "preLaunchTask": "npm: build:be",
+      "sourceMaps": true,
+      "smartStep": true,
+      "internalConsoleOptions": "openOnSessionStart",
+      "outFiles": ["${workspaceFolder}/packages/backend/dist/**/*.js"]
+    }
+  ]
+}
+```
+
+## Messages from MegaLinter server
+
+Event-based management of MegaLinter Server can send the following list of messages into Redis PUBSUB channel built the following way: **megalinter:pubsub:REQUEST_ID**
+
+Example: `megalinter:pubsub:RQ_cbdd1d82-1e7b-11ee-9258-0242ac120004`
+
+### Start Megalinter analysis
+
+This message is sent once by analysis, when a **MegaLinter instance has identified the linters to run** and is about to start them.
+
+Example of **megalinterStart** messageType:
+
+```json
+{
+  "messageType": "megalinterStart",
+  "megaLinterStatus": "created",
+  "linters": [
+    {
+      "descriptorId": "BASH",
+      "linterId": "bash-exec",
+      "linterKey": "BASH_EXEC",
+      "linterVersion": "5.2.15",
+      "linterCliLintMode": "file",
+      "requestId": "RQ_cbdd1d82-1e7b-11ee-9258-0242ac120004",
+      "docUrl": "https://megalinter.io/alpha/descriptors/bash_bash_exec",
+      "isFormatter": false,
+      "isSBOM": false,
+      "filesNumber": 1
+    },
+    {
+      "descriptorId": "BASH",
+      "linterId": "shellcheck",
+      "linterKey": "BASH_SHELLCHECK",
+      "linterVersion": "0.9.0",
+      "linterCliLintMode": "list_of_files",
+      "requestId": "RQ_cbdd1d82-1e7b-11ee-9258-0242ac120004",
+      "docUrl": "https://megalinter.io/alpha/descriptors/bash_shellcheck",
+      "isFormatter": false,
+      "isSBOM": false,
+      "filesNumber": 1
+    },
+    {
+      "descriptorId": "BASH",
+      "linterId": "shfmt",
+      "linterKey": "BASH_SHFMT",
+      "linterVersion": "ERROR",
+      "linterCliLintMode": "list_of_files",
+      "requestId": "RQ_cbdd1d82-1e7b-11ee-9258-0242ac120004",
+      "docUrl": "https://megalinter.io/alpha/descriptors/bash_shfmt",
+      "isFormatter": true,
+      "isSBOM": false,
+      "filesNumber": 1
+    },
+    {
+      "descriptorId": "COPYPASTE",
+      "linterId": "jscpd",
+      "linterKey": "COPYPASTE_JSCPD",
+      "linterVersion": "ERROR",
+      "linterCliLintMode": "project",
+      "requestId": "RQ_cbdd1d82-1e7b-11ee-9258-0242ac120004",
+      "docUrl": "https://megalinter.io/alpha/descriptors/copypaste_jscpd",
+      "isFormatter": false,
+      "isSBOM": false
+    },
+    {
+      "descriptorId": "REPOSITORY",
+      "linterId": "checkov",
+      "linterKey": "REPOSITORY_CHECKOV",
+      "linterVersion": "3.11",
+      "linterCliLintMode": "project",
+      "requestId": "RQ_cbdd1d82-1e7b-11ee-9258-0242ac120004",
+      "docUrl": "https://megalinter.io/alpha/descriptors/repository_checkov",
+      "isFormatter": false,
+      "isSBOM": false
+    },
+    {
+      "descriptorId": "REPOSITORY",
+      "linterId": "devskim",
+      "linterKey": "REPOSITORY_DEVSKIM",
+      "linterVersion": "1.0.11",
+      "linterCliLintMode": "project",
+      "requestId": "RQ_cbdd1d82-1e7b-11ee-9258-0242ac120004",
+      "docUrl": "https://megalinter.io/alpha/descriptors/repository_devskim",
+      "isFormatter": false,
+      "isSBOM": false
+    },
+    {
+      "descriptorId": "REPOSITORY",
+      "linterId": "dustilock",
+      "linterKey": "REPOSITORY_DUSTILOCK",
+      "linterVersion": "1.2.0",
+      "linterCliLintMode": "project",
+      "requestId": "RQ_cbdd1d82-1e7b-11ee-9258-0242ac120004",
+      "docUrl": "https://megalinter.io/alpha/descriptors/repository_dustilock",
+      "isFormatter": false,
+      "isSBOM": false
+    },
+    {
+      "descriptorId": "REPOSITORY",
+      "linterId": "git_diff",
+      "linterKey": "REPOSITORY_GIT_DIFF",
+      "linterVersion": "2.38.5",
+      "linterCliLintMode": "project",
+      "requestId": "RQ_cbdd1d82-1e7b-11ee-9258-0242ac120004",
+      "docUrl": "https://megalinter.io/alpha/descriptors/repository_git_diff",
+      "isFormatter": false,
+      "isSBOM": false
+    },
+    {
+      "descriptorId": "REPOSITORY",
+      "linterId": "gitleaks",
+      "linterKey": "REPOSITORY_GITLEAKS",
+      "linterVersion": "8.17.0",
+      "linterCliLintMode": "project",
+      "requestId": "RQ_cbdd1d82-1e7b-11ee-9258-0242ac120004",
+      "docUrl": "https://megalinter.io/alpha/descriptors/repository_gitleaks",
+      "isFormatter": false,
+      "isSBOM": false
+    },
+    {
+      "descriptorId": "REPOSITORY",
+      "linterId": "kics",
+      "linterKey": "REPOSITORY_KICS",
+      "linterVersion": "1.7.3",
+      "linterCliLintMode": "project",
+      "requestId": "RQ_cbdd1d82-1e7b-11ee-9258-0242ac120004",
+      "docUrl": "https://megalinter.io/alpha/descriptors/repository_kics",
+      "isFormatter": false,
+      "isSBOM": false
+    },
+    {
+      "descriptorId": "REPOSITORY",
+      "linterId": "secretlint",
+      "linterKey": "REPOSITORY_SECRETLINT",
+      "linterVersion": "7.0.3",
+      "linterCliLintMode": "project",
+      "requestId": "RQ_cbdd1d82-1e7b-11ee-9258-0242ac120004",
+      "docUrl": "https://megalinter.io/alpha/descriptors/repository_secretlint",
+      "isFormatter": false,
+      "isSBOM": false
+    },
+    {
+      "descriptorId": "REPOSITORY",
+      "linterId": "semgrep",
+      "linterKey": "REPOSITORY_SEMGREP",
+      "linterVersion": "1.31.2",
+      "linterCliLintMode": "project",
+      "requestId": "RQ_cbdd1d82-1e7b-11ee-9258-0242ac120004",
+      "docUrl": "https://megalinter.io/alpha/descriptors/repository_semgrep",
+      "isFormatter": false,
+      "isSBOM": false
+    },
+    {
+      "descriptorId": "REPOSITORY",
+      "linterId": "trivy",
+      "linterKey": "REPOSITORY_TRIVY",
+      "linterVersion": "0.43.1",
+      "linterCliLintMode": "project",
+      "requestId": "RQ_cbdd1d82-1e7b-11ee-9258-0242ac120004",
+      "docUrl": "https://megalinter.io/alpha/descriptors/repository_trivy",
+      "isFormatter": false,
+      "isSBOM": false
+    },
+    {
+      "descriptorId": "SPELL",
+      "linterId": "cspell",
+      "linterKey": "SPELL_CSPELL",
+      "linterVersion": "ERROR",
+      "linterCliLintMode": "list_of_files",
+      "requestId": "RQ_cbdd1d82-1e7b-11ee-9258-0242ac120004",
+      "docUrl": "https://megalinter.io/alpha/descriptors/spell_cspell",
+      "isFormatter": false,
+      "filesNumber": 1,
+      "isSBOM": false
+    }
+  ],
+  "requestId": "RQ_cbdd1d82-1e7b-11ee-9258-0242ac120004"
+}
+```
+
+### Start Linter analysis
+
+This message is sent once by linter run, it indicates that **a single linter has started running**.
+
+Example of **linterStart** messageType with `linterCliLintMode=project`:
+
+```json
+{
+  "messageType": "linterStart",
+  "linterStatus": "started",
+  "descriptorId": "REPOSITORY",
+  "linterId": "trivy",
+  "linterKey": "REPOSITORY_TRIVY",
+  "linterVersion": "0.43.1",
+  "linterCliLintMode": "project",
+  "requestId": "RQ_cbdd1d82-1e7b-11ee-9258-0242ac120004",
+  "docUrl": "https://megalinter.io/alpha/descriptors/repository_trivy",
+  "isFormatter": false,
+  "isSBOM": false
+}
+```
+
+Example of **linterStart** messageType with `linterCliLintMode=list_of_files` (with **filesNumber** additional property):
+
+```json
+{
+  "messageType": "linterStart",
+  "linterStatus": "started",
+  "descriptorId": "BASH",
+  "linterId": "shellcheck",
+  "linterKey": "BASH_SHELLCHECK",
+  "linterVersion": "0.9.0",
+  "linterCliLintMode": "list_of_files",
+  "requestId": "RQ_cbdd1d82-1e7b-11ee-9258-0242ac120004",
+  "docUrl": "https://megalinter.io/alpha/descriptors/bash_shellcheck",
+  "isFormatter": false,
+  "isSBOM": false,
+  "filesNumber": 1
+}
+```
+
+### Complete Linter analysis
+
+This message is sent once by linter run, it indicates that **a single linter has been completed**.
+
+If SARIF is available, it will be located in `outputSarif` property, otherwise results can be found in `outputText` and or `outputJson`.
+
+Example of **linterComplete** messageType:
+
+```json
+{
+  "messageType": "linterComplete",
+  "linterStatus": "success",
+  "linterErrorNumber": 0,
+  "linterStatusMessage": "No errors were found in the linting process",
+  "linterElapsedTime": 11.16,
+  "linterCliCommand": [
+    "trivy",
+    "fs",
+    "--scanners",
+    "vuln,config",
+    "--exit-code",
+    "1",
+    "--format",
+    "sarif",
+    "-o",
+    "/tmp/ct-megalinter-xmv82bvyv/megalinter-reports/sarif/REPOSITORY_TRIVY.sarif",
+    "."
+  ],
+  "descriptorId": "REPOSITORY",
+  "linterId": "trivy",
+  "linterKey": "REPOSITORY_TRIVY",
+  "linterVersion": "0.43.1",
+  "linterCliLintMode": "project",
+  "requestId": "RQ_cbdd1d82-1e7b-11ee-9258-0242ac120004",
+  "docUrl": "https://megalinter.io/alpha/descriptors/repository_trivy",
+  "isFormatter": false,
+  "isSBOM": false,
+  "outputSarif": {
+    "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+    "runs": [
+      {
+        "columnKind": "utf16CodeUnits",
+        "originalUriBaseIds": {
+          "ROOTPATH": {
+            "uri": "file:///"
+          }
+        },
+        "properties": {
+          "megalinter": {
+            "docUrl": "https://megalinter.io/alpha/descriptors/repository_trivy",
+            "linterKey": "REPOSITORY_TRIVY",
+            "linterVersion": "0.43.1"
+          }
+        },
+        "results": [],
+        "tool": {
+          "driver": {
+            "fullName": "Trivy Vulnerability Scanner",
+            "informationUri": "https://github.com/aquasecurity/trivy",
+            "name": "Trivy (MegaLinter REPOSITORY_TRIVY)",
+            "rules": [],
+            "version": "0.43.1"
+          }
+        }
+      }
+    ],
+    "version": "2.1.0"
+  }
+}
+```
+
+### Complete Megalinter analysis
+
+This message is sent once by analysis, when a **MegaLinter analysis is completed**.
+
+CodeTotal stops listening to the requestId pubsub channel once this message is received, as no new message will be sent through this channel.
+
+Example of **megalinterComplete** messageType:
+
+```json
+{
+  "messageType": "megalinterComplete",
+  "megaLinterStatus": "completed",
+  "requestId": "RQ_cbdd1d82-1e7b-11ee-9258-0242ac120004"
+}
+```
+
+### MegaLinter server error
+
+In some cases, it is not possible for MegaLinter to start an analysis because there has been an error during initialization.
+
+In that case, CodeTotal stops listening to the pubsub channel, as no more messages will be sent.
+
+List of errors:
+
+- `missingAnalysisType`: Missing type (snippet, file or repository)
+- `gitCloneError`: Unable to clone the repository (probably not existing or not reachable)
+- `uploadedFileNotFound`: Unable to find file(s) that were supposed to be uploaded by a previous HTTP call to `/upload-file`
+- `snippetGuessError`: Unable to automatically detect the language of a code snippet
+- `snippetBuildError`: Unable to find a file extension for the guessed snipper language
+
+Example of **serverError** messageType
+
+```json
+{
+  "messageType": "serverError",
+  "message": "Unable to clone repository\nCmd('git') failed due to: exit code(128)\n cmdline: git clone -v -- https://github.com/nvuillam/node-sarif-builder2 /tmp/ct-megalinter-x0afpmcmb\n stderr: 'Cloning into '/tmp/ct-megalinter-x0afpmcmb'...\nfatal: could not read Username for 'https://github.com': No such device or address\n'",
+  "errorCode": "gitCloneError",
+  "errorDetails": {
+    "error": "Cmd('git') failed due to: exit code(128)\n cmdline: git clone -v -- https://github.com/nvuillam/node-sarif-builder2 /tmp/ct-megalinter-x0afpmcmb\n stderr: 'Cloning into '/tmp/ct-megalinter-x0afpmcmb'...\nfatal: could not read Username for 'https://github.com': No such device or address\n'"
+  },
+  "requestId": "RQ_e630c962-1e7c-11ee-9258-0242ac120004"
+}
+```

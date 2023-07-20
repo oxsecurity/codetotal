@@ -1,0 +1,15 @@
+{
+  "languages": [
+    { "name": "HTML", "percentage": 30 },
+    { "name": "CSS", "percentage": 50 }
+  ],
+  "readmeUrl": "https://www.google.com",
+  "activityUrl": "https://www.google.com",
+  "stars": 13300,
+  "watching": 140,
+  "forks": 1200,
+  "releases": 151,
+  "latestVersion": "8.17.0",
+  "latestVersionDate": "2023-07-10T15:11:13.346Z",
+  "license": "MIT"
+}

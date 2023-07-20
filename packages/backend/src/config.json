@@ -1,0 +1,11 @@
+{
+  "megalinterHttpURL": "http://127.0.0.1:8000/analysis",
+  "megalinterHttpUploadURL": "http://127.0.0.1:8000/upload-file",
+  "httpServerPort": 8081,
+  "httpServerHost": "127.0.0.1",
+  "redisURL": "redis://127.0.0.1:6379",
+  "redisChannel": "megalinter:pubsub:<request-id>",
+  "webSocketServerPort": 8080,
+  "webSocketServerHost": "127.0.0.1",
+  "debugModules": ["actions", "megalinter", "stores", "transport"]
+}
