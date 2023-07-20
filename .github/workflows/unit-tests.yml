@@ -1,12 +1,9 @@
-# This is a basic workflow to help you get started with Actions
-
-name: CI Unit Tests
+name: Build
 
 # Controls when the workflow will run
 on:
   push:
-    branches: [ "**" ]
-  
+    branches: ["**"]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -22,14 +19,20 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
-      
+
       - uses: actions/setup-node@v3
         with:
-          node-version: '18'
+          node-version: "18"
 
       # Runs a single command using the runners shell
       - name: Install deps
         run: npm i
-        
-      - name: Run unit tests
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Unit test
         run: npm run test
+
+      - name: Build
+        run: npm run build
