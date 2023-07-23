@@ -13,7 +13,7 @@
 #######################################
 # Start the job on all push to main #
 #######################################
-name: "Build & Deploy - ALPHA"
+name: "Build & Push - ALPHA"
 on:
   push:
     branches:
@@ -30,7 +30,7 @@ concurrency:
 jobs:
 
   build:
-    name: Build & Docker Image - ALPHA
+    name: Build & Push Docker Image - ALPHA
     runs-on: ubuntu-latest
     permissions: write-all
     # Only run this on the main repo
