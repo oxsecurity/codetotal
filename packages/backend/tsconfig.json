@@ -13,5 +13,5 @@
     "esModuleInterop": true,
     "strict": false
   },
-  "include": ["src/**/*.ts", "./config.json"]
+  "include": ["src/**/*.ts"]
 }

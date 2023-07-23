@@ -1,4 +1,4 @@
-import config from "../config.json";
+import config from "../config";
 import { parseMessage } from "../megalinter/parsers/parser";
 import { ReportStore } from "../stores/be-report-store";
 import { subscribeToRedis } from "../transport/redis-client";
@@ -9,7 +9,10 @@ export const subscribeToMegaLinter = async (
   store: ReportStore
 ) => {
   try {
-    const channelId = config.redisChannel.replace("<request-id>", requestId);
+    const channelId = config.MEGALINTER_REDIS_CHANNEL.replace(
+      "<request-id>",
+      requestId
+    );
     await subscribeToRedis(channelId, (message: string) => {
       parseMessage(JSON.parse(message), store);
     });

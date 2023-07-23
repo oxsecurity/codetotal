@@ -5,7 +5,7 @@ import { FileRejection, useDropzone } from "react-dropzone";
 import { BiSolidCloudUpload } from "react-icons/bi";
 import { useNavigate } from "react-router-dom";
 import { makeStyles } from "tss-react/mui";
-import config from "../../config.json";
+import config from "../../config";
 import { startAnalysis } from "../actions/analysis-actions";
 import { AnalysisStore } from "../stores/analysis-store";
 
@@ -26,7 +26,7 @@ export const FileUploadForm: FC = () => {
       ) {
         setError(
           `File too large (max allowed: ${filesize(
-            config.uploadFileLimitBytes
+            config.UPLOAD_FILE_LIMIT_BYTES
           )})`
         );
         return;
@@ -46,7 +46,7 @@ export const FileUploadForm: FC = () => {
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop,
     multiple: false,
-    maxSize: config.uploadFileLimitBytes,
+    maxSize: config.UPLOAD_FILE_LIMIT_BYTES,
   });
 
   return (
