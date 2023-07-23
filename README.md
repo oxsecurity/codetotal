@@ -32,15 +32,35 @@
 - `npm test` run all unit tests
 
 ## Config
-- Backend config `packages/backend/src/config.json`
-- Fronend config `packages/app/src/config.json`
+
+Add a `.env` file in the root of the project.  
+Only variables starting with the `CODETOTAL_` prefix will be injected into the frontend bundle.
+
+```
+# MEGALINTER
+MEGALINTER_ANALYSIS_URL=http://127.0.0.1:8000/analysis
+MEGALINTER_UPLOAD_URL=http://127.0.0.1:8000/upload-file
+MEGALINTER_REDIS_URL=redis://127.0.0.1:6379
+MEGALINTER_REDIS_CHANNEL=megalinter:pubsub:<request-id>
+
+# BACKEND
+CODETOTAL_HTTP_PORT=8081
+CODETOTAL_HTTP_HOST=127.0.0.1
+CODETOTAL_WS_PORT=8080
+CODETOTAL_WS_HOST=127.0.0.1
+DEBUG_MODULES=actions,megalinter,stores,transport
+
+# FRONTEND
+CODETOTAL_UPLOAD_FILE_LIMIT_BYTES=10000000
+```
 
 ## Building For Production
+
 - Config files must be set before the build (see `Config` section)
 - Run `npm run build` at the root folder
 - This will create a `dist` folder with the backend code
 - The frontend code will be under `dist/public`
-- Run using `npm run prodction` (equivilant to `node dist/index.js`)
+- Run using `npm run production` (equivilant to `node dist/index.js`)
 
 ## Debugging in VSCode
 

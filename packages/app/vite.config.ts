@@ -16,6 +16,8 @@ export default defineConfig(({ command }) => {
   }
 
   return {
+    envPrefix: "CODETOTAL_",
+    envDir: "../../",
     mode: "production",
     server: {
       port: 3000,

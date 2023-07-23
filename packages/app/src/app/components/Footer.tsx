@@ -3,7 +3,6 @@ import { FC } from "react";
 import { makeStyles } from "tss-react/mui";
 import bg from "../../assets/bg.svg";
 import oxLogo from "../../assets/ox.svg";
-import config from "../../config.json";
 import { ToggleThemeButton } from "./ToggleThemeButton";
 
 export const Footer: FC = () => {
@@ -47,6 +46,8 @@ export const Footer: FC = () => {
   );
 };
 
+export const FOOTER_HEIGHT = 80;
+
 const useStyles = makeStyles()((theme: Theme) => ({
   footer: {
     position: "fixed",
@@ -55,7 +56,7 @@ const useStyles = makeStyles()((theme: Theme) => ({
     left: 0,
     display: "flex",
     flexDirection: "column",
-    height: config.footerHeight,
+    height: FOOTER_HEIGHT,
     background: theme.palette.background.default,
   },
   background: {

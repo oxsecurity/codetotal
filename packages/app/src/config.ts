@@ -1,0 +1,18 @@
+interface FEConfig {
+  CODETOTAL_HTTP_PORT: string;
+  CODETOTAL_HTTP_HOST: string;
+  CODETOTAL_WS_PORT: string;
+  CODETOTAL_WS_HOST: string;
+  CODETOTAL_UPLOAD_FILE_LIMIT_BYTES: string;
+}
+
+const config: FEConfig = {
+  CODETOTAL_HTTP_PORT: import.meta.env.CODETOTAL_HTTP_PORT,
+  CODETOTAL_HTTP_HOST: import.meta.env.CODETOTAL_HTTP_HOST,
+  CODETOTAL_WS_PORT: import.meta.env.CODETOTAL_WS_PORT,
+  CODETOTAL_WS_HOST: import.meta.env.CODETOTAL_WS_HOST,
+  CODETOTAL_UPLOAD_FILE_LIMIT_BYTES: import.meta.env
+    .CODETOTAL_UPLOAD_FILE_LIMIT_BYTES,
+};
+
+export default config;
