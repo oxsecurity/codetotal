@@ -33,7 +33,8 @@
 
 ## Config
 
-Add a `.env` file in the root of the project.
+Add a `.env` file in the root of the project.  
+Only variables starting with the `CODETOTAL_` prefix will be injected into the frontend bundle.
 
 ```
 # MEGALINTER
@@ -50,7 +51,7 @@ CODETOTAL_WS_HOST=127.0.0.1
 DEBUG_MODULES=actions,megalinter,stores,transport
 
 # FRONTEND
-UPLOAD_FILE_LIMIT_BYTES=10000000 # 10MB
+CODETOTAL_UPLOAD_FILE_LIMIT_BYTES=10000000
 ```
 
 ## Building For Production
