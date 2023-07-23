@@ -1,7 +1,3 @@
-import dotenv from "dotenv";
-// load ENV variables from .env file
-dotenv.config({ path: "../../.env" });
-
 import { subscribeToReport } from "./actions/subscribe-to-report";
 import config from "./config";
 import { startHttpServer } from "./transport/http-server";

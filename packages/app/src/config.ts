@@ -1,19 +1,18 @@
-declare const process: {
-  env: {
-    CODETOTAL_HTTP_PORT: string;
-    CODETOTAL_HTTP_HOST: string;
-    CODETOTAL_WS_PORT: number;
-    CODETOTAL_WS_HOST: number;
-    UPLOAD_FILE_LIMIT_BYTES: number;
-  };
-};
+interface FEConfig {
+  CODETOTAL_HTTP_PORT: string;
+  CODETOTAL_HTTP_HOST: string;
+  CODETOTAL_WS_PORT: string;
+  CODETOTAL_WS_HOST: string;
+  CODETOTAL_UPLOAD_FILE_LIMIT_BYTES: string;
+}
 
-const config = {
-  CODETOTAL_HTTP_PORT: process.env.CODETOTAL_HTTP_PORT,
-  CODETOTAL_HTTP_HOST: process.env.CODETOTAL_HTTP_HOST,
-  CODETOTAL_WS_PORT: process.env.CODETOTAL_WS_PORT,
-  CODETOTAL_WS_HOST: process.env.CODETOTAL_WS_HOST,
-  UPLOAD_FILE_LIMIT_BYTES: process.env.UPLOAD_FILE_LIMIT_BYTES,
+const config: FEConfig = {
+  CODETOTAL_HTTP_PORT: import.meta.env.CODETOTAL_HTTP_PORT,
+  CODETOTAL_HTTP_HOST: import.meta.env.CODETOTAL_HTTP_HOST,
+  CODETOTAL_WS_PORT: import.meta.env.CODETOTAL_WS_PORT,
+  CODETOTAL_WS_HOST: import.meta.env.CODETOTAL_WS_HOST,
+  CODETOTAL_UPLOAD_FILE_LIMIT_BYTES: import.meta.env
+    .CODETOTAL_UPLOAD_FILE_LIMIT_BYTES,
 };
 
 export default config;

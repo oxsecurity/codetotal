@@ -1,13 +1,6 @@
-/* eslint-disable import/first */
-import dotenv from "dotenv";
-
-// load ENV variables from .env file
-dotenv.config({ path: "../../.env" });
-
 import react from "@vitejs/plugin-react";
 import { PluginOption, defineConfig } from "vite";
 import checker from "vite-plugin-checker";
-import config from "./src/config";
 
 export default defineConfig(({ command }) => {
   const plugins: PluginOption[] = [react()];
@@ -23,6 +16,8 @@ export default defineConfig(({ command }) => {
   }
 
   return {
+    envPrefix: "CODETOTAL_",
+    envDir: "../../",
     mode: "production",
     server: {
       port: 3000,
@@ -40,11 +35,6 @@ export default defineConfig(({ command }) => {
           },
         },
       },
-    },
-    define: {
-      "process.env": JSON.stringify({
-        ...config,
-      }),
     },
     esbuild: {
       // needed for keepNames

@@ -9,6 +9,8 @@ import config from "../../config";
 import { startAnalysis } from "../actions/analysis-actions";
 import { AnalysisStore } from "../stores/analysis-store";
 
+const MAX_SIZE = parseInt(config.CODETOTAL_UPLOAD_FILE_LIMIT_BYTES);
+
 export const FileUploadForm: FC = () => {
   const { classes } = useStyles();
   const navigate = useNavigate();
@@ -24,11 +26,7 @@ export const FileUploadForm: FC = () => {
         fileRejections.length === 1 &&
         fileRejections[0].errors[0].code === "file-too-large"
       ) {
-        setError(
-          `File too large (max allowed: ${filesize(
-            config.UPLOAD_FILE_LIMIT_BYTES
-          )})`
-        );
+        setError(`File too large (max allowed: ${filesize(MAX_SIZE)})`);
         return;
       }
       if (fileRejections.length === 1) {
@@ -46,7 +44,7 @@ export const FileUploadForm: FC = () => {
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop,
     multiple: false,
-    maxSize: config.UPLOAD_FILE_LIMIT_BYTES,
+    maxSize: MAX_SIZE,
   });
 
   return (
