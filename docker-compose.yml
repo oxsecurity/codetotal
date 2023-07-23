@@ -78,8 +78,23 @@ services:
     image: codetotal:dev
     environment:
       - NODE_ENV=production
+        # MEGALINTER API
+      - MEGALINTER_ANALYSIS_URL=http://megalinter_server_api:8000/analysis
+      - MEGALINTER_UPLOAD_URL=http://megalinter_server_api:8000/upload-file
+        # MEGALINTER REDIS
+      - MEGALINTER_REDIS_URL=redis://megalinter_server_redis:6379
+      - MEGALINTER_REDIS_CHANNEL=megalinter:pubsub:<request-id>
+        # BACKEND
+      - CODETOTAL_HTTP_PORT=8081
+      - CODETOTAL_HTTP_HOST=0.0.0.0
+      - CODETOTAL_WS_PORT=8080
+      - CODETOTAL_WS_HOST=0.0.0.0
+      - DEBUG_MODULES=actions,megalinter,stores,transport
+        # FRONTEND
+      - CODETOTAL_UPLOAD_FILE_LIMIT_BYTES=10000000
     ports:
-      - "3000:3000"
+      - "8081:8081"
+      - "8080:8080"
     depends_on:
       - megalinter_server_redis
       - megalinter_server_api

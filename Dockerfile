@@ -12,11 +12,9 @@ ARG BUILD_REVISION=dev
 ARG BUILD_VERSION=dev
 ENV NODE_ENV=production
 WORKDIR /app
-RUN npm i nodemon -g
-COPY --from=builder /app/dist .
-COPY --from=builder /app/node_modules ./node_modules
+COPY --from=builder /app .
 EXPOSE 3000
-CMD ["nodemon", "app/index.js"]
+CMD ["node", "dist/index.js"]
 LABEL maintainer="Nicolas Vuillamy <nicolas.vuillamy@ox.security>" \
       org.opencontainers.image.created=$BUILD_DATE \
       org.opencontainers.image.revision=$BUILD_REVISION \
