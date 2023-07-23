@@ -75,7 +75,7 @@ services:
 
   # CodeTotal Server
   code_total_server:
-    image: ghcr.io/oxsecurity/codetotal-server:alpha
+    image: ghcr.io/oxsecurity/codetotal-server:beta
     environment:
       - NODE_ENV=production
         # MEGALINTER API
