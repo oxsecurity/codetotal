@@ -73,7 +73,7 @@ services:
     volumes:
       - ./server-files:/tmp/server-files
 
-  # Server to receive requests and post them in redis queue
+  # CodeTotal Server
   code_total_server:
     image: codetotal:dev
     environment:

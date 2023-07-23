@@ -14,6 +14,7 @@ ENV NODE_ENV=production
 WORKDIR /app
 RUN npm i nodemon -g
 COPY --from=builder /app/dist .
+COPY --from=builder /app/node_modules ./node_modules
 EXPOSE 3000
 CMD ["nodemon", "app/index.js"]
 LABEL maintainer="Nicolas Vuillamy <nicolas.vuillamy@ox.security>" \
