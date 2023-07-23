@@ -15,8 +15,12 @@
     "start:fe": "npm start --workspace=packages/app",
     "test": "npm test --workspace=packages/backend",
     "start:test": "npm run start:test --workspace=packages/backend",
-    "prestart:megalinter": "cross-env DOCKER_DEFAULT_PLATFORM=linux/amd64 docker-compose -f docker-compose.yml pull",
-    "start:megalinter": "cross-env DOCKER_DEFAULT_PLATFORM=linux/amd64 docker-compose -f docker-compose.yml up",
+    "prestart:megalinter": "cross-env DOCKER_DEFAULT_PLATFORM=linux/amd64 docker-compose -f docker-compose-megalinter.yml pull",
+    "start:megalinter": "cross-env DOCKER_DEFAULT_PLATFORM=linux/amd64 docker-compose -f docker-compose-megalinter.yml up",
+    "precodetotal:dev": "docker build -t codetotal-server:dev --platform linux/amd64 -f Dockerfile .",
+    "codetotal:dev": "cross-env DOCKER_DEFAULT_PLATFORM=linux/amd64 docker-compose -f docker-compose-local.yml up",
+    "precodetotal": "cross-env DOCKER_DEFAULT_PLATFORM=linux/amd64 docker-compose -f docker-compose.yml pull",
+    "codetotal": "cross-env DOCKER_DEFAULT_PLATFORM=linux/amd64 docker-compose -f docker-compose.yml up",
     "e2e": "npx cypress open"
   },
   "pre-commit": [
