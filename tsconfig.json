@@ -8,5 +8,6 @@
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "esModuleInterop": true
-  }
+  },
+  "exclude": ["cypress", "cypress.config.ts"]
 }
