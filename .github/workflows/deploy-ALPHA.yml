@@ -32,8 +32,7 @@ jobs:
   build:
     name: Build & Docker Image - ALPHA
     runs-on: ubuntu-latest
-    permissions:
-      packages: write
+    permissions: write-all
     # Only run this on the main repo
     if: github.repository == 'oxsecurity/codetotal' && !contains(github.event.head_commit.message, 'skip deploy')
     steps:
