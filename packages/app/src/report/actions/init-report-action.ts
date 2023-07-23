@@ -1,7 +1,7 @@
 import axios from "axios";
 import { NavigateFunction } from "react-router-dom";
 import { AnalysisStatus } from "shared-types";
-import config from "../../config.json";
+import config from "../../config";
 import { ReportStore } from "../stores/fe-report-store";
 import { subscribeToLintProgress } from "./subscribe-report-action";
 
@@ -10,7 +10,9 @@ export const initProgress = async (
   navigate: NavigateFunction
 ) => {
   try {
-    const res = await axios.get(`${config.backendUrl}/report/${requestId}`);
+    const res = await axios.get(
+      `http://${config.CODETOTAL_HTTP_HOST}:${config.CODETOTAL_HTTP_PORT}/report/${requestId}`
+    );
     const { status } = res.data;
 
     switch (status) {

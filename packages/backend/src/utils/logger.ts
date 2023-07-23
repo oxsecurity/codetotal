@@ -1,5 +1,7 @@
 import process from "node:process";
-import { debugModules } from "../config.json";
+import config from "../config";
+
+const debugModules = config.DEBUG_MODULES.split(",");
 
 const createLogger = (moduleName: string) => {
   return {

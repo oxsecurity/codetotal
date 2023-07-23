@@ -1,10 +1,10 @@
 import axios from "axios";
 import { Analysis } from "shared-types";
-import config from "../config.json";
+import config from "../config";
 import { createReportStore } from "../stores/be-report-store";
+import { logger } from "../utils/logger";
 import { createAnalysisRequestData } from "./create-analysis-request";
 import { subscribeToMegaLinter } from "./subscribe-to-megalinter";
-import { logger } from "../utils/logger";
 
 export const createAnalysis = async (
   action: Analysis
@@ -13,7 +13,7 @@ export const createAnalysis = async (
     const [data, resourceValue] = await createAnalysisRequestData(action);
 
     const response = await axios.post<{ request_id: string }>(
-      config.megalinterHttpURL,
+      config.MEGALINTER_ANALYSIS_URL,
       data
     );
 
@@ -27,7 +27,7 @@ export const createAnalysis = async (
     return { requestId };
   } catch (err) {
     logger.actions.error(
-      `Unable to send HTTP request to megalinter at: ${config.megalinterHttpURL}`
+      `Unable to send HTTP request to megalinter at: ${config.MEGALINTER_ANALYSIS_URL}`
     );
     throw err;
   }

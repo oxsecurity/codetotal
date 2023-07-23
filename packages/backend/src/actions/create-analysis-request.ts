@@ -8,7 +8,7 @@ import {
   RepoAnalysis,
   SnippetAnalysis,
 } from "shared-types";
-import config from "../config.json";
+import config from "../config";
 import { logger } from "../utils/logger";
 
 export const createAnalysisRequestData = async (
@@ -37,7 +37,7 @@ export const createAnalysisRequestData = async (
         });
 
         const res = await axios.post<{ fileUploadId: string }>(
-          config.megalinterHttpUploadURL,
+          config.MEGALINTER_UPLOAD_URL,
           form
         );
 

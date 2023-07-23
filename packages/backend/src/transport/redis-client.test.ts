@@ -1,5 +1,5 @@
 import * as redis from "redis";
-import config from "../config.json";
+import config from "../config";
 import { startRedisClient, subscribeToRedis } from "./redis-client";
 
 const mRedisClient = {
@@ -14,7 +14,9 @@ const createClientSpy = jest
 describe("redis-client", () => {
   test("startRedisClient", async () => {
     await startRedisClient();
-    expect(createClientSpy).toBeCalledWith({ url: config.redisURL });
+    expect(createClientSpy).toBeCalledWith({
+      url: config.MEGALINTER_REDIS_URL,
+    });
     expect(mRedisClient.connect).toBeCalled();
   });
 
