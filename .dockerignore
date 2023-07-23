@@ -1,5 +1,4 @@
 .github
 docs
-node_modules
 redis
 server-files

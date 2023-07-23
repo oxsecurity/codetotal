@@ -7,11 +7,15 @@ RUN npm run build
 
 # Final image
 FROM node:18-alpine3.18
+ARG BUILD_DATE=dev
+ARG BUILD_REVISION=dev
+ARG BUILD_VERSION=dev
 ENV NODE_ENV=production
 WORKDIR /app
+RUN npm i nodemon -g
 COPY --from=builder /app/dist .
 EXPOSE 3000
-CMD ["npm", "run", "production"]
+CMD ["nodemon", "app/index.js"]
 LABEL maintainer="Nicolas Vuillamy <nicolas.vuillamy@ox.security>" \
       org.opencontainers.image.created=$BUILD_DATE \
       org.opencontainers.image.revision=$BUILD_REVISION \

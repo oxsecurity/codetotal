@@ -72,18 +72,3 @@ services:
       - megalinter_server_redis
     volumes:
       - ./server-files:/tmp/server-files
-
-  # Server to receive requests and post them in redis queue
-  code_total_server:
-    image: codetotal:dev
-    environment:
-      - NODE_ENV=production
-    ports:
-      - "3000:3000"
-    depends_on:
-      - megalinter_server_redis
-      - megalinter_server_api
-      - megalinter_server_worker
-    links:
-      - megalinter_server_redis
-      - megalinter_server_api
