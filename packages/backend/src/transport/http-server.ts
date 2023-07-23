@@ -6,6 +6,7 @@ import path from "node:path";
 import { Analysis, AnalysisStatus, FileAnalysis } from "shared-types";
 import { createAnalysis } from "../actions/create-analysis";
 import { getStore } from "../stores/stores-map";
+import { detectLanguage } from "../utils/language-detector";
 import { logger } from "../utils/logger";
 
 export const startHttpServer = ({ host, port }: HttpServerOptions) => {
@@ -58,6 +59,12 @@ export const startHttpServer = ({ host, port }: HttpServerOptions) => {
     } else {
       res.json({ status: AnalysisStatus.NotFound });
     }
+  });
+
+  app.post("/detect-language", (req: Request, res: Response) => {
+    const { snippet } = req.body;
+    const language = detectLanguage(snippet);
+    res.json({ language });
   });
 
   app.listen(port, host, () => {

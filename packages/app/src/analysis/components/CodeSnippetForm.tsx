@@ -3,6 +3,7 @@ import { FC, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { makeStyles } from "tss-react/mui";
 import { startAnalysis } from "../actions/analysis-actions";
+import { detectSnippetLanguage } from "../actions/snippet-actions";
 import { AnalysisStore, useAnalysisStore } from "../stores/analysis-store";
 
 export const CodeSnippetForm: FC = () => {
@@ -11,7 +12,9 @@ export const CodeSnippetForm: FC = () => {
   const navigate = useNavigate();
 
   const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-    AnalysisStore.setState({ snippet: e.target.value });
+    const snippet = e.target.value;
+    AnalysisStore.setState({ snippet });
+    detectSnippetLanguage(snippet);
   }, []);
 
   const handleSubmit = () => {
