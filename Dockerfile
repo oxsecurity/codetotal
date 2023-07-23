@@ -1,10 +1,17 @@
-FROM node:18-alpine3.18
+# Builder
+FROM node:18-alpine3.18 AS builder
 WORKDIR /app
-ENV NODE_ENV=production
 COPY . .
 RUN npm install
+RUN npm run build
+
+# Final image
+FROM node:18-alpine3.18
+ENV NODE_ENV=production
+WORKDIR /app
+COPY --from=builder /app/dist .
 EXPOSE 3000
-CMD ["npm", "start"]
+CMD ["npm", "run", "production"]
 LABEL maintainer="Nicolas Vuillamy <nicolas.vuillamy@ox.security>" \
       org.opencontainers.image.created=$BUILD_DATE \
       org.opencontainers.image.revision=$BUILD_REVISION \
