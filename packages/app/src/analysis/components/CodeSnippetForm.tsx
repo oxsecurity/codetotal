@@ -1,13 +1,14 @@
-import { Button, TextField, Theme } from "@mui/material";
+import { TextField, Theme } from "@mui/material";
 import { FC, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { makeStyles } from "tss-react/mui";
 import { startAnalysis } from "../actions/analysis-actions";
 import { AnalysisStore, useAnalysisStore } from "../stores/analysis-store";
+import { SubmitButton } from "./SubmitButton";
 
 export const CodeSnippetForm: FC = () => {
   const { classes } = useStyles();
-  const { snippet, snippetEnabled } = useAnalysisStore();
+  const { snippet, snippetEnabled, sending } = useAnalysisStore();
   const navigate = useNavigate();
 
   const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
@@ -33,15 +34,16 @@ export const CodeSnippetForm: FC = () => {
           "data-cy": "snippet-input",
         }}
       />
-      <Button
+      <SubmitButton
         variant="contained"
         color="primary"
         onClick={handleSubmit}
-        disabled={!snippetEnabled()}
+        disabled={!snippetEnabled() || sending === "loading"}
+        loading={sending === "loading"}
         data-cy="snippet-submit"
       >
         Check Snippet
-      </Button>
+      </SubmitButton>
     </div>
   );
 };

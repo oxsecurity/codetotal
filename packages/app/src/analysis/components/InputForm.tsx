@@ -1,11 +1,4 @@
-import {
-  Alert,
-  CircularProgress,
-  Paper,
-  Tab,
-  Tabs,
-  Theme,
-} from "@mui/material";
+import { Alert, Paper, Tab, Tabs, Theme } from "@mui/material";
 import { FC } from "react";
 import { AnalysisType, OneOfValues } from "shared-types";
 import { makeStyles } from "tss-react/mui";
@@ -50,12 +43,6 @@ export const InputForm: FC = () => {
         </Tabs>
       </div>
       <div className={classes.tabPanel}>
-        {sending === "loading" && (
-          <div className={classes.loader}>
-            <CircularProgress />
-          </div>
-        )}
-
         <div>
           {sending === "error" && (
             <Alert severity="error" square>
@@ -110,14 +97,5 @@ const useStyles = makeStyles()((theme: Theme) => ({
   tabPanel: {
     flexGrow: 1,
     position: "relative",
-  },
-  loader: {
-    width: "100%",
-    height: "100%",
-    display: "grid",
-    placeItems: "center",
-    position: "absolute",
-    top: 0,
-    left: 0,
   },
 }));
