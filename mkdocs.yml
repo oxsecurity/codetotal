@@ -1,0 +1,62 @@
+---
+site_name: CodeTotal by OX Security
+site_url: https://codetotal.io
+repo_url: https://github.com/oxsecurity/codetotal
+edit_uri: tree/main/docs
+site_author: Nicolas Vuillamy
+# site_description-start
+site_description: 
+# site_description-end
+copyright: Copyright &copy; 2022 <a href="https://www.ox.security/?ref=codetotal" target= "_blank">OX Security</a>
+theme:
+  name: material
+  font: 
+    text: Satoshi, sans-serif
+  custom_dir: docs/overrides
+  features:
+    - navigation.instant
+    - navigation.footer
+  logo: assets/images/ox-icon.jpg
+  favicon: assets/images/ox-icon.jpg
+  palette:
+    primary: white
+plugins:
+  - glightbox
+  - search
+markdown_extensions:
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+  - pymdownx.snippets:
+      base_path: docs
+      check_paths: true
+  - mdx_truly_sane_lists
+  - attr_list
+extra_javascript:
+  - https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.2.1/tablesort.min.js
+  - javascripts/tables.js
+#  - javascripts/gtag.js
+#  - javascripts/version-mike.js
+  - javascripts/quickfixes.js
+extra_css:
+  - stylesheets/extra.css
+extra:
+  social:
+    - icon: fontawesome/brands/linkedin
+      link: https://www.linkedin.com/company/ox-security/
+    - icon: fontawesome/regular/circle-question
+      link: https://github.com/oxsecurity/codetotal/issues
+      title: Need help ? Post an issue :)
+    - icon: fontawesome/brands/github
+      link: https://github.com/oxsecurity/codetotal
+    - icon: fontawesome/brands/docker
+      link: https://hub.docker.com/r/oxsecurity/codetotal
+  generator: false
+nav:
+  - "Home": "index.md"
+  - "Quick Start": "quick-start.md"
+  - "Contribute": "contributing.md"
+  - "License":
+      - "AGPL V3 License": "license.md"
+      - "License explanations": "license-explanations.md"
+  - "Changelog": "CHANGELOG.md"
