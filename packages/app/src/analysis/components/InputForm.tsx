@@ -30,6 +30,7 @@ export const InputForm: FC = () => {
           variant="fullWidth"
         >
           <Tab
+            autoFocus
             label="Code Snippet"
             value={AnalysisType.Snippet}
             className={classes.tab}

@@ -20,7 +20,7 @@ const router = createBrowserRouter([
 
 export const AppRouteProvider: FC = () => {
   return (
-    <Suspense fallback={<Loader />}>
+    <Suspense fallback={<Loader text="Loading page resources" />}>
       <RouterProvider router={router} />
     </Suspense>
   );
