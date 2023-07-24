@@ -56,16 +56,6 @@ export const ReportStore = createStore<FeReportStoreState>((set, get) => ({
   },
 }));
 
-ReportStore.subscribe((next, prev) => {
-  if (next.analysisError !== prev.analysisError) {
-    console.log("analysis error has been set");
-    console.log(next);
-  }
-
-  // console.log("report store updated");
-  // console.log(state);
-});
-
 export const useReportStore = () => useStore(ReportStore);
 
 type InitialState = Omit<
