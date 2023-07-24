@@ -112,6 +112,16 @@ const useStyles = makeStyles()((theme: Theme) => ({
   },
   container: {
     outline: `2px dashed ${theme.palette.divider}`,
+    transition: theme.transitions.create("all", {
+      duration: theme.transitions.duration.short,
+    }),
+    "&:hover,&:focus-within": {
+      backgroundColor:
+        theme.palette.mode === "dark"
+          ? alpha(theme.palette.background.paper, 0.2)
+          : darken(theme.palette.background.paper, 0.05),
+      outline: `2px dashed ${darken(theme.palette.divider, 0.3)}`,
+    },
   },
   uploading: {
     display: "flex",
@@ -122,12 +132,5 @@ const useStyles = makeStyles()((theme: Theme) => ({
   dropZone: {
     padding: theme.spacing(2),
     cursor: "pointer",
-    transition: theme.transitions.create("background-color"),
-    "&:hover,&:focus-within": {
-      backgroundColor:
-        theme.palette.mode === "dark"
-          ? alpha(theme.palette.background.paper, 0.2)
-          : darken(theme.palette.background.paper, 0.05),
-    },
   },
 }));
