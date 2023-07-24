@@ -120,7 +120,11 @@ const useStyles = makeStyles()((theme: Theme) => ({
         theme.palette.mode === "dark"
           ? alpha(theme.palette.background.paper, 0.2)
           : darken(theme.palette.background.paper, 0.05),
-      outline: `2px dashed ${darken(theme.palette.divider, 0.3)}`,
+      outline: "2px dashed",
+      outlineColor:
+        theme.palette.mode === "dark"
+          ? darken(theme.palette.divider, 0.3)
+          : darken(theme.palette.divider, 0.3),
     },
   },
   uploading: {
