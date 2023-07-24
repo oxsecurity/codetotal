@@ -9,7 +9,7 @@ const storeMock = {
 };
 
 describe("parse-linter-status", () => {
-  test("createWSServer", () => {
+  test("parseLinterStatus", () => {
     const linterCompleteMessage = {
       linterStatus: LinterStatus.Success,
       linterId: "devskim",

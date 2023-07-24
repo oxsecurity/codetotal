@@ -1,12 +1,12 @@
 import { ReportState } from "shared-types";
-import config from "./config";
+import config from "../../config";
 
-export const subscribe = (
-  requestId: string,
-  onMessage: (data: ReportState) => void,
-  onError: () => void,
-  onClose: () => void
-) => {
+export const subscribe = ({
+  requestId,
+  onMessage,
+  onError,
+  onClose,
+}: WSClientSubsciptionOptions) => {
   const ws = new WebSocket(
     `ws://${config.CODETOTAL_WS_HOST}:${config.CODETOTAL_WS_PORT}?requestId=${requestId}`
   );
@@ -24,3 +24,10 @@ export const subscribe = (
   };
   return unsubscribe;
 };
+
+interface WSClientSubsciptionOptions {
+  requestId: string;
+  onMessage: (data: ReportState) => void;
+  onError: () => void;
+  onClose: () => void;
+}

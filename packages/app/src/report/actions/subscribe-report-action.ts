@@ -1,32 +1,35 @@
 import { AnalysisStatus, ReportState } from "shared-types";
-import { subscribe } from "../../ws-client";
 import { ReportStore } from "../stores/fe-report-store";
+import { subscribe } from "../utils/ws-client";
 
-export const subscribeToLintProgress = (requestId: string) => {
+export const subscribeToReportProgress = (requestId: string) => {
   console.log("subscribing to WS...");
   // clear previous error
-  ReportStore.setState({ subscriptionError: undefined });
+  ReportStore.setState({ wsError: undefined });
 
-  const unsubscribe = subscribe(
+  const unsubscribe = subscribe({
     requestId,
-    (msg: Partial<ReportState>) => {
-      if (msg.status && msg.status === AnalysisStatus.Completed) {
+    onMessage: (msg: Partial<ReportState>) => {
+      const completed = msg.status && msg.status === AnalysisStatus.Completed;
+      const error = !!msg.analysisError;
+      if (completed || error) {
+        // close ws connection on completed/error
         unsubscribe();
       }
       ReportStore.setState({ ...msg });
     },
-    () => {
+    onError: () => {
       ReportStore.setState({
-        subscriptionError: "Web socket connection error",
+        wsError: "Web socket connection error",
       });
     },
-    () => {
+    onClose: () => {
       const { inProgress } = ReportStore.getState();
       inProgress &&
         ReportStore.setState({
-          subscriptionError: "Web socket connection closed while scanning",
+          wsError: "Web socket connection closed while scanning",
         });
-    }
-  );
+    },
+  });
   ReportStore.setState({ unsubscribe });
 };

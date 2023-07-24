@@ -8,6 +8,7 @@ describe("report-store", () => {
     expect(getStore("123").get().requestId).toEqual("123");
     expect(getStore("123").get().status).toEqual(AnalysisStatus.Created);
     expect(getStore("123").get().score).toEqual(0);
+    expect(getStore("123").get().analysisError).toEqual(undefined);
     expect(getStore("123")).toEqual(reportStore);
   });
 });

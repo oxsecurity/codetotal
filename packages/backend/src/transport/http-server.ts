@@ -30,7 +30,7 @@ export const startHttpServer = ({ host, port }: HttpServerOptions) => {
     "/analysis",
     createFileUploadHandler(),
     async (req: Request, res: Response) => {
-      logger.transport.log("Receiver new analysis request");
+      logger.transport.log("Received new analysis request");
       const file = req.file;
       let action = req.body as Analysis;
       if (file) {
