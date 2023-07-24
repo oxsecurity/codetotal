@@ -1,4 +1,4 @@
-import { AnalysisType, OneOfValues } from "shared-types";
+import { AnalysisType, OneOfValues, ProgrammingLanguage } from "shared-types";
 import { useStore } from "zustand";
 import { createStore } from "zustand/vanilla";
 
@@ -8,6 +8,7 @@ const initialState: AnalysisStoreState = {
   file: undefined,
   sending: "idle",
   inputType: AnalysisType.Snippet,
+  language: undefined,
 };
 
 export const AnalysisStore = createStore<
@@ -24,6 +25,7 @@ interface AnalysisStoreState {
   file?: File;
   sending: OneOfValues<typeof AsyncState>;
   inputType: OneOfValues<typeof AnalysisType>;
+  language?: ProgrammingLanguage;
 }
 
 interface AnalysisStoreFunctions {

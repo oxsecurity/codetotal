@@ -7,6 +7,7 @@ import {
 } from "@mui/material";
 import { FC } from "react";
 import { makeStyles } from "tss-react/mui";
+import { LanguageIcon } from "../../common/LanguageIcon";
 import { useReportStore } from "../stores/fe-report-store";
 import { ReportHeaderSection } from "./ReportHeaderSection";
 import { Score } from "./Score";
@@ -23,6 +24,7 @@ export const ReportHeader: FC<ReportBannerProps> = ({ ready }) => {
     linters = [],
     lintersWithIssues,
     progress,
+    language,
   } = useReportStore();
   if (!lintersWithIssues) {
     return null;
@@ -64,6 +66,7 @@ export const ReportHeader: FC<ReportBannerProps> = ({ ready }) => {
             value={resourceValue || "-"}
             dataCy="resource-value"
           />
+          <LanguageIcon language={language} />
         </div>
       </div>
       <Score
@@ -121,6 +124,7 @@ const useStyles = makeStyles()((theme: Theme) => ({
     maxWidth: 600,
     [theme.breakpoints.up("md")]: {
       flexDirection: "row",
+      alignItems: "flex-end",
     },
   },
   score: {

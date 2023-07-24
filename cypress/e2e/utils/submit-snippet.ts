@@ -3,10 +3,10 @@ export const submitSnippet = () => {
   cy.get(`[data-cy="snippet-input"]`).type(snippetCode, { delay: 1 });
 
   // assert the button is enabled
-  cy.get(`[data-cy="snippet-submit"]`).should("be.visible");
+  cy.get(`[data-cy="submit"]`).should("be.visible");
 
   // submit the snippet
-  cy.get(`[data-cy="snippet-submit"]`).click();
+  cy.get(`[data-cy="submit"]`).click();
 };
 
 const snippetCode = `
