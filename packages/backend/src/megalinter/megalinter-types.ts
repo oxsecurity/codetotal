@@ -95,11 +95,19 @@ export interface LinterCompleteMessage extends BaseMessage {
 export interface MegalinterErrorMessage extends BaseMessage {
   messageType: typeof MessageType.ServerError;
   message: string;
-  errorCode: string;
+  errorCode: MegalinterErrorCode;
   errorDetails: {
     error: string;
   };
   requestId: string;
+}
+
+export enum MegalinterErrorCode {
+  MissingAnalysisType = "missingAnalysisType",
+  GitClone = "gitCloneError",
+  UploadFileNotFound = "uploadedFileNotFound",
+  SnippetGuessError = "snippetGuessError",
+  SnippetBuildError = "snippetBuildError",
 }
 
 export interface RawLinter {

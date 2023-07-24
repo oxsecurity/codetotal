@@ -1,7 +1,7 @@
 import { AnalysisStatus, ReportState } from "shared-types";
 import { createStore, useStore } from "zustand";
 import { ScoreColorKey } from "../fe-report-types";
-import { resolveScoreColor } from "../utils/report-utils";
+import { resolveScoreColor } from "../utils/score-utils";
 
 const initialState: InitialState = {
   status: AnalysisStatus.Created,
@@ -15,7 +15,8 @@ const initialState: InitialState = {
   unsubscribe: undefined,
   repoDetails: undefined,
   fileDetails: undefined,
-  subscriptionError: undefined,
+  wsError: undefined,
+  analysisError: undefined,
 };
 
 export const ReportStore = createStore<FeReportStoreState>((set, get) => ({
@@ -55,6 +56,16 @@ export const ReportStore = createStore<FeReportStoreState>((set, get) => ({
   },
 }));
 
+ReportStore.subscribe((next, prev) => {
+  if (next.analysisError !== prev.analysisError) {
+    console.log("analysis error has been set");
+    console.log(next);
+  }
+
+  // console.log("report store updated");
+  // console.log(state);
+});
+
 export const useReportStore = () => useStore(ReportStore);
 
 type InitialState = Omit<
@@ -70,7 +81,7 @@ type InitialState = Omit<
 interface FeReportStoreState extends ReportState {
   selectedLinterName?: string;
   inProgress: boolean;
-  subscriptionError?: string;
+  wsError?: string;
   issuesCount(toolName: string): number;
   unsubscribe?: () => void;
   scoreColor(): ScoreColorKey;

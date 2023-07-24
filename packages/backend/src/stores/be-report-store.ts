@@ -5,7 +5,7 @@ import { addStore } from "./stores-map";
 
 export const createReportStore = (requestId: string) => {
   logger.stores.log(`Creating report store for requestId: "${requestId}"`);
-  
+
   const reportStore = createStore<ReportState>({
     requestId,
     resourceType: undefined,
@@ -16,8 +16,12 @@ export const createReportStore = (requestId: string) => {
     repoDetails: undefined,
     fileDetails: undefined,
     score: 0,
+    analysisError: undefined,
   });
+
+  // save the store instance for later use
   addStore(requestId, reportStore);
+
   return reportStore;
 };
 
@@ -25,4 +29,5 @@ export type InitialReportStoreState = Pick<
   ReportState,
   "requestId" | "status" | "score"
 >;
+
 export type ReportStore = Store<ReportState>;

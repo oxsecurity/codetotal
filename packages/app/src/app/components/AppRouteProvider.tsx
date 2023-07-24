@@ -1,5 +1,6 @@
-import { FC, lazy } from "react";
+import { FC, Suspense, lazy } from "react";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { Loader } from "../../report/components/Loader";
 import { ErrorPage } from "./ErrorPage";
 
 const LazyAnalysisPage = lazy(() => import("../../analysis/AnalysisPage"));
@@ -18,5 +19,9 @@ const router = createBrowserRouter([
 ]);
 
 export const AppRouteProvider: FC = () => {
-  return <RouterProvider router={router} />;
+  return (
+    <Suspense fallback={<Loader />}>
+      <RouterProvider router={router} />
+    </Suspense>
+  );
 };

@@ -11,9 +11,12 @@ export interface ReportState {
   repoDetails?: RepoDetails;
   fileDetails?: FileDetails;
   score: number;
+  analysisError?: {
+    errorCode?: string;
+    errorMessage?: string;
+    errorDetails?: string;
+  };
 }
-
-
 
 export interface RepoDetails {
   languages: ReportLanguage[];
