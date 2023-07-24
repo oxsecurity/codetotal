@@ -1,18 +1,22 @@
-import { TextField, Theme } from "@mui/material";
+import { TextField, Theme, Typography } from "@mui/material";
 import { FC, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { makeStyles } from "tss-react/mui";
+import { LanguageIcon } from "../../common/LanguageIcon";
+import { fetchDetect } from "../../common/utils/detect-lanauge-utils";
 import { startAnalysis } from "../actions/analysis-actions";
 import { AnalysisStore, useAnalysisStore } from "../stores/analysis-store";
 import { SubmitButton } from "./SubmitButton";
 
 export const CodeSnippetForm: FC = () => {
   const { classes } = useStyles();
-  const { snippet, snippetEnabled, sending } = useAnalysisStore();
+  const { snippet, snippetEnabled, sending, language } = useAnalysisStore();
   const navigate = useNavigate();
 
   const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-    AnalysisStore.setState({ snippet: e.target.value });
+    const snippet = e.target.value;
+    AnalysisStore.setState({ snippet });
+    fetchDetect(snippet);
   }, []);
 
   const handleSubmit = () => {
@@ -34,16 +38,31 @@ export const CodeSnippetForm: FC = () => {
           "data-cy": "snippet-input",
         }}
       />
-      <SubmitButton
-        variant="contained"
-        color="primary"
-        onClick={handleSubmit}
-        disabled={!snippetEnabled() || sending === "loading"}
-        loading={sending === "loading"}
-        data-cy="snippet-submit"
-      >
-        Check Snippet
-      </SubmitButton>
+      <div className={classes.footer}>
+        <div>
+          {language && language.name && (
+            <div className={classes.language}>
+              {language.icon ? (
+                <LanguageIcon language={language} />
+              ) : (
+                <Typography variant="body2" color="text.secondary">
+                  {language.name}
+                </Typography>
+              )}
+            </div>
+          )}
+        </div>
+        <SubmitButton
+          variant="contained"
+          color="primary"
+          onClick={handleSubmit}
+          disabled={!snippetEnabled() || sending === "loading"}
+          loading={sending === "loading"}
+          data-cy="submit"
+        >
+          Send Snippet
+        </SubmitButton>
+      </div>
     </div>
   );
 };
@@ -55,5 +74,16 @@ const useStyles = makeStyles()((theme: Theme) => ({
     alignItems: "center",
     gap: theme.spacing(2),
     padding: theme.spacing(1),
+  },
+  language: {
+    display: "flex",
+    gap: theme.spacing(1),
+    alignSelf: "flex-start",
+  },
+  footer: {
+    display: "flex",
+    gap: theme.spacing(1),
+    alignSelf: "stretch",
+    justifyContent: "space-between",
   },
 }));

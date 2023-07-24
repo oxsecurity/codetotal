@@ -5,7 +5,7 @@ describe("analysis", () => {
     cy.visit("/");
 
     // submit button disabled by default
-    cy.get(`[data-cy="snippet-submit"]`).should("be.disabled");
+    cy.get(`[data-cy="submit"]`).should("be.disabled");
 
     submitSnippet();
 
@@ -15,4 +15,3 @@ describe("analysis", () => {
     });
   });
 });
-

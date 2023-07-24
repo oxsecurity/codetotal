@@ -5,6 +5,7 @@ import {
   Analysis,
   AnalysisType,
   FileAnalysis,
+  ProgrammingLanguage,
   RepoAnalysis,
   SnippetAnalysis,
 } from "shared-types";
@@ -13,7 +14,7 @@ import { logger } from "../utils/logger";
 
 export const createAnalysisRequestData = async (
   action: Analysis
-): Promise<[unknown, string]> => {
+): Promise<[unknown, string, ProgrammingLanguage?]> => {
   switch (action.inputType) {
     case AnalysisType.Repo: {
       return [
@@ -23,7 +24,17 @@ export const createAnalysisRequestData = async (
     }
     case AnalysisType.Snippet: {
       const snippetMd5 = md5((<SnippetAnalysis>action).snippet);
-      return [{ snippet: (<SnippetAnalysis>action).snippet }, snippetMd5];
+      const snippetAction = action as SnippetAnalysis;
+      const languageId = snippetAction.language?.id;
+      const snippetExtension = languageId ? `.${languageId}` : undefined;
+      return [
+        {
+          snippet: snippetAction.snippet,
+          snippetExtension,
+        },
+        snippetMd5,
+        snippetAction.language,
+      ];
     }
     case AnalysisType.File: {
       const fileAction = action as FileAnalysis;

@@ -1,11 +1,13 @@
 import { Button, ButtonProps, CircularProgress } from "@mui/material";
 import { FC } from "react";
+import { BiSend } from "react-icons/bi";
 
 export const SubmitButton: FC<SubmitButtonProps> = ({ loading, ...props }) => {
   return (
     <Button
       {...props}
-      endIcon={
+      endIcon={<BiSend />}
+      startIcon={
         loading && (
           <CircularProgress
             color="inherit"
@@ -18,6 +20,6 @@ export const SubmitButton: FC<SubmitButtonProps> = ({ loading, ...props }) => {
   );
 };
 
-interface SubmitButtonProps extends ButtonProps {
+interface SubmitButtonProps extends Omit<ButtonProps, "startIcon" | "endIcon"> {
   loading: boolean;
 }
