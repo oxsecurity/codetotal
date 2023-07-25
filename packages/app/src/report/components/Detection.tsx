@@ -21,6 +21,5 @@ const useStyles = makeStyles()(() => ({
   detection: {
     height: "100%",
     position: "relative",
-    display: "grid",
   },
 }));
