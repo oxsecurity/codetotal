@@ -5,11 +5,7 @@ import multer from "multer";
 import path from "node:path";
 import { Analysis, AnalysisStatus, FileAnalysis } from "shared-types";
 import { createAnalysis } from "../../actions/create-analysis";
-import {
-  detect,
-  resolveIcon,
-  resolveName,
-} from "../../language-detection/language-detection";
+import { detectLanguage } from "../../language-detection/language-detect";
 import { getStore } from "../../stores/stores-map";
 import { logger } from "../../utils/logger";
 import {
@@ -73,16 +69,8 @@ export const startHttpServer = ({ host, port }: HttpServerOptions) => {
     const { snippet } = req.body;
 
     try {
-      const languageId = await detect(snippet);
-      if (languageId) {
-        const name = resolveName(languageId);
-        const icon = resolveIcon(name);
-        res.json({
-          id: languageId,
-          name,
-          icon,
-        });
-      }
+      const language = await detectLanguage(snippet);
+      language && res.json(language);
     } catch (err) {
       logger.transport.error(err.message);
       res.status(500).send();
