@@ -19,8 +19,6 @@ export const initProgress = async (
       case AnalysisStatus.Created:
         subscribeToReportProgress(requestId);
         break;
-      case AnalysisStatus.Completed:
-        break;
       case AnalysisStatus.NotFound:
         navigate("/");
         return;

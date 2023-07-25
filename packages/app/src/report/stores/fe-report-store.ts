@@ -1,4 +1,4 @@
-import { AnalysisStatus, ReportState } from "shared-types";
+import { AnalysisStatus, Issue, ReportState } from "shared-types";
 import { createStore, useStore } from "zustand";
 import { ScoreColorKey } from "../fe-report-types";
 import { resolveScoreColor } from "../utils/score-utils";
@@ -54,6 +54,17 @@ export const ReportStore = createStore<FeReportStoreState>((set, get) => ({
   reset: () => {
     set({ ...initialState });
   },
+  allIssues: () => {
+    const { linters } = get();
+    return (linters || [])
+      .map((linter) =>
+        (linter.issues || []).map((issue) => ({
+          ...issue,
+          linter: linter.name,
+        }))
+      )
+      .flat();
+  },
 }));
 
 export const useReportStore = () => useStore(ReportStore);
@@ -66,6 +77,7 @@ type InitialState = Omit<
   | "reset"
   | "lintersCompleted"
   | "progress"
+  | "allIssues"
 >;
 
 interface FeReportStoreState extends ReportState {
@@ -79,4 +91,5 @@ interface FeReportStoreState extends ReportState {
   lintersCompleted(): number;
   progress(): number;
   reset(): void;
+  allIssues(): Issue[];
 }
