@@ -8,6 +8,6 @@ describe("language-resolve-name", () => {
 
   test("resolveName return undefined when language not found", () => {
     const name = resolveName("123");
-    expect(name).toBe(undefined);
+    expect(name).toBeUndefined();
   });
 });

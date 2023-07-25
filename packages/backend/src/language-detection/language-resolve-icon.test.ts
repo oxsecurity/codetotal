@@ -18,6 +18,6 @@ describe("language-resolve-icon", () => {
 
   test("resolveIcon return undefined when icon not found", () => {
     const name = resolveIcon("123");
-    expect(name).toBe(undefined);
+    expect(name).toBeUndefined();
   });
 });

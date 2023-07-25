@@ -14,6 +14,6 @@ describe("language-resolve-id", () => {
 
   test("resolveId return undefined when language not detected", async () => {
     const id = await resolveId("123");
-    expect(id).toBe(undefined);
+    expect(id).toBeUndefined();
   });
 });

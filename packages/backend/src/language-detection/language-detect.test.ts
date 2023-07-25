@@ -18,6 +18,6 @@ describe("language-detect", () => {
 
   test("resolveId return undefined when language not detected", async () => {
     const language = await detectLanguage("");
-    expect(language).toBe(undefined);
+    expect(language).toBeUndefined();
   });
 });
