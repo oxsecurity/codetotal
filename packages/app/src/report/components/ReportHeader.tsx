@@ -1,11 +1,16 @@
 import {
+  Divider,
+  IconButton,
   Paper,
   Theme,
+  Tooltip,
   Typography,
   useMediaQuery,
   useTheme,
 } from "@mui/material";
 import { FC } from "react";
+import { IoMdArrowBack } from "react-icons/io";
+import { NavLink } from "react-router-dom";
 import { makeStyles } from "tss-react/mui";
 import { LanguageIcon } from "../../common/LanguageIcon";
 import { useReportStore } from "../stores/fe-report-store";
@@ -67,6 +72,16 @@ export const ReportHeader: FC<ReportBannerProps> = ({ ready }) => {
             dataCy="resource-value"
           />
           <LanguageIcon language={language} />
+        </div>
+        <Divider orientation="horizontal" sx={{ marginBlockStart: 2 }} />
+        <div className={classes.footer}>
+          <Tooltip arrow title="Back to homepage" placement="top">
+            <NavLink to="/">
+              <IconButton size="small">
+                <IoMdArrowBack />
+              </IconButton>
+            </NavLink>
+          </Tooltip>
         </div>
       </div>
       <Score
@@ -137,6 +152,9 @@ const useStyles = makeStyles()((theme: Theme) => ({
   },
   nowrap: {
     wordBreak: "keep-all",
+  },
+  footer: {
+    paddingBlock: theme.spacing(1),
   },
 }));
 
