@@ -4,14 +4,18 @@ import express, { Request, Response } from "express";
 import multer from "multer";
 import path from "node:path";
 import { Analysis, AnalysisStatus, FileAnalysis } from "shared-types";
-import { createAnalysis } from "../actions/create-analysis";
+import { createAnalysis } from "../../actions/create-analysis";
 import {
   detect,
   resolveIcon,
   resolveName,
-} from "../language-detection/language-detection";
-import { getStore } from "../stores/stores-map";
-import { logger } from "../utils/logger";
+} from "../../language-detection/language-detection";
+import { getStore } from "../../stores/stores-map";
+import { logger } from "../../utils/logger";
+import {
+  FileUploader,
+  createFileUploadHandler,
+} from "./http-file-upload-handler";
 
 export const startHttpServer = ({ host, port }: HttpServerOptions) => {
   const app = express();
@@ -33,7 +37,7 @@ export const startHttpServer = ({ host, port }: HttpServerOptions) => {
   // add analysis route
   app.post(
     "/analysis",
-    createFileUploadHandler(),
+    createFileUploadHandler(multer as FileUploader),
     async (req: Request, res: Response) => {
       logger.transport.log("Received new analysis request");
       const file = req.file;
@@ -96,9 +100,3 @@ interface HttpServerOptions {
   host: string;
   port: number;
 }
-
-const createFileUploadHandler = () => {
-  const storage = multer.memoryStorage();
-  const upload = multer({ storage: storage });
-  return upload.single("file");
-};
