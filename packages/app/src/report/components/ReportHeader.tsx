@@ -14,6 +14,7 @@ import { NavLink } from "react-router-dom";
 import { makeStyles } from "tss-react/mui";
 import { LanguageIcon } from "../../common/LanguageIcon";
 import { useReportStore } from "../stores/fe-report-store";
+import { ExportToCSV } from "./ExportToCSV";
 import { ReportHeaderSection } from "./ReportHeaderSection";
 import { Score } from "./Score";
 
@@ -82,6 +83,7 @@ export const ReportHeader: FC<ReportBannerProps> = ({ ready }) => {
               </IconButton>
             </NavLink>
           </Tooltip>
+          <ExportToCSV />
         </div>
       </div>
       <Score
@@ -154,7 +156,11 @@ const useStyles = makeStyles()((theme: Theme) => ({
     wordBreak: "keep-all",
   },
   footer: {
+    display: "flex",
+    alignItems: "center",
+    gap: theme.spacing(2),
     paddingBlockStart: theme.spacing(1),
+    justifyContent: "space-between"
   },
 }));
 
