@@ -6,7 +6,7 @@ import { ModelOperations } from "@vscode/vscode-languagedetection";
 
 const modulOperations = new ModelOperations();
 
-export const detect = async (snippet: string): Promise<string | undefined> => {
+export const resolveId = async (snippet: string): Promise<string | undefined> => {
   const detection = await modulOperations.runModel(snippet);
 
   if (detection.length > 0) {

@@ -1,12 +1,12 @@
 import { ProgrammingLanguage } from "shared-types";
-import { detect } from "./language-detection";
-import { resolveName } from "./language-resolve-name";
 import { resolveIcon } from "./language-resolve-icon";
+import { resolveName } from "./language-resolve-name";
+import { resolveId } from "./language-resolve-id";
 
 export const detectLanguage = async (
   snippet: string
 ): Promise<ProgrammingLanguage | undefined> => {
-  const languageId = await detect(snippet);
+  const languageId = await resolveId(snippet);
 
   if (languageId) {
     const name = resolveName(languageId);
