@@ -1,6 +1,6 @@
 import { subscribeToReport } from "./actions/subscribe-to-report";
 import config from "./config";
-import { startHttpServer } from "./transport/http-server";
+import { startHttpServer } from "./transport/http/http-server";
 import { startRedisClient } from "./transport/redis-client";
 import { createWSServer, listenToWSConnection } from "./transport/ws-server";
 
