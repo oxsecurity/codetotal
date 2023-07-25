@@ -5,7 +5,7 @@ import multer from "multer";
 import path from "node:path";
 import { Analysis, AnalysisStatus, FileAnalysis } from "shared-types";
 import { createAnalysis } from "../../actions/create-analysis";
-import { detectLanguage } from "../../language-detection";
+import { detectLanguage } from "../../language-detection/language-detect";
 import { getStore } from "../../stores/stores-map";
 import { logger } from "../../utils/logger";
 import {
