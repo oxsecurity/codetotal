@@ -6,7 +6,7 @@ describe("language-resolve-name", () => {
     expect(name).toBe("TypeScript");
   });
 
-  test("resolveName to return undefined when language not found", () => {
+  test("resolveName return undefined when language not found", () => {
     const name = resolveName("123");
     expect(name).toBe(undefined);
   });

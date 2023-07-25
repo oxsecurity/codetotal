@@ -1,6 +1,7 @@
 import { ProgrammingLanguage } from "shared-types";
-import { detect, resolveIcon } from "./language-detection";
+import { detect } from "./language-detection";
 import { resolveName } from "./language-resolve-name";
+import { resolveIcon } from "./language-resolve-icon";
 
 export const detectLanguage = async (
   snippet: string
