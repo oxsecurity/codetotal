@@ -1,6 +1,5 @@
-version: '3'
+version: "3"
 services:
-
   # Redis server to manage request queues and results
   megalinter_server_redis:
     image: redis:7.0.11-alpine
@@ -32,7 +31,7 @@ services:
     #image: ghcr.io/oxsecurity/megalinter-worker-javascript:alpha # javascript projects
     image: ghcr.io/oxsecurity/megalinter-worker-security:alpha # cupcake is more complete
     #image: ghcr.io/oxsecurity/megalinter-worker:alpha # all linters
-    
+
     environment:
       # ignore tool
       - DISABLE_LINTERS=REPOSITORY_SYFT,REPOSITORY_DUSTILOCK
@@ -64,7 +63,7 @@ services:
       # - REDIS_ERRORS_REPORTER_METHOD=PUBSUB
       ## You can force a channel. If not set, megalinter:pubsub:REQUEST_ID will be used (request_id is returned in initial POST body)
       # - REDIS_REPORTER_PUBSUB_CHANNEL=megalinter:pubsub:results
-      # - REDIS_LINTER_REPORTER_PUBSUB_CHANNEL=megalinter:pubsub:linter_results 
+      # - REDIS_LINTER_REPORTER_PUBSUB_CHANNEL=megalinter:pubsub:linter_results
       # - REDIS_ERRORS_REPORTER_PUBSUB_CHANNEL=megalinter:pubsub:error
     depends_on:
       - megalinter_server_redis

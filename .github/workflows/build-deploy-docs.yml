@@ -13,7 +13,6 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-
   deploy:
     runs-on: ubuntu-latest
     permissions:
@@ -31,5 +30,3 @@ jobs:
           git config --global user.name megalinter-bot
           git config --global user.email nicolas.vuillamy@ox.security
       - run: mkdocs gh-deploy --force
-
- 
