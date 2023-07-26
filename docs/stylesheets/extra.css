@@ -14,6 +14,11 @@
   max-width: 32px;
 }
 
+.megalinter-icon {
+  max-height: 32px;
+  max-width: 32px;
+}
+
 .md-typeset__table {
   min-width: 100%;
 }

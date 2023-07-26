@@ -5,3 +5,5 @@
 Brought to you by [OX Security](https://ox.security), powered by [MegaLinter](https://megalinter.io)
 
 ![CodeTotal Screenshot](assets/images/screen.jpg "A screenshot from the app")
+
+[Start now !](quick-start.md)

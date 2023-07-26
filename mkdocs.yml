@@ -55,6 +55,7 @@ extra:
 nav:
   - "Home": "index.md"
   - "Quick Start": "quick-start.md"
+  - "Security linters": "security-linters.md"
   - "Contribute": "contributing.md"
   - "License":
       - "AGPL V3 License": "license.md"
