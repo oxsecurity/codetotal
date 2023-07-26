@@ -1,13 +1,20 @@
 import {
+  Divider,
+  IconButton,
   Paper,
   Theme,
+  Tooltip,
   Typography,
   useMediaQuery,
   useTheme,
 } from "@mui/material";
 import { FC } from "react";
+import { IoMdArrowBack } from "react-icons/io";
+import { NavLink } from "react-router-dom";
 import { makeStyles } from "tss-react/mui";
+import { LanguageIcon } from "../../common/LanguageIcon";
 import { useReportStore } from "../stores/fe-report-store";
+import { ExportToCSV } from "./ExportToCSV";
 import { ReportHeaderSection } from "./ReportHeaderSection";
 import { Score } from "./Score";
 
@@ -23,6 +30,7 @@ export const ReportHeader: FC<ReportBannerProps> = ({ ready }) => {
     linters = [],
     lintersWithIssues,
     progress,
+    language,
   } = useReportStore();
   if (!lintersWithIssues) {
     return null;
@@ -64,6 +72,18 @@ export const ReportHeader: FC<ReportBannerProps> = ({ ready }) => {
             value={resourceValue || "-"}
             dataCy="resource-value"
           />
+          <LanguageIcon language={language} />
+        </div>
+        <Divider orientation="horizontal" sx={{ marginBlockStart: 0.5 }} />
+        <div className={classes.footer}>
+          <Tooltip arrow title="Back to homepage" placement="top">
+            <NavLink to="/">
+              <IconButton size="small">
+                <IoMdArrowBack />
+              </IconButton>
+            </NavLink>
+          </Tooltip>
+          <ExportToCSV />
         </div>
       </div>
       <Score
@@ -109,7 +129,7 @@ const useStyles = makeStyles()((theme: Theme) => ({
     fontWeight: 700,
     [theme.breakpoints.up("md")]: {
       fontSize: "1.562rem",
-      marginBlockEnd: theme.spacing(2),
+      marginBlockStart: theme.spacing(2),
       textAlign: "start",
     },
   },
@@ -121,6 +141,7 @@ const useStyles = makeStyles()((theme: Theme) => ({
     maxWidth: 600,
     [theme.breakpoints.up("md")]: {
       flexDirection: "row",
+      alignItems: "flex-end",
     },
   },
   score: {
@@ -133,6 +154,13 @@ const useStyles = makeStyles()((theme: Theme) => ({
   },
   nowrap: {
     wordBreak: "keep-all",
+  },
+  footer: {
+    display: "flex",
+    alignItems: "center",
+    gap: theme.spacing(2),
+    paddingBlockStart: theme.spacing(1),
+    justifyContent: "space-between"
   },
 }));
 

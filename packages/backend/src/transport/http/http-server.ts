@@ -4,9 +4,14 @@ import express, { Request, Response } from "express";
 import multer from "multer";
 import path from "node:path";
 import { Analysis, AnalysisStatus, FileAnalysis } from "shared-types";
-import { createAnalysis } from "../actions/create-analysis";
-import { getStore } from "../stores/stores-map";
-import { logger } from "../utils/logger";
+import { createAnalysis } from "../../actions/create-analysis";
+import { detectLanguage } from "../../language-detection/language-detect";
+import { getStore } from "../../stores/stores-map";
+import { logger } from "../../utils/logger";
+import {
+  FileUploader,
+  createFileUploadHandler,
+} from "./http-file-upload-handler";
 
 export const startHttpServer = ({ host, port }: HttpServerOptions) => {
   const app = express();
@@ -28,9 +33,9 @@ export const startHttpServer = ({ host, port }: HttpServerOptions) => {
   // add analysis route
   app.post(
     "/analysis",
-    createFileUploadHandler(),
+    createFileUploadHandler(multer as FileUploader),
     async (req: Request, res: Response) => {
-      logger.transport.log("Receiver new analysis request");
+      logger.transport.log("Received new analysis request");
       const file = req.file;
       let action = req.body as Analysis;
       if (file) {
@@ -60,6 +65,20 @@ export const startHttpServer = ({ host, port }: HttpServerOptions) => {
     }
   });
 
+  app.post("/detect", async (req: Request, res: Response) => {
+    const { snippet } = req.body;
+
+    try {
+      const language = await detectLanguage(snippet);
+      language && res.json(language);
+    } catch (err) {
+      logger.transport.error(err.message);
+      res.status(500).send();
+    }
+
+    res.status(200).send();
+  });
+
   app.listen(port, host, () => {
     logger.transport.log(`HTTP server is running on ${host}:${port}`);
   });
@@ -69,9 +88,3 @@ interface HttpServerOptions {
   host: string;
   port: number;
 }
-
-const createFileUploadHandler = () => {
-  const storage = multer.memoryStorage();
-  const upload = multer({ storage: storage });
-  return upload.single("file");
-};

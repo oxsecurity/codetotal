@@ -1,3 +1,4 @@
+import { ProgrammingLanguage } from "./language-types";
 import { OneOfValues } from "./typescript-types";
 
 export interface Analysis {
@@ -18,6 +19,7 @@ export interface RepoAnalysis extends Analysis {
 export interface SnippetAnalysis extends Analysis {
   inputType: typeof AnalysisType.Snippet;
   snippet: string;
+  language?: ProgrammingLanguage;
 }
 
 export interface FileAnalysis extends Analysis {

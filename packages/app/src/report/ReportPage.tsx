@@ -1,5 +1,6 @@
 import { FC, useEffect, useRef } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import { AnalysisErrorDialog } from "../common/AnalysisErrorDialog";
 import { initProgress } from "./actions/init-report-action";
 import { IssuesTable } from "./components/IssuesTable";
 import { ReportDrawer } from "./components/ReportDrawer";
@@ -26,6 +27,7 @@ const ReportPage: FC = () => {
       <ReportDrawer>
         <IssuesTable />
       </ReportDrawer>
+      <AnalysisErrorDialog />
     </div>
   );
 };

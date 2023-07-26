@@ -3,10 +3,12 @@ import {
   BaseMessage,
   LinterCompleteMessage,
   MegalinterCompleteMessage,
+  MegalinterErrorMessage,
   MegalinterStartMessage,
   MessageType,
 } from "../megalinter-types";
 import { parseDetails } from "./parse-details";
+import { parseMegalinterError } from "./parse-errors";
 import { parseLinterStatus } from "./parse-linter-status";
 import { parseMegalinterComplete } from "./parse-megalinter-complete";
 import { parseMegalinterStart } from "./parse-megalinter-start";
@@ -24,6 +26,9 @@ export const parseMessage = (msg: BaseMessage, reportStore: ReportStore) => {
     case MessageType.LinterComplete:
       parseLinterStatus(msg as LinterCompleteMessage, reportStore);
       runSarif(msg as LinterCompleteMessage, reportStore);
+      break;
+    case MessageType.ServerError:
+      parseMegalinterError(msg as MegalinterErrorMessage, reportStore);
       break;
   }
 

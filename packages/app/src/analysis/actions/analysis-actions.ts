@@ -43,7 +43,8 @@ export const startAnalysis = async (navigate: NavigateFunction) => {
 };
 
 const createRequestData = (): Analysis | undefined => {
-  const { inputType, repositoryURL, file, snippet } = AnalysisStore.getState();
+  const { inputType, repositoryURL, file, snippet, language } =
+    AnalysisStore.getState();
   const sharedVariables = {
     name: "Lint",
     inputType,
@@ -55,6 +56,10 @@ const createRequestData = (): Analysis | undefined => {
     case AnalysisType.File:
       return { ...sharedVariables, file } as FileAnalysis;
     case AnalysisType.Snippet:
-      return { ...sharedVariables, snippet } as SnippetAnalysis;
+      return {
+        ...sharedVariables,
+        snippet,
+        language,
+      } as SnippetAnalysis;
   }
 };

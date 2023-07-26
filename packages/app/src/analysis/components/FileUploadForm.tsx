@@ -1,4 +1,10 @@
-import { Theme, Typography, alpha, darken } from "@mui/material";
+import {
+  CircularProgress,
+  Theme,
+  Typography,
+  alpha,
+  darken,
+} from "@mui/material";
 import { filesize } from "filesize";
 import { FC, useCallback, useState } from "react";
 import { FileRejection, useDropzone } from "react-dropzone";
@@ -7,13 +13,18 @@ import { useNavigate } from "react-router-dom";
 import { makeStyles } from "tss-react/mui";
 import config from "../../config";
 import { startAnalysis } from "../actions/analysis-actions";
-import { AnalysisStore } from "../stores/analysis-store";
+import {
+  AnalysisStore,
+  AsyncState,
+  useAnalysisStore,
+} from "../stores/analysis-store";
 
 const MAX_SIZE = parseInt(config.CODETOTAL_UPLOAD_FILE_LIMIT_BYTES);
 
 export const FileUploadForm: FC = () => {
   const { classes } = useStyles();
   const navigate = useNavigate();
+  const { sending } = useAnalysisStore();
   const [error, setError] = useState("");
 
   const onDrop = useCallback(
@@ -47,28 +58,46 @@ export const FileUploadForm: FC = () => {
     maxSize: MAX_SIZE,
   });
 
+  const uploading = sending === AsyncState.Loading;
+
   return (
-    <div {...getRootProps()}>
+    <div {...getRootProps()} className={classes.container}>
       <input {...getInputProps()} />
 
       <div className={classes.dropZone}>
         <BiSolidCloudUpload className={classes.icon} />
-        {isDragActive ? (
-          <p>Drop the files here ...</p>
-        ) : (
-          <>
+        {uploading && (
+          <div className={classes.uploading}>
+            <CircularProgress size="small" sx={{ width: "1em" }} />
             <Typography variant="body2" color="text.secondary">
-              Drag and drop a file here
-              <br />
-              or
-              <br />
-              Click to browse
+              Uploading file
             </Typography>
-            {error && (
-              <Typography variant="caption" color="error">
-                {error}
-              </Typography>
-            )}
+          </div>
+        )}
+        {!uploading && (
+          <>
+            <div style={{ minHeight: "4rem" }}>
+              {isDragActive ? (
+                <Typography variant="body1" color="text.secondary">
+                  Release to upload...
+                </Typography>
+              ) : (
+                <>
+                  <Typography variant="body2" color="text.secondary">
+                    Drag and drop a file here
+                    <br />
+                    or
+                    <br />
+                    Click to browse
+                  </Typography>
+                  {error && (
+                    <Typography variant="caption" color="error">
+                      {error}
+                    </Typography>
+                  )}
+                </>
+              )}
+            </div>
           </>
         )}
       </div>
@@ -81,16 +110,31 @@ const useStyles = makeStyles()((theme: Theme) => ({
     fontSize: "5rem",
     color: theme.palette.primary.main,
   },
-  dropZone: {
-    border: `2px dashed ${theme.palette.divider}`,
-    padding: theme.spacing(2),
-    cursor: "pointer",
-    transition: theme.transitions.create("background-color"),
+  container: {
+    outline: `2px dashed ${theme.palette.divider}`,
+    transition: theme.transitions.create("all", {
+      duration: theme.transitions.duration.short,
+    }),
     "&:hover,&:focus-within": {
       backgroundColor:
         theme.palette.mode === "dark"
           ? alpha(theme.palette.background.paper, 0.2)
           : darken(theme.palette.background.paper, 0.05),
+      outline: "2px dashed",
+      outlineColor:
+        theme.palette.mode === "dark"
+          ? darken(theme.palette.divider, 0.3)
+          : darken(theme.palette.divider, 0.3),
     },
+  },
+  uploading: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    gap: theme.spacing(1),
+  },
+  dropZone: {
+    padding: theme.spacing(2),
+    cursor: "pointer",
   },
 }));

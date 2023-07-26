@@ -33,6 +33,7 @@ const useStyles = makeStyles()((theme: Theme) => ({
       color: theme.palette.text.secondary,
     },
     "& > div": {
+      marginBlockStart: theme.spacing(0.5),
       color: theme.palette.text.primary,
       fontWeight: "bold",
       textOverflow: "ellipsis",

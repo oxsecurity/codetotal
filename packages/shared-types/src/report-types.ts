@@ -1,3 +1,4 @@
+import { ProgrammingLanguage } from ".";
 import { AnalysisStatus } from "./analysis-types";
 import { OneOfValues } from "./typescript-types";
 
@@ -11,9 +12,13 @@ export interface ReportState {
   repoDetails?: RepoDetails;
   fileDetails?: FileDetails;
   score: number;
+  analysisError?: {
+    errorCode?: string;
+    errorMessage?: string;
+    errorDetails?: string;
+  };
+  language?: ProgrammingLanguage;
 }
-
-
 
 export interface RepoDetails {
   languages: ReportLanguage[];

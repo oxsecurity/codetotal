@@ -1,14 +1,15 @@
-import { Button, FormControl, TextField, Theme } from "@mui/material";
+import { FormControl, TextField, Theme } from "@mui/material";
 import { FC, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { makeStyles } from "tss-react/mui";
 import { startAnalysis } from "../actions/analysis-actions";
 import { AnalysisStore, useAnalysisStore } from "../stores/analysis-store";
+import { SubmitButton } from "./SubmitButton";
 
 export const RepositoryForm: FC = () => {
   const { classes } = useStyles();
   const navigate = useNavigate();
-  const { repositoryURL, repoEnabled } = useAnalysisStore();
+  const { repositoryURL, repoEnabled, sending } = useAnalysisStore();
 
   const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     AnalysisStore.setState({ repositoryURL: e.target.value });
@@ -28,14 +29,15 @@ export const RepositoryForm: FC = () => {
         />
       </FormControl>
 
-      <Button
+      <SubmitButton
         variant="contained"
         color="primary"
         onClick={handleSubmit}
+        loading={sending === "loading"}
         disabled={!repoEnabled()}
       >
         Check Repository
-      </Button>
+      </SubmitButton>
     </div>
   );
 };

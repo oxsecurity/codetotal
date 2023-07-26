@@ -3,7 +3,7 @@ import { NavigateFunction } from "react-router-dom";
 import { AnalysisStatus } from "shared-types";
 import config from "../../config";
 import { ReportStore } from "../stores/fe-report-store";
-import { subscribeToLintProgress } from "./subscribe-report-action";
+import { subscribeToReportProgress } from "./subscribe-report-action";
 
 export const initProgress = async (
   requestId: string,
@@ -17,9 +17,7 @@ export const initProgress = async (
 
     switch (status) {
       case AnalysisStatus.Created:
-        subscribeToLintProgress(requestId);
-        break;
-      case AnalysisStatus.Completed:
+        subscribeToReportProgress(requestId);
         break;
       case AnalysisStatus.NotFound:
         navigate("/");
