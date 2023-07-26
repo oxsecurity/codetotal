@@ -31,3 +31,4 @@ server-files/
 *.tsbuildinfo
 /redis/
 dump.rdb
+megalinter-reports/
