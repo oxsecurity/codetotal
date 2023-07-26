@@ -61,3 +61,5 @@ nav:
       - "AGPL V3 License": "license.md"
       - "License explanations": "license-explanations.md"
   - "Changelog": "CHANGELOG.md"
+  - "MegaLinter WebSite": "https://megalinter.io"
+  - "OX Security WebSite": "https://ox.security?ref=codetotal"
