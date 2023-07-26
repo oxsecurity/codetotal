@@ -34,7 +34,7 @@
 
 /* dark mode table header bgcolor */
 [data-md-color-scheme="slate"] .md-typeset__table th {
-  background-color: hsla(var(--md-hue),25%,25%,1)
+  background-color: hsl(var(--md-hue) 25% 25% / 100%)
 }
 
 /* light mode alternating table bg colors */
@@ -44,10 +44,10 @@
 
 /* dark mode alternating table bg colors */
 [data-md-color-scheme="slate"] .md-typeset__table tr:nth-child(2n) {
-  background-color: hsla(var(--md-hue),25%,25%,1)
+  background-color: hsl(var(--md-hue) 25% 25% / 100%)
 }
 
-h1[content~=Home] {
+h1[content~="Home"] {
   display: none;
 }
 
@@ -60,21 +60,16 @@ h1[content~=Home] {
   --md-default-bg-color--light: #fff;
   --md-default-bg-color--lighter: #fff;
   --md-default-bg-color--lightest: #fff;
-
   --md-primary-fg-color: #1E144D;
   --md-primary-fg-color--light: #FD80CD;
   --md-primary-fg-color--dark: #6A2BFF;
   --md-primary-bg-color: #fff;
   --md-primary-bg-color--light: #fff;
-
-
   --md-accent-fg-color: #6A2BFF;
   --md-accent-fg-color--transparent: #6A2BFF;
   --md-accent-bg-color: #B95CE4;
   --md-accent-bg-color--light: #FD80CD;
-
   --md-footer-bg-color: #B95CE4;
-
   --md-typeset-table-color--light: #fff5fb;
 
 }

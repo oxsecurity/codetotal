@@ -27,7 +27,6 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-
   build:
     name: Build & Push Docker Image - Beta
     runs-on: ubuntu-latest
@@ -78,5 +77,3 @@ jobs:
           tags: |
             ghcr.io/oxsecurity/codetotal-server:beta
           # ghcr.io/oxsecurity/megalinter-server:alpha-${{ github.sha }}
-
-

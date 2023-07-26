@@ -1,0 +1,24 @@
+{
+  "threshold": 0,
+  "reporters": ["html", "markdown"],
+  "ignore": [
+    "**/node_modules/**",
+    "**/.git/**",
+    "**/.rbenv/**",
+    "**/.venv/**",
+    "**/*cache*/**",
+    "**/.automation/**",
+    "**/.github/**",
+    "**/.idea/**",
+    "**/docs/**",
+    "**/*.yml",
+    "**/CHANGELOG.md",
+    "**/licenses/*.md",
+    "**/docker-compose-megalinter.yml",
+    "**/docker-compose-local.yml",
+    "**/docker-compose.yml",
+    "**/AppThemeProvider.tsx",
+    "**/parse-linter-status.test.ts",
+    "**/parse-megalinter-complete.test.ts"
+  ]
+}

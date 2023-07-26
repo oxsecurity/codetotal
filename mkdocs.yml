@@ -5,12 +5,12 @@ repo_url: https://github.com/oxsecurity/codetotal
 edit_uri: tree/main/docs
 site_author: Nicolas Vuillamy
 # site_description-start
-site_description: 
+site_description:
 # site_description-end
 copyright: Copyright &copy; 2022 <a href="https://www.ox.security/?ref=codetotal" target= "_blank">OX Security</a>
 theme:
   name: material
-  font: 
+  font:
     text: Satoshi, sans-serif
   custom_dir: docs/overrides
   features:
@@ -35,8 +35,8 @@ markdown_extensions:
 extra_javascript:
   - https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.2.1/tablesort.min.js
   - javascripts/tables.js
-#  - javascripts/gtag.js
-#  - javascripts/version-mike.js
+  #  - javascripts/gtag.js
+  #  - javascripts/version-mike.js
   - javascripts/quickfixes.js
 extra_css:
   - stylesheets/extra.css

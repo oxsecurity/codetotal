@@ -1,0 +1,26 @@
+# Configuration file for MegaLinter
+# See all available variables at https://megalinter.io/configuration/ and in linters documentation
+
+APPLY_FIXES: all # all, none, or list of linter keys
+# ENABLE: # If you use ENABLE variable, all other languages/formats/tooling-formats will be disabled by default
+# ENABLE_LINTERS: # If you use ENABLE_LINTERS variable, all other linters will be disabled by default
+# DISABLE:
+# - COPYPASTE # Uncomment to disable checks of excessive copy-pastes
+# - SPELL # Uncomment to disable checks of spelling mistakes
+SHOW_ELAPSED_TIME: true
+FILEIO_REPORTER: false
+# DISABLE_ERRORS: true # Uncomment if you want MegaLinter to detect errors but not block CI to pass
+DISABLE:
+  - JAVASCRIPT # Handled by pre-commit
+  - JSX        # Handled by pre-commit
+  - TYPESCRIPT # Handled by pre-commit
+  - TSX        # Handled by pre-commit
+DISABLE_LINTERS:
+  - MARKDOWN_MARKDOWN_LINK_CHECK
+DISABLE_ERRORS_LINTERS:
+  - ACTION_ACTIONLINT
+  - REPOSITORY_KICS
+  - CSS_STYLELINT
+  - COPYPASTE_JSCPD
+HTML_HTMLHINT_FILTER_REGEX_EXCLUDE: (main\.html)
+HTML_DJLINT_FILTER_REGEX_EXCLUDE: (packages\/app\/index\.html)
