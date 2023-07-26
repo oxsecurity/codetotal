@@ -55,7 +55,7 @@ CODETOTAL_UPLOAD_FILE_LIMIT_BYTES=10000000
 - Run `npm run build` at the root folder
 - This will create a `dist` folder with the backend code
 - The frontend code will be under `dist/public`
-- Run using `npm run production` (equivilant to `node dist/index.js`)
+- Run using `npm run production` (equivalent to `node dist/index.js`)
 
 ## Debugging in VSCode
 
