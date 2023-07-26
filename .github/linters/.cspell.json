@@ -219,6 +219,7 @@
         "tflint",
         "toit",
         "trivy",
+        "trivyignore",
         "trufflehog",
         "tsbuildinfo",
         "tsql",
