@@ -21,6 +21,8 @@
     "codetotal:dev": "cross-env DOCKER_DEFAULT_PLATFORM=linux/amd64 docker-compose -f docker-compose-local.yml up",
     "precodetotal": "cross-env DOCKER_DEFAULT_PLATFORM=linux/amd64 docker-compose -f docker-compose.yml pull",
     "codetotal": "cross-env DOCKER_DEFAULT_PLATFORM=linux/amd64 docker-compose -f docker-compose.yml up",
+    "doc:install": "pip install --upgrade markdown==3.3.7 mkdocs-material pymdown-extensions==9.11 mkdocs-glightbox==0.3.2 mdx_truly_sane_lists",
+    "doc:test": "mkdocs serve",
     "e2e": "npx cypress open"
   },
   "pre-commit": [

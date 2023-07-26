@@ -4,6 +4,6 @@
 
 Brought to you by [OX Security](https://ox.security), powered by [MegaLinter](https://megalinter.io)
 
-[![CodeTotal Screenshot](docs/assets/images/screen.jpg "A screenshot from the app")](https://codetotal.io)
+![CodeTotal Screenshot](assets/images/screen.jpg "A screenshot from the app")
 
-To see how to use CodeTotal, please read [online documentation](https://codetotal.io) :)
+[Start now !](quick-start.md)
