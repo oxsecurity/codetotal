@@ -15,3 +15,5 @@ DISABLE:
   - JSX        # Handled by pre-commit
   - TYPESCRIPT # Handled by pre-commit
   - TSX        # Handled by pre-commit
+HTML_HTMLHINT_FILTER_REGEX_EXCLUDE: (main\.html)
+HTML_DJLINT_FILTER_REGEX_EXCLUDE: (packages\/app\/index\.html)
