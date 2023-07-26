@@ -1,4 +1,4 @@
- # Contributing to MegaLinter
+ # Contributing to CodeTotal
  
 - [Development Mode](#development-mode)
 - [Available Scripts](#available-scripts)

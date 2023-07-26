@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block extrahead %}
+
+{% if page and page.meta and page.meta.title and page.meta.description %}
+<meta name="twitter:image:src" content="https://github.com/oxsecurity/codetotal/raw/main/docs/assets/images/mega-linter-logo.png" />
+<meta name="twitter:site" content="@nvuillam" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="{{ page.meta.title }}" />
+<meta name="twitter:description" content="{{ page.meta.description }}" />
+<meta property="og:image" content="https://github.com/oxsecurity/codetotal/raw/main/docs/assets/images/mega-linter-logo.png" />
+<meta property="og:image:alt" content="🦙 CodeTotal analyzes any snippet, file, or repository to detect possible security flaws such as secret in code, open source vulnerability, code security, vulnerability, insecure infrastructure as code, and potential legal issues with open source licenses." />
+<meta property="og:site_name" content="CodeTotal" />
+<meta property="og:title" content="{{ page.meta.title }}" />
+<meta property="og:description" content="{{ page.meta.description }}" />
+{% else %}
+<meta property="description" content="🦙 CodeTotal analyzes any snippet, file, or repository to detect possible security flaws such as secret in code, open source vulnerability, code security, vulnerability, insecure infrastructure as code, and potential legal issues with open source licenses." />
+<meta name="twitter:image:src" content="https://github.com/oxsecurity/codetotal/raw/main/docs/assets/images/mega-linter-logo.png" />
+<meta name="twitter:site" content="@nvuillam" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="🦙 CodeTotal analyzes any snippet, file, or repository to detect possible security flaws such as secret in code, open source vulnerability, code security, vulnerability, insecure infrastructure as code, and potential legal issues with open source licenses." />
+<meta name="twitter:description" content="🦙 CodeTotal analyzes any snippet, file, or repository to detect possible security flaws such as secret in code, open source vulnerability, code security, vulnerability, insecure infrastructure as code, and potential legal issues with open source licenses." />
+<meta property="og:image" content="https://github.com/oxsecurity/codetotal/raw/main/docs/assets/images/mega-linter-logo.png" />
+<meta property="og:image:alt" content="🦙 CodeTotal analyzes any snippet, file, or repository to detect possible security flaws such as secret in code, open source vulnerability, code security, vulnerability, insecure infrastructure as code, and potential legal issues with open source licenses." />
+<meta property="og:site_name" content="CodeTotal" />
+<meta property="og:type" content="object" />
+<meta property="og:title" content="🦙 CodeTotal analyzes any snippet, file, or repository to detect possible security flaws such as secret in code, open source vulnerability, code security, vulnerability, insecure infrastructure as code, and potential legal issues with open source licenses." />
+<meta property="og:url" content="https://codetotal.io" />
+<meta property="og:description" content="🦙 CodeTotal analyzes any snippet, file, or repository to detect possible security flaws such as secret in code, open source vulnerability, code security, vulnerability, insecure infrastructure as code, and potential legal issues with open source licenses." />
+{% endif %}
+
+{% endblock %}
