@@ -15,5 +15,7 @@ DISABLE:
   - JSX        # Handled by pre-commit
   - TYPESCRIPT # Handled by pre-commit
   - TSX        # Handled by pre-commit
+DISABLE_LINTERS:
+  - MARKDOWN_MARKDOWN_LINK_CHECK
 HTML_HTMLHINT_FILTER_REGEX_EXCLUDE: (main\.html)
 HTML_DJLINT_FILTER_REGEX_EXCLUDE: (packages\/app\/index\.html)
