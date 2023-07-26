@@ -5,33 +5,32 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="Learn how to easily start CodeTotal on your computer or your server !" name="description"/>
 <meta content="Nicolas Vuillamy" name="author"/>
-<link href="https://codetotal.io/" rel="canonical"/>
-<link href="quick-start/" rel="next"/>
-<link href="assets/images/ox-icon.jpg" rel="icon"/>
+<link href="https://codetotal.io/quick-start/" rel="canonical"/>
+<link href=".." rel="prev"/>
+<link href="../security-linters/" rel="next"/>
+<link href="../assets/images/ox-icon.jpg" rel="icon"/>
 <meta content="mkdocs-1.4.3, mkdocs-material-9.1.19" name="generator"/>
-<title>CodeTotal by OX Security</title>
-<link href="assets/stylesheets/main.eebd395e.min.css" rel="stylesheet"/>
-<link href="assets/stylesheets/palette.ecc896b0.min.css" rel="stylesheet"/>
+<title>Quick Start - CodeTotal by OX Security</title>
+<link href="../assets/stylesheets/main.eebd395e.min.css" rel="stylesheet"/>
+<link href="../assets/stylesheets/palette.ecc896b0.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css?family=Satoshi,+sans-serif:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
 <style>:root{--md-text-font:"Satoshi, sans-serif";--md-code-font:"Roboto Mono"}</style>
-<link href="stylesheets/extra.css" rel="stylesheet"/>
-<script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
-<meta content="🦙 CodeTotal analyzes any snippet, file, or repository to detect possible security flaws such as secret in code, open source vulnerability, code security, vulnerability, insecure infrastructure as code, and potential legal issues with open source licenses." property="description">
+<link href="../stylesheets/extra.css" rel="stylesheet"/>
+<script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
 <meta content="https://github.com/oxsecurity/codetotal/raw/main/docs/assets/images/mega-linter-logo.png" name="twitter:image:src">
 <meta content="@nvuillam" name="twitter:site">
 <meta content="summary_large_image" name="twitter:card">
-<meta content="🦙 CodeTotal analyzes any snippet, file, or repository to detect possible security flaws such as secret in code, open source vulnerability, code security, vulnerability, insecure infrastructure as code, and potential legal issues with open source licenses." name="twitter:title"/>
-<meta content="🦙 CodeTotal analyzes any snippet, file, or repository to detect possible security flaws such as secret in code, open source vulnerability, code security, vulnerability, insecure infrastructure as code, and potential legal issues with open source licenses." name="twitter:description"/>
+<meta content="Quick Start" name="twitter:title">
+<meta content="Learn how to easily start CodeTotal on your computer or your server !" name="twitter:description">
 <meta content="https://github.com/oxsecurity/codetotal/raw/main/docs/assets/images/mega-linter-logo.png" property="og:image"/>
 <meta content="🦙 CodeTotal analyzes any snippet, file, or repository to detect possible security flaws such as secret in code, open source vulnerability, code security, vulnerability, insecure infrastructure as code, and potential legal issues with open source licenses." property="og:image:alt"/>
 <meta content="CodeTotal" property="og:site_name"/>
-<meta content="object" property="og:type"/>
-<meta content="🦙 CodeTotal analyzes any snippet, file, or repository to detect possible security flaws such as secret in code, open source vulnerability, code security, vulnerability, insecure infrastructure as code, and potential legal issues with open source licenses." property="og:title"/>
-<meta content="https://codetotal.io" property="og:url"/>
-<meta content="🦙 CodeTotal analyzes any snippet, file, or repository to detect possible security flaws such as secret in code, open source vulnerability, code security, vulnerability, insecure infrastructure as code, and potential legal issues with open source licenses." property="og:description"/>
-</meta></meta></meta></meta><link href="assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+<meta content="Quick Start" property="og:title"/>
+<meta content="Learn how to easily start CodeTotal on your computer or your server !" property="og:description"/>
+</meta></meta></meta></meta></meta><link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
             html.glightbox-open { overflow: initial; height: 100%; }
             .gslide-title { margin-top: 0px; user-select: text; }
             .gslide-desc { color: #666; user-select: text; }
@@ -42,13 +41,13 @@
                 body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
                 body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
                 body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
-                </style><script src="assets/javascripts/glightbox.min.js"></script></head>
+                </style><script src="../assets/javascripts/glightbox.min.js"></script></head>
 <body data-md-color-accent="indigo" data-md-color-primary="white" data-md-color-scheme="default" dir="ltr">
 <input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#codetotal">
+<a class="md-skip" href="#pre-requisites">
           Skip to content
         </a>
 </div>
@@ -56,8 +55,8 @@
 </div>
 <header class="md-header md-header--shadow" data-md-component="header">
 <nav aria-label="Header" class="md-header__inner md-grid">
-<a aria-label="CodeTotal by OX Security" class="md-header__button md-logo" data-md-component="logo" href="." title="CodeTotal by OX Security">
-<img alt="logo" src="assets/images/ox-icon.jpg"/>
+<a aria-label="CodeTotal by OX Security" class="md-header__button md-logo" data-md-component="logo" href=".." title="CodeTotal by OX Security">
+<img alt="logo" src="../assets/images/ox-icon.jpg"/>
 </a>
 <label class="md-header__button md-icon" for="__drawer">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"></path></svg>
@@ -72,7 +71,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              Home
+              Quick Start
             
           </span>
 </div>
@@ -128,8 +127,8 @@
 <div class="md-sidebar__inner">
 <nav aria-label="Navigation" class="md-nav md-nav--primary" data-md-level="0">
 <label class="md-nav__title" for="__drawer">
-<a aria-label="CodeTotal by OX Security" class="md-nav__button md-logo" data-md-component="logo" href="." title="CodeTotal by OX Security">
-<img alt="logo" src="assets/images/ox-icon.jpg"/>
+<a aria-label="CodeTotal by OX Security" class="md-nav__button md-logo" data-md-component="logo" href=".." title="CodeTotal by OX Security">
+<img alt="logo" src="../assets/images/ox-icon.jpg"/>
 </a>
     CodeTotal by OX Security
   </label>
@@ -144,24 +143,51 @@
 </a>
 </div>
 <ul class="md-nav__list" data-md-scrollfix="">
-<li class="md-nav__item md-nav__item--active">
-<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
-<a class="md-nav__link md-nav__link--active" href=".">
+<li class="md-nav__item">
+<a class="md-nav__link" href="..">
         Home
       </a>
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="quick-start/">
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+          Quick Start
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
         Quick Start
       </a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#pre-requisites">
+    Pre-requisites
+  </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="security-linters/">
+<a class="md-nav__link" href="#clone-the-repository">
+    Clone the repository
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#start-codetotal">
+    Start CodeTotal
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../security-linters/">
         Security linters
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="contributing/">
+<a class="md-nav__link" href="../contributing/">
         Contribute
       </a>
 </li>
@@ -178,12 +204,12 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="license/">
+<a class="md-nav__link" href="../license/">
         AGPL V3 License
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="license-explanations/">
+<a class="md-nav__link" href="../license-explanations/">
         License explanations
       </a>
 </li>
@@ -191,7 +217,7 @@
 </nav>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="CHANGELOG/">
+<a class="md-nav__link" href="../CHANGELOG/">
         Changelog
       </a>
 </li>
@@ -214,30 +240,76 @@
 <div class="md-sidebar__scrollwrap">
 <div class="md-sidebar__inner">
 <nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#pre-requisites">
+    Pre-requisites
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#clone-the-repository">
+    Clone the repository
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#start-codetotal">
+    Start CodeTotal
+  </a>
+</li>
+</ul>
 </nav>
 </div>
 </div>
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<h1 id="codetotal">CodeTotal</h1>
-<p><strong>CodeTotal</strong> analyzes any <strong>snippet</strong>, <strong>file</strong>, or <strong>repository</strong> to detect possible <strong>security flaws</strong> such as <strong>secret in code</strong>, <strong>open source vulnerability</strong>, <strong>code security</strong>, <strong>vulnerability</strong>, insecure <strong>infrastructure as code</strong>, and potential <strong>legal issues</strong> with open source licenses.</p>
-<p>Brought to you by <a href="https://ox.security">OX Security</a>, powered by <a href="https://megalinter.io">MegaLinter</a></p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="assets/images/screen.jpg"><img alt="CodeTotal Screenshot" src="assets/images/screen.jpg" title="A screenshot from the app"/></a></p>
-<p><a href="quick-start/">Start now !</a></p>
+<h1>Quick Start</h1>
+<!-- markdownlint-disable MD013 -->
+<h2 id="pre-requisites">Pre-requisites</h2>
+<p>CodeTotal is based on docker images, so all you need to have is:</p>
+<ul>
+<li><a href="https://docs.docker.com/engine/install/">docker</a> installed and started on your computer, so our <a href="https://github.com/oxsecurity/codetotal/blob/main/docker-compose.yml">docker-compose.yml</a> file can be interpreted.</li>
+<li><a href="https://nodejs.org/en">nodejs</a>, to call npm startup script</li>
+</ul>
+<h2 id="clone-the-repository">Clone the repository</h2>
+<ul>
+<li>Run <code>git clone https://github.com/oxsecurity/codetotal.git</code></li>
+</ul>
+<h2 id="start-codetotal">Start CodeTotal</h2>
+<ul>
+<li>Run <code>npm run codetotal</code></li>
+</ul>
+<p>Open <a href="http://localhost:8081/">http://localhost:8081/</a></p>
 </article>
 </div>
 </div>
 </main>
 <footer class="md-footer">
 <nav aria-label="Footer" class="md-footer__inner md-grid">
-<a aria-label="Next: Quick Start" class="md-footer__link md-footer__link--next" href="quick-start/" rel="next">
+<a aria-label="Previous: Home" class="md-footer__link md-footer__link--prev" href=".." rel="prev">
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
+</div>
+<div class="md-footer__title">
+<span class="md-footer__direction">
+                Previous
+              </span>
+<div class="md-ellipsis">
+                Home
+              </div>
+</div>
+</a>
+<a aria-label="Next: Security linters" class="md-footer__link md-footer__link--next" href="../security-linters/" rel="next">
 <div class="md-footer__title">
 <span class="md-footer__direction">
                 Next
               </span>
 <div class="md-ellipsis">
-                Quick Start
+                Security linters
               </div>
 </div>
 <div class="md-footer__button md-icon">
@@ -273,10 +345,10 @@
 <div class="md-dialog" data-md-component="dialog">
 <div class="md-dialog__inner md-typeset"></div>
 </div>
-<script id="__config" type="application/json">{"base": ".", "features": ["navigation.instant", "navigation.footer"], "search": "assets/javascripts/workers/search.74e28a9f.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
-<script src="assets/javascripts/bundle.220ee61c.min.js"></script>
+<script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.footer"], "search": "../assets/javascripts/workers/search.74e28a9f.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+<script src="../assets/javascripts/bundle.220ee61c.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.2.1/tablesort.min.js"></script>
-<script src="javascripts/tables.js"></script>
-<script src="javascripts/quickfixes.js"></script>
+<script src="../javascripts/tables.js"></script>
+<script src="../javascripts/quickfixes.js"></script>
 <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
 </html>
