@@ -10,9 +10,7 @@ uploader["memoryStorage"] = memStorageMock;
 
 describe("http-file-upload-handler", () => {
   test("createFileUploadHandler", () => {
-    const handler = createFileUploadHandler(
-      uploader as unknown as FileUploader
-    );
+    const handler = createFileUploadHandler(uploader as unknown as FileUploader);
 
     expect(memStorageMock).toBeCalled();
     expect(uploader).toBeCalledWith({ storage: {} });

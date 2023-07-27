@@ -1,3 +1,4 @@
+import WebSocket from "ws";
 import { getStore } from "../stores/stores-map";
 import { WSRequest } from "../transport/ws-server";
 import { logger } from "../utils/logger";
