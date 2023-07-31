@@ -1,21 +1,17 @@
 import {
   Divider,
-  IconButton,
   Paper,
   Theme,
-  Tooltip,
   Typography,
   useMediaQuery,
   useTheme,
 } from "@mui/material";
 import { FC } from "react";
-import { IoMdArrowBack } from "react-icons/io";
-import { NavLink } from "react-router-dom";
 import { makeStyles } from "tss-react/mui";
 import { LanguageIcon } from "../../common/LanguageIcon";
 import { useReportStore } from "../stores/fe-report-store";
-import { ExportToCSV } from "./ExportToCSV";
 import { ReportHeaderSection } from "./ReportHeaderSection";
+import { ReportToolbar } from "./ReportToolbar";
 import { Score } from "./Score";
 
 export const ReportHeader: FC<ReportBannerProps> = ({ ready }) => {
@@ -32,6 +28,7 @@ export const ReportHeader: FC<ReportBannerProps> = ({ ready }) => {
     progress,
     language,
   } = useReportStore();
+
   if (!lintersWithIssues) {
     return null;
   }
@@ -75,16 +72,7 @@ export const ReportHeader: FC<ReportBannerProps> = ({ ready }) => {
           <LanguageIcon language={language} />
         </div>
         <Divider orientation="horizontal" sx={{ marginBlockStart: 0.5 }} />
-        <div className={classes.footer}>
-          <Tooltip arrow title="Back to homepage" placement="top">
-            <NavLink to="/">
-              <IconButton size="small">
-                <IoMdArrowBack />
-              </IconButton>
-            </NavLink>
-          </Tooltip>
-          <ExportToCSV />
-        </div>
+        <ReportToolbar />
       </div>
       <Score
         className={classes.score}
@@ -154,13 +142,6 @@ const useStyles = makeStyles()((theme: Theme) => ({
   },
   nowrap: {
     wordBreak: "keep-all",
-  },
-  footer: {
-    display: "flex",
-    alignItems: "center",
-    gap: theme.spacing(2),
-    paddingBlockStart: theme.spacing(1),
-    justifyContent: "space-between"
   },
 }));
 

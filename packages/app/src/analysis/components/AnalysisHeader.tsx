@@ -36,11 +36,11 @@ const useStyles = makeStyles()((theme: Theme) => ({
   avatar: {
     marginInlineStart: -20,
     width: 140,
-    height: 130,
+    height: "14vh",
   },
   title: {
     marginBlockStart: theme.spacing(1),
-    fontSize: 50,
+    fontSize: "clamp(30px, 5vw, 50px)",
     fontWeight: 800,
     letterSpacing: 0.3,
   },

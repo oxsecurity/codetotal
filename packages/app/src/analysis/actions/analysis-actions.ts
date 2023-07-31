@@ -1,5 +1,4 @@
 import axios from "axios";
-import { NavigateFunction } from "react-router-dom";
 import {
   Analysis,
   AnalysisType,
@@ -11,7 +10,7 @@ import config from "../../config";
 import { ReportStore } from "../../report/stores/fe-report-store";
 import { AnalysisStore, AsyncState } from "../stores/analysis-store";
 
-export const startAnalysis = async (navigate: NavigateFunction) => {
+export const startAnalysis = async () => {
   AnalysisStore.setState({
     sending: AsyncState.Loading,
   });
@@ -32,8 +31,8 @@ export const startAnalysis = async (navigate: NavigateFunction) => {
         },
       }
     );
-    const requestId = report.data.requestId;
-    navigate({ pathname: `/report/${requestId}` });
+    AnalysisStore.getState().reset();
+    return report.data.requestId;
   } catch (err) {
     console.error(err);
     AnalysisStore.setState({

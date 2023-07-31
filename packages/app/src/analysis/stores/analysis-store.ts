@@ -13,10 +13,11 @@ const initialState: AnalysisStoreState = {
 
 export const AnalysisStore = createStore<
   AnalysisStoreState & AnalysisStoreFunctions
->((_, get) => ({
+>((set, get) => ({
   ...initialState,
   repoEnabled: () => !!get().repositoryURL && get().repositoryURL.length > 0,
   snippetEnabled: () => !!get().snippet && get().snippet.length > 0,
+  reset: () => set({ ...initialState }),
 }));
 
 interface AnalysisStoreState {
@@ -31,6 +32,7 @@ interface AnalysisStoreState {
 interface AnalysisStoreFunctions {
   repoEnabled(): boolean;
   snippetEnabled(): boolean;
+  reset(): void;
 }
 
 export const AsyncState = {
@@ -41,7 +43,3 @@ export const AsyncState = {
 } as const;
 
 export const useAnalysisStore = () => useStore(AnalysisStore);
-
-export const clearAnalysisStore = () => {
-  AnalysisStore.setState(initialState);
-};

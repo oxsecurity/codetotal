@@ -1,16 +1,22 @@
 import { Alert, Paper, Tab, Tabs, Theme } from "@mui/material";
-import { FC } from "react";
+import { FC, useCallback } from "react";
+import { useNavigate } from "react-router-dom";
 import { AnalysisType, OneOfValues } from "shared-types";
 import { makeStyles } from "tss-react/mui";
+import { initProgress } from "../../report/actions/init-report-action";
+import { startAnalysis } from "../actions/analysis-actions";
 import { AnalysisStore, useAnalysisStore } from "../stores/analysis-store";
 import { AnalysisTabPanel } from "./AnalysisTabPanel";
 import { CodeSnippetForm } from "./CodeSnippetForm";
 import { FileUploadForm } from "./FileUploadForm";
 import { RepositoryForm } from "./RepositoryForm";
 
-export const InputForm: FC = () => {
+export const AnalysisInputForm: FC<AnalysisInputFormProps> = ({
+  onAfterSubmit,
+}) => {
   const { classes } = useStyles();
   const { sending, inputType } = useAnalysisStore();
+  const navigate = useNavigate();
 
   const handleFormTypeChange = (
     _: unknown,
@@ -19,8 +25,14 @@ export const InputForm: FC = () => {
     AnalysisStore.setState({ inputType: newInputType });
   };
 
+  const handleSubmit = useCallback(async () => {
+    const requestId = await startAnalysis();
+    initProgress(requestId, navigate);
+    onAfterSubmit(requestId);
+  }, [onAfterSubmit, navigate]);
+
   return (
-    <Paper component="main" elevation={1} className={classes.inputForm}>
+    <Paper elevation={1} className={classes.inputForm} square>
       <div className={classes.tabsContainer}>
         <Tabs
           selectionFollowsFocus
@@ -44,25 +56,23 @@ export const InputForm: FC = () => {
         </Tabs>
       </div>
       <div className={classes.tabPanel}>
-        <div>
-          {sending === "error" && (
-            <Alert severity="error" square>
-              Unable to start scanning, please try again later
-            </Alert>
-          )}
-          <AnalysisTabPanel
-            value={AnalysisType.Snippet}
-            selectedValue={inputType}
-          >
-            <CodeSnippetForm />
-          </AnalysisTabPanel>
-          <AnalysisTabPanel value={AnalysisType.File} selectedValue={inputType}>
-            <FileUploadForm />
-          </AnalysisTabPanel>
-          <AnalysisTabPanel value={AnalysisType.Repo} selectedValue={inputType}>
-            <RepositoryForm />
-          </AnalysisTabPanel>
-        </div>
+        {sending === "error" && (
+          <Alert severity="error" square>
+            Unable to start scanning, please try again later
+          </Alert>
+        )}
+        <AnalysisTabPanel
+          value={AnalysisType.Snippet}
+          selectedValue={inputType}
+        >
+          <CodeSnippetForm onSubmit={handleSubmit} />
+        </AnalysisTabPanel>
+        <AnalysisTabPanel value={AnalysisType.File} selectedValue={inputType}>
+          <FileUploadForm onSubmit={handleSubmit} />
+        </AnalysisTabPanel>
+        <AnalysisTabPanel value={AnalysisType.Repo} selectedValue={inputType}>
+          <RepositoryForm onSubmit={handleSubmit} />
+        </AnalysisTabPanel>
       </div>
     </Paper>
   );
@@ -70,7 +80,6 @@ export const InputForm: FC = () => {
 
 const useStyles = makeStyles()((theme: Theme) => ({
   inputForm: {
-    marginBlockStart: theme.spacing(3),
     textAlign: "center",
     transition: theme.transitions.create("all"),
     display: "flex",
@@ -81,8 +90,7 @@ const useStyles = makeStyles()((theme: Theme) => ({
         : `0px 0px 10px 10px #00000010`,
     width: "100%",
     marginInline: "auto",
-    minHeight: 200,
-    maxWidth: 620,
+    minHeight: 280,
   },
   tabsContainer: {
     borderBottom: 1,
@@ -100,3 +108,11 @@ const useStyles = makeStyles()((theme: Theme) => ({
     position: "relative",
   },
 }));
+
+interface AnalysisInputFormProps {
+  onAfterSubmit(requestId: string): void;
+}
+
+export interface AnalysisFormProps {
+  onSubmit(): void;
+}
