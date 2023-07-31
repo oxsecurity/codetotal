@@ -5,14 +5,24 @@ import { registerRoutes } from "./http/register-http-routes";
 import { startHttpServer } from "./http/start-http-server";
 import { startRedisClient } from "./transport/redis-client";
 import { createWSServer, listenToWSConnection } from "./transport/ws-server";
+import { retry } from "./utils/retry";
 
-startRedisClient();
+const retryOptions = {
+  interval: 5000,
+  retries: -1,
+};
 
-const wsServer = createWSServer({
+const wsOptions = {
   host: config.CODETOTAL_WS_HOST,
   port: config.CODETOTAL_WS_PORT,
-});
-listenToWSConnection(wsServer, subscribeToReport);
+};
+
+retry(startRedisClient, retryOptions);
+
+retry(() => {
+  const wsServer = createWSServer(wsOptions);
+  listenToWSConnection(wsServer, subscribeToReport);
+}, retryOptions);
 
 const httpServer = createHttpServer();
 registerRoutes(httpServer);
