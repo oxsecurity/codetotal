@@ -17,6 +17,7 @@ const initialState: InitialState = {
   fileDetails: undefined,
   wsError: undefined,
   analysisError: undefined,
+  newAnalysisDialogOpen: false,
 };
 
 export const ReportStore = createStore<FeReportStoreState>((set, get) => ({
@@ -65,6 +66,8 @@ export const ReportStore = createStore<FeReportStoreState>((set, get) => ({
       )
       .flat();
   },
+  openNewAnalysisDialog: () => set({ newAnalysisDialogOpen: true }),
+  closeNewAnalysisDialog: () => set({ newAnalysisDialogOpen: false }),
 }));
 
 export const useReportStore = () => useStore(ReportStore);
@@ -78,6 +81,8 @@ type InitialState = Omit<
   | "lintersCompleted"
   | "progress"
   | "allIssues"
+  | "openNewAnalysisDialog"
+  | "closeNewAnalysisDialog"
 >;
 
 interface FeReportStoreState extends ReportState {
@@ -92,4 +97,7 @@ interface FeReportStoreState extends ReportState {
   progress(): number;
   reset(): void;
   allIssues(): Issue[];
+  newAnalysisDialogOpen: boolean;
+  openNewAnalysisDialog(): void;
+  closeNewAnalysisDialog(): void;
 }

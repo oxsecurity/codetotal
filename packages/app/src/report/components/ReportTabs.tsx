@@ -11,7 +11,6 @@ import {
 import { FC, useState } from "react";
 import { makeStyles } from "tss-react/mui";
 import { ReportType } from "../fe-report-types";
-
 import { Details } from "./Details";
 import { Detection } from "./Detection";
 import { ReportPanel } from "./ReportPanel";
@@ -44,19 +43,17 @@ export const ReportTabs: FC = () => {
           onChange={handlePanelTypeChange}
         >
           <Tab
-            disableRipple
+            autoFocus
             label="Detection"
             className={classes.tab}
             classes={{ selected: classes.selectedTab }}
           />
           <Tab
-            disableRipple
             label="Details"
             className={classes.tab}
             classes={{ selected: classes.selectedTab }}
           />
           <Tab
-            disableRipple
             label="SBOM"
             className={classes.tab}
             classes={{ selected: classes.selectedTab }}
@@ -91,9 +88,12 @@ export const ReportTabs: FC = () => {
 const useStyles = makeStyles()((theme: Theme) => ({
   tab: {
     textTransform: "none",
+
     transition: theme.transitions.create("background"),
     [theme.breakpoints.up("md")]: {
       minWidth: 180,
+      borderTopRightRadius: 15,
+      borderTopLeftRadius: 15,
     },
   },
   selectedTab: {

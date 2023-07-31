@@ -18,6 +18,7 @@ export const initProgress = async (
     switch (status) {
       case AnalysisStatus.Created:
         subscribeToReportProgress(requestId);
+        navigate({ pathname: `/report/${requestId}` });
         break;
       case AnalysisStatus.NotFound:
         navigate("/");

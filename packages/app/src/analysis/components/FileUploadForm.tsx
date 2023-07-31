@@ -9,21 +9,19 @@ import { filesize } from "filesize";
 import { FC, useCallback, useState } from "react";
 import { FileRejection, useDropzone } from "react-dropzone";
 import { BiSolidCloudUpload } from "react-icons/bi";
-import { useNavigate } from "react-router-dom";
 import { makeStyles } from "tss-react/mui";
 import config from "../../config";
-import { startAnalysis } from "../actions/analysis-actions";
 import {
   AnalysisStore,
   AsyncState,
   useAnalysisStore,
 } from "../stores/analysis-store";
+import { AnalysisFormProps } from "./AnalysisInputForm";
 
 const MAX_SIZE = parseInt(config.CODETOTAL_UPLOAD_FILE_LIMIT_BYTES);
 
-export const FileUploadForm: FC = () => {
+export const FileUploadForm: FC<AnalysisFormProps> = ({ onSubmit }) => {
   const { classes } = useStyles();
-  const navigate = useNavigate();
   const { sending } = useAnalysisStore();
   const [error, setError] = useState("");
 
@@ -47,9 +45,9 @@ export const FileUploadForm: FC = () => {
 
       const file = files[0];
       AnalysisStore.setState({ file });
-      startAnalysis(navigate);
+      onSubmit();
     },
-    [navigate]
+    [onSubmit]
   );
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({

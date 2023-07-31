@@ -1,22 +1,39 @@
-import { FC, useEffect } from "react";
+import { Theme } from "@mui/material";
+import { FC, useCallback } from "react";
+import { useNavigate } from "react-router-dom";
+import { makeStyles } from "tss-react/mui";
 import { AnalysisHeader } from "./components/AnalysisHeader";
-import { InputForm } from "./components/InputForm";
-import { clearAnalysisStore } from "./stores/analysis-store";
+import { AnalysisInputForm } from "./components/AnalysisInputForm";
 
 const AnalysisPage: FC = () => {
-  useEffect(() => {
-    return () => {
-      // on unmount
-      clearAnalysisStore();
-    };
-  }, []);
+  const { classes } = useStyles();
+  const navigate = useNavigate();
+
+  const handleAfterSubmit = useCallback(
+    (requestId: string) => {
+      navigate({ pathname: `/report/${requestId}` });
+    },
+    [navigate]
+  );
 
   return (
     <div style={{ paddingBlockEnd: 150 }}>
       <AnalysisHeader />
-      <InputForm />
+      <main className={classes.main}>
+        <AnalysisInputForm onAfterSubmit={handleAfterSubmit} />
+      </main>
     </div>
   );
 };
 
 export default AnalysisPage;
+
+const useStyles = makeStyles()((theme: Theme) => ({
+  main: {
+    marginBlockStart: theme.spacing(3),
+    maxWidth: 620,
+    marginInline: "auto",
+    borderRadius: 15,
+    overflow: "hidden",
+  },
+}));

@@ -11,8 +11,8 @@ export const AnalysisTabPanel: FC<PropsWithChildren<AnalysisTabPanelProps>> = (
     <div
       role="tabpanel"
       hidden={value !== selectedValue}
-      id={`simple-tabpanel-${selectedValue}`}
-      aria-labelledby={`simple-tab-${selectedValue}`}
+      id={`analysis-tabpanel-${value}`}
+      aria-labelledby={`analysis-tab-${value}`}
       {...other}
       style={{ height: "100%" }}
     >

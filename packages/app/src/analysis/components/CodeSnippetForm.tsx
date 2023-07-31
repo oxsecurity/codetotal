@@ -1,27 +1,21 @@
 import { TextField, Theme, Typography } from "@mui/material";
 import { FC, useCallback } from "react";
-import { useNavigate } from "react-router-dom";
 import { makeStyles } from "tss-react/mui";
 import { LanguageIcon } from "../../common/LanguageIcon";
 import { fetchDetect } from "../../common/utils/detect-lanauge-utils";
-import { startAnalysis } from "../actions/analysis-actions";
 import { AnalysisStore, useAnalysisStore } from "../stores/analysis-store";
+import { AnalysisFormProps } from "./AnalysisInputForm";
 import { SubmitButton } from "./SubmitButton";
 
-export const CodeSnippetForm: FC = () => {
+export const CodeSnippetForm: FC<AnalysisFormProps> = ({ onSubmit }) => {
   const { classes } = useStyles();
   const { snippet, snippetEnabled, sending, language } = useAnalysisStore();
-  const navigate = useNavigate();
 
   const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     const snippet = e.target.value;
     AnalysisStore.setState({ snippet });
     fetchDetect(snippet);
   }, []);
-
-  const handleSubmit = () => {
-    startAnalysis(navigate);
-  };
 
   return (
     <div className={classes.codeSnippetForm}>
@@ -55,7 +49,7 @@ export const CodeSnippetForm: FC = () => {
         <SubmitButton
           variant="contained"
           color="primary"
-          onClick={handleSubmit}
+          onClick={onSubmit}
           disabled={!snippetEnabled() || sending === "loading"}
           loading={sending === "loading"}
           data-cy="submit"
