@@ -70,6 +70,7 @@ Add a `launch.json` file under the `.vscode` folder with the following content:
       "request": "launch",
       "name": "Build Project",
       "program": "${workspaceFolder}/packages/backend/dist/index.js",
+      "envFile": "${workspaceFolder}/.env",
       "preLaunchTask": "npm: build:be",
       "sourceMaps": true,
       "smartStep": true,
