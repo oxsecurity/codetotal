@@ -18,7 +18,12 @@ export const ReportToolbar: FC = () => {
           component="span"
           sx={{ marginInline: 1 }}
         />
-        <Button onClick={openNewAnalysisDialog}>New Analysis</Button>
+        <Button
+          style={{ textTransform: "none" }}
+          onClick={openNewAnalysisDialog}
+        >
+          New Analysis
+        </Button>
       </span>
       <DownloadAllIssuesButton />
     </div>
