@@ -1,4 +1,4 @@
-import { FC, useEffect, useRef } from "react";
+import { FC, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { AnalysisErrorDialog } from "../common/AnalysisErrorDialog";
 import { initReport } from "./actions/init-report-action";
@@ -9,19 +9,17 @@ import { ReportHeader } from "./components/ReportHeader";
 import { ReportTabs } from "./components/ReportTabs";
 
 const ReportPage: FC = () => {
-  const calls = useRef(0);
   const { requestId } = useParams();
   const navigate = useNavigate();
 
   useEffect(() => {
     (async () => {
-      if (calls.current > 0 && requestId) {
+      if (requestId) {
         const success = await initReport(requestId);
         if (!success) {
           navigate("/");
         }
       }
-      calls.current += 1;
     })();
   }, [requestId, navigate]);
 

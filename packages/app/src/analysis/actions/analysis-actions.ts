@@ -6,7 +6,7 @@ import {
   RepoAnalysis,
   SnippetAnalysis,
 } from "shared-types";
-import config from "../../config";
+import { backendUrl } from "../../common/utils/backend-url";
 import { AnalysisStore, AsyncState } from "../stores/analysis-store";
 
 export const startAnalysis = async () => {
@@ -16,15 +16,11 @@ export const startAnalysis = async () => {
 
   try {
     const data = createRequestData();
-    const report = await axios.post(
-      `http://${config.CODETOTAL_HTTP_HOST}:${config.CODETOTAL_HTTP_PORT}/analysis`,
-      data,
-      {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      }
-    );
+    const report = await axios.post(`${backendUrl}/analysis`, data, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
     AnalysisStore.getState().reset();
     return report.data.requestId;
   } catch (err) {
