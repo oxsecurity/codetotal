@@ -5,7 +5,8 @@ import {
   DialogContent,
   Theme,
 } from "@mui/material";
-import { FC } from "react";
+import { FC, useCallback } from "react";
+import { useNavigate } from "react-router-dom";
 import { makeStyles } from "tss-react/mui";
 import { AnalysisInputForm } from "../../analysis/components/AnalysisInputForm";
 import { useReportStore } from "../stores/fe-report-store";
@@ -13,6 +14,15 @@ import { useReportStore } from "../stores/fe-report-store";
 export const NewAnalysisDialog: FC = () => {
   const { classes } = useStyles();
   const { newAnalysisDialogOpen, closeNewAnalysisDialog } = useReportStore();
+  const navigate = useNavigate();
+
+  const handleAfterSubmit = useCallback(
+    (requestId: string) => {
+      closeNewAnalysisDialog();
+      navigate(`/report/${requestId}`);
+    },
+    [closeNewAnalysisDialog, navigate]
+  );
 
   return (
     <Dialog
@@ -23,7 +33,7 @@ export const NewAnalysisDialog: FC = () => {
       scroll="body"
     >
       <DialogContent className={classes.dialogContent}>
-        <AnalysisInputForm onAfterSubmit={closeNewAnalysisDialog} />
+        <AnalysisInputForm onAfterSubmit={handleAfterSubmit} />
       </DialogContent>
       <DialogActions sx={{ padding: 2 }}>
         <Button onClick={closeNewAnalysisDialog}>Close (ESC)</Button>

@@ -68,6 +68,7 @@ export const ReportHeader: FC<ReportBannerProps> = ({ ready }) => {
             label="Resource"
             value={resourceValue || "-"}
             dataCy="resource-value"
+            valueClassName={classes.resourceValue}
           />
           <LanguageIcon language={language} />
         </div>
@@ -142,6 +143,10 @@ const useStyles = makeStyles()((theme: Theme) => ({
   },
   nowrap: {
     wordBreak: "keep-all",
+  },
+  resourceValue: {
+    maxWidth: 300,
+    whiteSpace: "nowrap",
   },
 }));
 

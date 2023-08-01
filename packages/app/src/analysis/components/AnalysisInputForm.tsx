@@ -1,9 +1,7 @@
 import { Alert, Paper, Tab, Tabs, Theme } from "@mui/material";
 import { FC, useCallback } from "react";
-import { useNavigate } from "react-router-dom";
 import { AnalysisType, OneOfValues } from "shared-types";
 import { makeStyles } from "tss-react/mui";
-import { initProgress } from "../../report/actions/init-report-action";
 import { startAnalysis } from "../actions/analysis-actions";
 import { AnalysisStore, useAnalysisStore } from "../stores/analysis-store";
 import { AnalysisTabPanel } from "./AnalysisTabPanel";
@@ -16,7 +14,6 @@ export const AnalysisInputForm: FC<AnalysisInputFormProps> = ({
 }) => {
   const { classes } = useStyles();
   const { sending, inputType } = useAnalysisStore();
-  const navigate = useNavigate();
 
   const handleFormTypeChange = (
     _: unknown,
@@ -27,9 +24,8 @@ export const AnalysisInputForm: FC<AnalysisInputFormProps> = ({
 
   const handleSubmit = useCallback(async () => {
     const requestId = await startAnalysis();
-    initProgress(requestId, navigate);
     onAfterSubmit(requestId);
-  }, [onAfterSubmit, navigate]);
+  }, [onAfterSubmit]);
 
   return (
     <Paper elevation={1} className={classes.inputForm} square>

@@ -11,7 +11,7 @@ const AnalysisPage: FC = () => {
 
   const handleAfterSubmit = useCallback(
     (requestId: string) => {
-      navigate({ pathname: `/report/${requestId}` });
+      navigate(`/report/${requestId}`);
     },
     [navigate]
   );

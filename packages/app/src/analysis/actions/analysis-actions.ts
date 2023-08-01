@@ -7,7 +7,6 @@ import {
   SnippetAnalysis,
 } from "shared-types";
 import config from "../../config";
-import { ReportStore } from "../../report/stores/fe-report-store";
 import { AnalysisStore, AsyncState } from "../stores/analysis-store";
 
 export const startAnalysis = async () => {
@@ -16,11 +15,6 @@ export const startAnalysis = async () => {
   });
 
   try {
-    // Reset progress store and unsubscribe from future messages
-    const { reset, unsubscribe } = ReportStore.getState();
-    unsubscribe && unsubscribe();
-    reset();
-
     const data = createRequestData();
     const report = await axios.post(
       `http://${config.CODETOTAL_HTTP_HOST}:${config.CODETOTAL_HTTP_PORT}/analysis`,

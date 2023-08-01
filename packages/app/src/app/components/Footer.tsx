@@ -82,6 +82,7 @@ const useStyles = makeStyles()((theme: Theme) => ({
     gap: "1ch",
     flexWrap: "wrap",
     fontSize: 12,
+    lineHeight: 1,
   },
   link: {
     color: theme.palette.primary.main,
@@ -92,7 +93,7 @@ const useStyles = makeStyles()((theme: Theme) => ({
     },
   },
   oxLogo: {
-    width: "1em",
-    height: "1em",
+    width: "1.3em",
+    height: "auto",
   },
 }));
