@@ -41,7 +41,7 @@ export interface ReportLanguage {
 interface FileDetails {
   language: string;
   fileSize: number;
-  md5: string;
+  md5: string; // DevSkim: ignore DS126858
   ssdeep: string;
   encoding: string;
 }

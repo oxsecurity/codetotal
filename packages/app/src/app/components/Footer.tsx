@@ -35,7 +35,7 @@ export const Footer: FC = () => {
               target="_blank"
               href="https://megalinter.io/"
             >
-              Megalinter
+              MegaLinter
             </a>
           </Typography>
           <ToggleThemeButton />
