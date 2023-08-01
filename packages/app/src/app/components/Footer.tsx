@@ -25,10 +25,9 @@ export const Footer: FC = () => {
               target="_blank"
               href="https://ox.security"
             >
-              OX Security
+              OX Security,
             </a>
-
-            <p>Powered by</p>
+            <p>powered by</p>
             <a
               className={classes.link}
               rel="noreferrer"
@@ -79,7 +78,7 @@ const useStyles = makeStyles()((theme: Theme) => ({
   footerText: {
     display: "flex",
     alignItems: "center",
-    gap: "1ch",
+    gap: "0.5ch",
     flexWrap: "wrap",
     fontSize: 12,
     lineHeight: 1,
