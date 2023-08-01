@@ -28,7 +28,7 @@ export const DownloadAllIssuesButton: FC = () => {
       target="_blank"
       className={classes.exportToCSV}
       tabIndex={-1}
-      style={{ pointerEvents: "none", outline: "none" }}
+      style={{ outline: "none" }}
     >
       {button}
     </CSVLink>
