@@ -1,6 +1,6 @@
 import axios from "axios";
 import FormData from "form-data";
-import md5 from "md5";
+import md5 from "md5"; // DevSkim: ignore DS126858
 import {
   Analysis,
   AnalysisType,
@@ -23,7 +23,7 @@ export const createAnalysisRequestData = async (
       ];
     }
     case AnalysisType.Snippet: {
-      const snippetMd5 = md5((<SnippetAnalysis>action).snippet);
+      const snippetMd5 = md5((<SnippetAnalysis>action).snippet); // DevSkim: ignore DS126858
       const snippetAction = action as SnippetAnalysis;
       const languageId = snippetAction.language?.id;
       const snippetExtension = languageId ? `.${languageId}` : undefined;
@@ -32,7 +32,7 @@ export const createAnalysisRequestData = async (
           snippet: snippetAction.snippet,
           snippetExtension,
         },
-        snippetMd5,
+        snippetMd5, // DevSkim: ignore DS126858
         snippetAction.language,
       ];
     }

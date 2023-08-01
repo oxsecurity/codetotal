@@ -15,6 +15,7 @@ export const Details: FC = () => {
     </Typography>
   );
 
+  // DevSkim: ignore DS126858
   return (
     <Paper className={classes.reportDetails} elevation={1}>
       {resourceType === AnalysisType.File && (
@@ -27,7 +28,7 @@ export const Details: FC = () => {
                 label="File Size"
                 value={filesize(fileDetails.fileSize).toString()}
               />
-              <DetailsItem label="MD5" value={fileDetails.md5} />
+              <DetailsItem label="MD5" value={fileDetails.md5} /> 
               <DetailsItem label="ssdeep" value={fileDetails.ssdeep} />
               <DetailsItem label="Encoding" value={fileDetails.encoding} />
             </>
