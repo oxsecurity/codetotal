@@ -8,7 +8,7 @@
     "build": "npm run build --workspaces",
     "postbuild": "mv ./packages/backend/dist . && mkdir -p ./dist/public && mv ./packages/app/dist/* ./dist/public",
     "clean": "rm -rf dist && npm run clean --workspaces",
-    "production": "node -r dotenv/config dist/index.js dotenv_config_path=./.env dotenv_config_debug=true",
+    "production": "cross-env NODE_ENV=production node -r dotenv/config dist/index.js dotenv_config_path=./.env dotenv_config_debug=true",
     "build:be": "npm run build:st && npm run build --workspace=packages/backend",
     "build:st": "npm run build --workspace=packages/shared-types",
     "start:be": "npm start --workspace=packages/backend",
