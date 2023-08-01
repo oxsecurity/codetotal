@@ -4,10 +4,10 @@
 - [Building For Production](#building-for-production)
 - [Debugging in VSCode](#debugging-in-vscode)
 - [Messages from MegaLinter server](#messages-from-megalinter-server)
-  - [Start Megalinter analysis](#start-megalinter-analysis)
+  - [Start MegaLinter analysis](#start-megalinter-analysis)
   - [Start Linter analysis](#start-linter-analysis)
   - [Complete Linter analysis](#complete-linter-analysis)
-  - [Complete Megalinter analysis](#complete-megalinter-analysis)
+  - [Complete MegaLinter analysis](#complete-megalinter-analysis)
   - [MegaLinter server error](#megalinter-server-error)
 
 ## Development Mode
@@ -87,7 +87,7 @@ Event-based management of MegaLinter Server can send the following list of messa
 
 Example: `megalinter:pubsub:RQ_cbdd1d82-1e7b-11ee-9258-0242ac120004`
 
-### Start Megalinter analysis
+### Start MegaLinter analysis
 
 This message is sent once by analysis, when a **MegaLinter instance has identified the linters to run** and is about to start them.
 
@@ -373,7 +373,7 @@ Example of **linterComplete** messageType:
 }
 ```
 
-### Complete Megalinter analysis
+### Complete MegaLinter analysis
 
 This message is sent once by analysis, when a **MegaLinter analysis is completed**.
 
