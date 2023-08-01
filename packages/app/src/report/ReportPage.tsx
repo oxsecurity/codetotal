@@ -1,7 +1,7 @@
 import { FC, useEffect, useRef } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { AnalysisErrorDialog } from "../common/AnalysisErrorDialog";
-import { initProgress } from "./actions/init-report-action";
+import { initReport } from "./actions/init-report-action";
 import { IssuesTable } from "./components/IssuesTable";
 import { NewAnalysisDialog } from "./components/NewAnalysisDialog";
 import { ReportDrawer } from "./components/ReportDrawer";
@@ -16,7 +16,7 @@ const ReportPage: FC = () => {
   useEffect(() => {
     (async () => {
       if (calls.current > 0 && requestId) {
-        const success = await initProgress(requestId);
+        const success = await initReport(requestId);
         if (!success) {
           navigate("/");
         }
