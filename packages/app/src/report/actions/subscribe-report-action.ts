@@ -2,12 +2,16 @@ import { AnalysisStatus, ReportState } from "shared-types";
 import { ReportStore } from "../stores/fe-report-store";
 import { subscribe } from "../utils/ws-client";
 
+let unsubscribe: () => void;
+
 export const subscribeToReportProgress = (requestId: string) => {
-  console.log("subscribing to WS...");
+  // unsubscribe from previous connection
+  unsubscribe && unsubscribe();
+
   // clear previous error
   ReportStore.setState({ wsError: undefined });
 
-  const unsubscribe = subscribe({
+  unsubscribe = subscribe({
     requestId,
     onMessage: (msg: Partial<ReportState>) => {
       const completed = msg.status && msg.status === AnalysisStatus.Completed;

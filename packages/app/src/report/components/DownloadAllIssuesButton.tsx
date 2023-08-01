@@ -13,7 +13,6 @@ export const DownloadAllIssuesButton: FC = () => {
   const button = (
     <Button
       startIcon={<MdCloudDownload />}
-      tabIndex={-1}
       size="small"
       color="primary"
       disabled={disabled}
@@ -28,7 +27,8 @@ export const DownloadAllIssuesButton: FC = () => {
       data={allIssues()}
       target="_blank"
       className={classes.exportToCSV}
-      style={{ pointerEvents: "none" }}
+      tabIndex={-1}
+      style={{ outline: "none" }}
     >
       {button}
     </CSVLink>
