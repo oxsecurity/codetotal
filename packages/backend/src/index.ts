@@ -1,3 +1,4 @@
+import express from "express";
 import { subscribeToReport } from "./actions/subscribe-to-report";
 import config from "./config";
 import { createHttpServer } from "./http/create-http-server";
@@ -24,7 +25,7 @@ retry(() => {
   listenToWSConnection(wsServer, subscribeToReport);
 }, retryOptions);
 
-const httpServer = createHttpServer();
+const httpServer = createHttpServer(express);
 registerRoutes(httpServer);
 startHttpServer({
   httpServer,
