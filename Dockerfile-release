@@ -1,0 +1,25 @@
+# Use most recent beta image and just change labels
+ARG CODETOTAL_BASE_IMAGE
+ARG BUILD_DATE
+ARG BUILD_REVISION
+ARG BUILD_VERSION
+
+FROM $CODETOTAL_BASE_IMAGE
+
+ENV BUILD_DATE=$BUILD_DATE \
+    BUILD_REVISION=$BUILD_REVISION \
+    BUILD_VERSION=$BUILD_VERSION
+
+EXPOSE 3000
+CMD ["node", "dist/index.js"]
+LABEL maintainer="Nicolas Vuillamy <nicolas.vuillamy@ox.security>" \
+      org.opencontainers.image.created=$BUILD_DATE \
+      org.opencontainers.image.revision=$BUILD_REVISION \
+      org.opencontainers.image.version=$BUILD_VERSION \
+      org.opencontainers.image.authors="Nicolas Vuillamy <nicolas.vuillamy@ox.security>, Eyal Paz <eyal@ox.security>, Itay Bisoni <itayy@ox.security>" \
+      org.opencontainers.image.url="https://github.com/oxsecurity/codetotal" \
+      org.opencontainers.image.source="https://github.com/oxsecurity/codetotal" \
+      org.opencontainers.image.documentation="https://github.com/oxsecurity/codetotal" \
+      org.opencontainers.image.vendor="OX Security" \
+      org.opencontainers.image.description="Front End and Back End for CodeTotal"
+
