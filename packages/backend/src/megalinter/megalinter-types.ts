@@ -13,6 +13,7 @@ export enum MessageType {
 
 export interface BaseMessage {
   messageType: MessageType;
+  isSBOM: boolean;
 }
 
 export interface MegalinterStartMessage extends BaseMessage {
