@@ -15,7 +15,7 @@ import { Details } from "./Details";
 import { Detection } from "./Detection";
 import { ReportPanel } from "./ReportPanel";
 import { ReportTabPanel } from "./ReportTabPanel";
-import { SBOMTable } from "./SBOMTable";
+import { SBOM } from "./SBOM";
 
 export const ReportTabs: FC = () => {
   const theme = useTheme();
@@ -78,7 +78,7 @@ export const ReportTabs: FC = () => {
         <ReportPanel
           title={<Typography variant="body2">SBOM Packages</Typography>}
         >
-          <SBOMTable />
+          <SBOM />
         </ReportPanel>
       </ReportTabPanel>
     </>

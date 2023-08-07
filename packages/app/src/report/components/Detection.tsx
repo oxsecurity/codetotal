@@ -1,3 +1,4 @@
+import { Paper } from "@mui/material";
 import { FC } from "react";
 import { makeStyles } from "tss-react/mui";
 import { useReportStore } from "../stores/fe-report-store";
@@ -10,10 +11,10 @@ export const Detection: FC = () => {
   const loading = linters.length === 0;
 
   return (
-    <div className={classes.detection}>
+    <Paper className={classes.detection}>
       {loading && <Loader text="Starting scan" />}
       {!loading && <LintersList />}
-    </div>
+    </Paper>
   );
 };
 

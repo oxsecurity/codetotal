@@ -2,7 +2,6 @@ import {
   List,
   ListItem,
   ListItemButton,
-  Paper,
   Theme,
   Typography,
 } from "@mui/material";
@@ -20,7 +19,7 @@ export const LintersList: FC = () => {
   };
 
   return (
-    <Paper elevation={1} className={classes.lintersList}>
+    <div className={classes.lintersList}>
       <List className={classes.list}>
         {linters.map((linter, index) => {
           const issues = issuesCount(linter.name);
@@ -57,7 +56,7 @@ export const LintersList: FC = () => {
           );
         })}
       </List>
-    </Paper>
+    </div>
   );
 };
 
