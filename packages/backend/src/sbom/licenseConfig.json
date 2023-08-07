@@ -1,330 +1,330 @@
 [
-    {
-        "license": "Proprietary",
-        "severity": "Critical"
-    },
-    {
-        "license": "Commercial",
-        "severity": "Critical"
-    },
-    {
-        "license": "Closed Source",
-        "severity": "Critical"
-    },
-    {
-        "license": "Binary Only",
-        "severity": "Critical"
-    },
-    {
-        "license": "EULA",
-        "severity": "Critical"
-    },
-    {
-        "license": "Academic Free License 2.0",
-        "severity": "High"
-    },
-    {
-        "license": "Common Public License 1.0",
-        "severity": "High"
-    },
-    {
-        "license": "Mozilla Public License 1.0",
-        "severity": "High"
-    },
-    {
-        "license": "JasPer License",
-        "severity": "High"
-    },
-    {
-        "license": "LESSER GENERAL PUBLIC LICENSE",
-        "severity": "High"
-    },
-    {
-        "license": "ISC License (ISC)",
-        "severity": "Medium"
-    },
-    {
-        "license": "Simplified BSD License",
-        "severity": "Medium"
-    },
-    {
-        "license": "New BSD License",
-        "severity": "Medium"
-    },
-    {
-        "license": "Academic Free License 3.0",
-        "severity": "Medium"
-    },
-    {
-        "license": "EPL 1.0",
-        "severity": "Medium"
-    },
-    {
-        "license": "GNU General Public License v2.0",
-        "severity": "Medium"
-    },
-    {
-        "license": "GNU Lesser General Public License v2.1",
-        "severity": "Medium"
-    },
-    {
-        "license": "GNU Free Documentation License v1.3",
-        "severity": "Medium"
-    },
-    {
-        "license": "Python Software Foundation License",
-        "severity": "Medium"
-    },
-    {
-        "license": "Mozilla Public License 1.1",
-        "severity": "Medium"
-    },
-    {
-        "license": "Apache License 1.1",
-        "severity": "Medium"
-    },
-    {
-        "license": "JasPer License, Version 2.0",
-        "severity": "Medium"
-    },
-    {
-        "license": "W3C Software Notice and License",
-        "severity": "Low"
-    },
-    {
-        "license": "W3C Software Notice and License for Components",
-        "severity": "Low"
-    },
-    {
-        "license": "W3C Software Notice and License for Public Documents",
-        "severity": "Low"
-    },
-    {
-        "license": "W3C Software Notice and License for Executable Files",
-        "severity": "Low"
-    },
-    {
-        "license": "W3C Software Notice and License for Documentation",
-        "severity": "Low"
-    },
-    {
-        "license": "W3C Software Notice and License for Test Fixtures",
-        "severity": "Low"
-    },
-    {
-        "license": "W3C Software Notice and License for Fonts",
-        "severity": "Low"
-    },
-    {
-        "license": "W3C Software Notice and License for Images",
-        "severity": "Low"
-    },
-    {
-        "license": "W3C Software Notice and License for Templates",
-        "severity": "Low"
-    },
-    {
-        "license": "W3C Software Notice and License for Style Sheets",
-        "severity": "Low"
-    },
-    {
-        "license": "W3C Software Notice and License for Scripts",
-        "severity": "Low"
-    },
-    {
-        "license": "W3C",
-        "severity": "Low"
-    },
-    {
-        "license": "Apache License 2.0",
-        "severity": "Clean"
-    },
-    {
-        "license": "MIT License",
-        "severity": "Clean"
-    },
-    {
-        "license": "BSD 3-Clause License",
-        "severity": "Clean"
-    },
-    {
-        "license": "BSD 2-Clause License",
-        "severity": "Clean"
-    },
-    {
-        "license": "ISC License",
-        "severity": "Clean"
-    },
-    {
-        "license": "WTFPL",
-        "severity": "Clean"
-    },
-    {
-        "license": "Zlib License",
-        "severity": "Clean"
-    },
-    {
-        "license": "Artistic License 2.0",
-        "severity": "Clean"
-    },
-    {
-        "license": "GNU General Public License v3.0",
-        "severity": "Clean"
-    },
-    {
-        "license": "GNU Lesser General Public License v3.0",
-        "severity": "Clean"
-    },
-    {
-        "license": "Mozilla Public License 2.0",
-        "severity": "Clean"
-    },
-    {
-        "license": "Eclipse Public License 2.0",
-        "severity": "Clean"
-    },
-    {
-        "license": "Apache License 2.0 with LLVM Exception",
-        "severity": "Clean"
-    },
-    {
-        "license": "OpenSSL License",
-        "severity": "Clean"
-    },
-    {
-        "license": "Boost Software License 1.0",
-        "severity": "Clean"
-    },
-    {
-        "license": "Apache License 2.0 with HealthCare Disclaimer",
-        "severity": "Clean"
-    },
-    {
-        "license": "GNU Affero General Public License v3.0",
-        "severity": "Clean"
-    },
-    {
-        "license": "Universal Permissive License 1.0",
-        "severity": "Clean"
-    },
-    {
-        "license": "University of Illinois/NCSA Open Source License",
-        "severity": "Clean"
-    },
-    {
-        "license": "Common Public License 1.0",
-        "severity": "Clean"
-    },
-    {
-        "license": "JasPer License",
-        "severity": "Clean"
-    },
-    {
-        "license": "LESSER GENERAL PUBLIC LICENSE",
-        "severity": "Clean"
-    },
-    {
-        "license": "ISC License (ISC)",
-        "severity": "Clean"
-    },
-    {
-        "license": "Simplified BSD License",
-        "severity": "Clean"
-    },
-    {
-        "license": "New BSD License",
-        "severity": "Clean"
-    },
-    {
-        "license": "Academic Free License 3.0",
-        "severity": "Clean"
-    },
-    {
-        "license": "EPL 1.0",
-        "severity": "Clean"
-    },
-    {
-        "license": "GNU General Public License v2.0",
-        "severity": "Clean"
-    },
-    {
-        "license": "GNU Lesser General Public License v2.1",
-        "severity": "Clean"
-    },
-    {
-        "license": "GNU Free Documentation License v1.3",
-        "severity": "Clean"
-    },
-    {
-        "license": "Python Software Foundation License",
-        "severity": "Clean"
-    },
-    {
-        "license": "Mozilla Public License 1.1",
-        "severity": "Clean"
-    },
-    {
-        "license": "Apache License 1.1",
-        "severity": "Clean"
-    },
-    {
-        "license": "JasPer License, Version 2.0",
-        "severity": "Clean"
-    },
-    {
-        "license": "MPL-2.0",
-        "severity": "Clean"
-    },
-    {
-        "license": "MPL",
-        "severity": "Clean"
-    },
-    {
-        "license": "MIT",
-        "severity": "Clean"
-    },
-    {
-        "license": "AGPL",
-        "severity": "High"
-    },
-    {
-        "license": "LGPL",
-        "severity": "High"
-    },
-    {
-        "license": "GPL",
-        "severity": "High"
-    },
-    {
-        "license": "ISC",
-        "severity": "Clean"
-    },
-    {
-        "license": "BSD",
-        "severity": "Clean"
-    },
-    {
-        "license": "BSD License",
-        "severity": "Clean"
-    },
-    {
-        "license": "0BSD",
-        "severity": "Clean"
-    },
-    {
-        "license": "Apache License",
-        "severity": "Clean"
-    },
-    {
-        "license": "Apache Software License",
-        "severity": "Clean"
-    },
-    {
-        "license": "Public Domain",
-        "severity": "Clean"
-    },
-    {
-        "license": "Apache 2.0",
-        "severity": "Clean"
-    }
+  {
+    "license": "Proprietary",
+    "severity": "Critical"
+  },
+  {
+    "license": "Commercial",
+    "severity": "Critical"
+  },
+  {
+    "license": "Closed Source",
+    "severity": "Critical"
+  },
+  {
+    "license": "Binary Only",
+    "severity": "Critical"
+  },
+  {
+    "license": "EULA",
+    "severity": "Critical"
+  },
+  {
+    "license": "Academic Free License 2.0",
+    "severity": "High"
+  },
+  {
+    "license": "Common Public License 1.0",
+    "severity": "High"
+  },
+  {
+    "license": "Mozilla Public License 1.0",
+    "severity": "High"
+  },
+  {
+    "license": "JasPer License",
+    "severity": "High"
+  },
+  {
+    "license": "LESSER GENERAL PUBLIC LICENSE",
+    "severity": "High"
+  },
+  {
+    "license": "ISC License (ISC)",
+    "severity": "Medium"
+  },
+  {
+    "license": "Simplified BSD License",
+    "severity": "Medium"
+  },
+  {
+    "license": "New BSD License",
+    "severity": "Medium"
+  },
+  {
+    "license": "Academic Free License 3.0",
+    "severity": "Medium"
+  },
+  {
+    "license": "EPL 1.0",
+    "severity": "Medium"
+  },
+  {
+    "license": "GNU General Public License v2.0",
+    "severity": "Medium"
+  },
+  {
+    "license": "GNU Lesser General Public License v2.1",
+    "severity": "Medium"
+  },
+  {
+    "license": "GNU Free Documentation License v1.3",
+    "severity": "Medium"
+  },
+  {
+    "license": "Python Software Foundation License",
+    "severity": "Medium"
+  },
+  {
+    "license": "Mozilla Public License 1.1",
+    "severity": "Medium"
+  },
+  {
+    "license": "Apache License 1.1",
+    "severity": "Medium"
+  },
+  {
+    "license": "JasPer License, Version 2.0",
+    "severity": "Medium"
+  },
+  {
+    "license": "W3C Software Notice and License",
+    "severity": "Low"
+  },
+  {
+    "license": "W3C Software Notice and License for Components",
+    "severity": "Low"
+  },
+  {
+    "license": "W3C Software Notice and License for Public Documents",
+    "severity": "Low"
+  },
+  {
+    "license": "W3C Software Notice and License for Executable Files",
+    "severity": "Low"
+  },
+  {
+    "license": "W3C Software Notice and License for Documentation",
+    "severity": "Low"
+  },
+  {
+    "license": "W3C Software Notice and License for Test Fixtures",
+    "severity": "Low"
+  },
+  {
+    "license": "W3C Software Notice and License for Fonts",
+    "severity": "Low"
+  },
+  {
+    "license": "W3C Software Notice and License for Images",
+    "severity": "Low"
+  },
+  {
+    "license": "W3C Software Notice and License for Templates",
+    "severity": "Low"
+  },
+  {
+    "license": "W3C Software Notice and License for Style Sheets",
+    "severity": "Low"
+  },
+  {
+    "license": "W3C Software Notice and License for Scripts",
+    "severity": "Low"
+  },
+  {
+    "license": "W3C",
+    "severity": "Low"
+  },
+  {
+    "license": "Apache License 2.0",
+    "severity": "Clean"
+  },
+  {
+    "license": "MIT License",
+    "severity": "Clean"
+  },
+  {
+    "license": "BSD 3-Clause License",
+    "severity": "Clean"
+  },
+  {
+    "license": "BSD 2-Clause License",
+    "severity": "Clean"
+  },
+  {
+    "license": "ISC License",
+    "severity": "Clean"
+  },
+  {
+    "license": "WTFPL",
+    "severity": "Clean"
+  },
+  {
+    "license": "Zlib License",
+    "severity": "Clean"
+  },
+  {
+    "license": "Artistic License 2.0",
+    "severity": "Clean"
+  },
+  {
+    "license": "GNU General Public License v3.0",
+    "severity": "Clean"
+  },
+  {
+    "license": "GNU Lesser General Public License v3.0",
+    "severity": "Clean"
+  },
+  {
+    "license": "Mozilla Public License 2.0",
+    "severity": "Clean"
+  },
+  {
+    "license": "Eclipse Public License 2.0",
+    "severity": "Clean"
+  },
+  {
+    "license": "Apache License 2.0 with LLVM Exception",
+    "severity": "Clean"
+  },
+  {
+    "license": "OpenSSL License",
+    "severity": "Clean"
+  },
+  {
+    "license": "Boost Software License 1.0",
+    "severity": "Clean"
+  },
+  {
+    "license": "Apache License 2.0 with HealthCare Disclaimer",
+    "severity": "Clean"
+  },
+  {
+    "license": "GNU Affero General Public License v3.0",
+    "severity": "Clean"
+  },
+  {
+    "license": "Universal Permissive License 1.0",
+    "severity": "Clean"
+  },
+  {
+    "license": "University of Illinois/NCSA Open Source License",
+    "severity": "Clean"
+  },
+  {
+    "license": "Common Public License 1.0",
+    "severity": "Clean"
+  },
+  {
+    "license": "JasPer License",
+    "severity": "Clean"
+  },
+  {
+    "license": "LESSER GENERAL PUBLIC LICENSE",
+    "severity": "Clean"
+  },
+  {
+    "license": "ISC License (ISC)",
+    "severity": "Clean"
+  },
+  {
+    "license": "Simplified BSD License",
+    "severity": "Clean"
+  },
+  {
+    "license": "New BSD License",
+    "severity": "Clean"
+  },
+  {
+    "license": "Academic Free License 3.0",
+    "severity": "Clean"
+  },
+  {
+    "license": "EPL 1.0",
+    "severity": "Clean"
+  },
+  {
+    "license": "GNU General Public License v2.0",
+    "severity": "Clean"
+  },
+  {
+    "license": "GNU Lesser General Public License v2.1",
+    "severity": "Clean"
+  },
+  {
+    "license": "GNU Free Documentation License v1.3",
+    "severity": "Clean"
+  },
+  {
+    "license": "Python Software Foundation License",
+    "severity": "Clean"
+  },
+  {
+    "license": "Mozilla Public License 1.1",
+    "severity": "Clean"
+  },
+  {
+    "license": "Apache License 1.1",
+    "severity": "Clean"
+  },
+  {
+    "license": "JasPer License, Version 2.0",
+    "severity": "Clean"
+  },
+  {
+    "license": "MPL-2.0",
+    "severity": "Clean"
+  },
+  {
+    "license": "MPL",
+    "severity": "Clean"
+  },
+  {
+    "license": "MIT",
+    "severity": "Clean"
+  },
+  {
+    "license": "AGPL",
+    "severity": "High"
+  },
+  {
+    "license": "LGPL",
+    "severity": "High"
+  },
+  {
+    "license": "GPL",
+    "severity": "High"
+  },
+  {
+    "license": "ISC",
+    "severity": "Clean"
+  },
+  {
+    "license": "BSD",
+    "severity": "Clean"
+  },
+  {
+    "license": "BSD License",
+    "severity": "Clean"
+  },
+  {
+    "license": "0BSD",
+    "severity": "Clean"
+  },
+  {
+    "license": "Apache License",
+    "severity": "Clean"
+  },
+  {
+    "license": "Apache Software License",
+    "severity": "Clean"
+  },
+  {
+    "license": "Public Domain",
+    "severity": "Clean"
+  },
+  {
+    "license": "Apache 2.0",
+    "severity": "Clean"
+  }
 ]
