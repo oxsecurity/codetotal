@@ -1,38 +1,16 @@
-import { Theme, Typography } from "@mui/material";
-import { FC, useMemo } from "react";
-import { Issue } from "shared-types";
+import { Paper, Theme, Typography } from "@mui/material";
+import { FC } from "react";
 import { makeStyles } from "tss-react/mui";
-import { useReportStore } from "../stores/fe-report-store";
-import { ResponsiveTable, TableOptions } from "./ResponsiveTable";
-import { SeverityBadge } from "./SeverityBadge";
+import { SeverityBadge } from "../../../common/SeverityBadge";
+import { useReportStore } from "../../stores/fe-report-store";
+import { IssuesTable } from "./IssuesTable";
 
-export const IssuesTable: FC = () => {
+export const LinterInfo: FC = () => {
   const { classes } = useStyles();
   const { selectedLinterName, linters = [] } = useReportStore();
 
   const selectedLinter = linters.find(
     (linter) => linter.name === selectedLinterName
-  );
-
-  const tableOptions = useMemo<TableOptions<Issue>>(
-    () => ({
-      emptyMessage: `No issues found for ${selectedLinter?.name}`,
-      cells: [
-        { label: "Rule", key: "ruleId" },
-        { label: "Title", key: "title" },
-        {
-          label: "Severity",
-          cellRenderer: (row) => <SeverityBadge severity={row.severity} />,
-        },
-        { label: "Location", key: "location" },
-        {
-          label: "Line #",
-          key: "lineNumber",
-          headerCellStyle: { whiteSpace: "nowrap" },
-        },
-      ],
-    }),
-    [selectedLinter?.name]
   );
 
   if (!selectedLinterName) {
@@ -60,10 +38,12 @@ export const IssuesTable: FC = () => {
           )}
         </div>
       )}
-      <ResponsiveTable
-        options={tableOptions}
-        data={selectedLinter?.issues || []}
-      />
+      <Paper>
+        <IssuesTable
+          linterName={selectedLinterName}
+          issues={selectedLinter?.issues || []}
+        />
+      </Paper>
     </div>
   );
 };

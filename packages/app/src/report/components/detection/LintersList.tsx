@@ -2,13 +2,12 @@ import {
   List,
   ListItem,
   ListItemButton,
-  Paper,
   Theme,
   Typography,
 } from "@mui/material";
 import { FC } from "react";
 import { makeStyles } from "tss-react/mui";
-import { ReportStore, useReportStore } from "../stores/fe-report-store";
+import { ReportStore, useReportStore } from "../../stores/fe-report-store";
 import { LinterStatus } from "./LinterStatus";
 
 export const LintersList: FC = () => {
@@ -20,7 +19,7 @@ export const LintersList: FC = () => {
   };
 
   return (
-    <Paper elevation={1} className={classes.lintersList}>
+    <div className={classes.lintersList}>
       <List className={classes.list}>
         {linters.map((linter, index) => {
           const issues = issuesCount(linter.name);
@@ -57,7 +56,7 @@ export const LintersList: FC = () => {
           );
         })}
       </List>
-    </Paper>
+    </div>
   );
 };
 

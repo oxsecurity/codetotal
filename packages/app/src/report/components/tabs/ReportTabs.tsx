@@ -10,12 +10,11 @@ import {
 } from "@mui/material";
 import { FC, useState } from "react";
 import { makeStyles } from "tss-react/mui";
-import { ReportType } from "../fe-report-types";
-import { Details } from "./Details";
-import { Detection } from "./Detection";
+import { ReportType } from "../../fe-report-types";
+import { Detection } from "../detection/Detection";
+import { SBOM } from "../sbom/SBOM";
 import { ReportPanel } from "./ReportPanel";
 import { ReportTabPanel } from "./ReportTabPanel";
-import { SBOMTable } from "./SBOMTable";
 
 export const ReportTabs: FC = () => {
   const theme = useTheme();
@@ -48,11 +47,11 @@ export const ReportTabs: FC = () => {
             className={classes.tab}
             classes={{ selected: classes.selectedTab }}
           />
-          <Tab
+          {/* <Tab
             label="Details"
             className={classes.tab}
             classes={{ selected: classes.selectedTab }}
-          />
+          /> */}
           <Tab
             label="SBOM"
             className={classes.tab}
@@ -69,16 +68,16 @@ export const ReportTabs: FC = () => {
           <Detection />
         </ReportPanel>
       </ReportTabPanel>
-      <ReportTabPanel value={panelType} index={1}>
+      {/* <ReportTabPanel value={panelType} index={1}>
         <ReportPanel title={<Typography variant="body2">Resource</Typography>}>
           <Details />
         </ReportPanel>
-      </ReportTabPanel>
-      <ReportTabPanel value={panelType} index={2}>
+      </ReportTabPanel> */}
+      <ReportTabPanel value={panelType} index={1}>
         <ReportPanel
           title={<Typography variant="body2">SBOM Packages</Typography>}
         >
-          <SBOMTable />
+          <SBOM />
         </ReportPanel>
       </ReportTabPanel>
     </>
