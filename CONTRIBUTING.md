@@ -445,7 +445,8 @@ Example of **serverError** messageType
 
 - Create a new GitHub Release -> <https://github.com/oxsecurity/codetotal/releases/new>
 
-  - Select your new tag
+  - Input your new version tag string (ex: `v1.2.0`)
+  - Name the release `CodeTotal vX.XX.XX` (ex: `CodeTotal v1.2.0`)
   - Click on Generate Release Notes button
   - Arrange the result with content of CHANGELOG.md if necessary (like breaking change instructions)
   - Create the GitHub release: An automated job will be triggered and will release the associated CodeTotal Docker Image
