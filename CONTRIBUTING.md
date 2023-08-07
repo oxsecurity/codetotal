@@ -443,7 +443,7 @@ Example of **serverError** messageType
 
 - Merge the PR if everything is ok **(use Squash & Merge option)**, else perform linter fixes until jobs are green, then merge.
 
-- Create a new GitHub Release -> https://github.com/oxsecurity/codetotal/releases/new
+- Create a new GitHub Release -> <https://github.com/oxsecurity/codetotal/releases/new>
 
   - Select your new tag
   - Click on Generate Release Notes button
