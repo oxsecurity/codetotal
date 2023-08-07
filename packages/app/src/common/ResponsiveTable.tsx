@@ -1,7 +1,6 @@
 import {
   List,
   ListItem,
-  Paper,
   Table,
   TableBody,
   TableCell,
@@ -27,56 +26,52 @@ export const ResponsiveTable = <P extends object>({
 
   if (!data || data.length === 0) {
     return (
-      <Paper sx={{ p: 3 }}>
-        <Typography variant="body2" color="text.secondary">
-          {options.emptyMessage}
-        </Typography>
-      </Paper>
+      <Typography variant="body2" color="text.secondary" sx={{ p: 3 }}>
+        {options.emptyMessage}
+      </Typography>
     );
   }
 
   if (!matches) {
     return (
-      <Paper>
-        <List>
-          {data.map((row, index) => (
-            <ListItem
-              key={index}
-              divider={index < data.length - 1}
-              className={classes.listItem}
-            >
-              <div className={classes.listItemContent}>
-                {cells.map((cell, cellIndex) => (
-                  <div key={cellIndex}>
+      <List>
+        {data.map((row, index) => (
+          <ListItem
+            key={index}
+            divider={index < data.length - 1}
+            className={classes.listItem}
+          >
+            <div className={classes.listItemContent}>
+              {cells.map((cell, cellIndex) => (
+                <div key={cellIndex}>
+                  <Typography
+                    variant="caption"
+                    color="text.secondary"
+                    component="p"
+                  >
+                    {cell.label}
+                  </Typography>
+                  {cell.key && (
                     <Typography
-                      variant="caption"
-                      color="text.secondary"
-                      component="p"
+                      variant="body2"
+                      color="text.primary"
+                      sx={{ wordBreak: "break-word" }}
                     >
-                      {cell.label}
+                      {row[cell.key]}
                     </Typography>
-                    {cell.key && (
-                      <Typography
-                        variant="body2"
-                        color="text.primary"
-                        sx={{ wordBreak: "break-word" }}
-                      >
-                        {row[cell.key]}
-                      </Typography>
-                    )}
-                    {cell.cellRenderer && <>{cell.cellRenderer(row)}</>}
-                  </div>
-                ))}
-              </div>
-            </ListItem>
-          ))}
-        </List>
-      </Paper>
+                  )}
+                  {cell.cellRenderer && <>{cell.cellRenderer(row)}</>}
+                </div>
+              ))}
+            </div>
+          </ListItem>
+        ))}
+      </List>
     );
   }
 
   return (
-    <TableContainer component={Paper}>
+    <TableContainer>
       <Table padding="normal" style={{ width: "100%" }}>
         <TableHead>
           <TableRow>

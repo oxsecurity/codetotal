@@ -12,9 +12,9 @@ import Drawer from "@mui/material/Drawer";
 import { FC, PropsWithChildren } from "react";
 import { IoCloseSharp } from "react-icons/io5";
 import { makeStyles } from "tss-react/mui";
-import { ReportStore, useReportStore } from "../stores/fe-report-store";
+import { ReportStore, useReportStore } from "../report/stores/fe-report-store";
 
-export const ReportDrawer: FC<PropsWithChildren> = ({ children }) => {
+export const CodeTotalDrawer: FC<PropsWithChildren> = ({ children }) => {
   const theme = useTheme();
   const { classes } = useStyles();
   const matches = useMediaQuery(theme.breakpoints.up("md"));
