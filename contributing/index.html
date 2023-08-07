@@ -234,6 +234,11 @@
 </ul>
 </nav>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#release-management">
+    Release Management
+  </a>
+</li>
 </ul>
 </nav>
 </li>
@@ -350,6 +355,11 @@
 </ul>
 </nav>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#release-management">
+    Release Management
+  </a>
+</li>
 </ul>
 </nav>
 </div>
@@ -372,6 +382,7 @@
 <li><a href="#megalinter-server-error">MegaLinter server error</a></li>
 </ul>
 </li>
+<li><a href="#release-management">Release Management</a></li>
 </ul>
 <h2 id="development-mode">Development Mode</h2>
 <ul>
@@ -749,6 +760,37 @@ CODETOTAL_UPLOAD_FILE_LIMIT_BYTES=10000000
   "requestId": "RQ_e630c962-1e7c-11ee-9258-0242ac120004"
 }
 </code></pre>
+<h2 id="release-management">Release Management</h2>
+<ul>
+<li>Create a sub-branch <code>main</code> branch, name it release/vX.XX.XX (example: <code>release/v1.2.0</code>)</li>
+</ul>
+<ul>
+<li>Update CHANGELOG.md to add the section about the content of the new release. Leave empty the <strong>beta</strong> section, then commit.</li>
+</ul>
+<ul>
+<li>Run <code>npm version --no-git-tag-version --new-version vX.XX.XX</code> (example: <code>npm version --no-git-tag-version --new-version v1.2.0</code>)</li>
+</ul>
+<ul>
+<li>Commit updates on package.json and package-lock.json with message <code>release vX.XX.XX</code></li>
+</ul>
+<ul>
+<li>Make a Pull Request to <code>main</code>. <strong>IMPORTANT</strong>: The PR title must contain <code>release</code> in lowercase. Example: <code>New release v1.2.0</code>.</li>
+</ul>
+<ul>
+<li>Merge the PR if everything is ok <strong>(use Squash &amp; Merge option)</strong>, else perform linter fixes until jobs are green, then merge.</li>
+</ul>
+<ul>
+<li>
+<p>Create a new GitHub Release -&gt; <a href="https://github.com/oxsecurity/codetotal/releases/new">https://github.com/oxsecurity/codetotal/releases/new</a></p>
+<ul>
+<li>Input your new version tag string (ex: <code>v1.2.0</code>)</li>
+<li>Name the release <code>CodeTotal vX.XX.XX</code> (ex: <code>CodeTotal v1.2.0</code>)</li>
+<li>Click on Generate Release Notes button</li>
+<li>Arrange the result with content of CHANGELOG.md if necessary (like breaking change instructions)</li>
+<li>Create the GitHub release: An automated job will be triggered and will release the associated CodeTotal Docker Image</li>
+</ul>
+</li>
+</ul>
 </article>
 </div>
 </div>
