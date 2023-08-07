@@ -433,7 +433,7 @@ Example of **serverError** messageType
 
 - Create a sub-branch `main` branch, name it release/vX.XX.XX (example: `release/v1.2.0`)
 
-- Update CHANGELOG.md to add the section about the content of the new release. Leave empty the **beta** section.
+- Update CHANGELOG.md to add the section about the content of the new release. Leave empty the **beta** section, then commit.
 
 - Run `npm version --no-git-tag-version --new-version vX.XX.XX` (example: `npm version --no-git-tag-version --new-version v1.2.0`)
 
@@ -441,7 +441,7 @@ Example of **serverError** messageType
 
 - Make a Pull Request to `main` **IMPORTANT**: The PR title must contain `release` in lowercase. Example: `New release v1.2.0`.
 
-- Merge the PR if everything is ok, else perform linter fixes until jobs are green, then merge.
+- Merge the PR if everything is ok **(use Squash & Merge option)**, else perform linter fixes until jobs are green, then merge.
 
 - Create a new GitHub Release -> https://github.com/oxsecurity/codetotal/releases/new
 
