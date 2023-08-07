@@ -433,9 +433,11 @@ Example of **serverError** messageType
 
 - Create a sub-branch `main` branch, name it release/vX.XX.XX (example: `release/v1.2.0`)
 
-- Run `npm version --new-version vX.XX.XX` (example: `npm version --new-version v1.2.0`)
-
 - Update CHANGELOG.md to add the section about the content of the new release. Leave empty the **beta** section.
+
+- Run `npm version --no-git-tag-version --new-version vX.XX.XX` (example: `npm version --no-git-tag-version --new-version v1.2.0`)
+
+- Commit updates on package.json and package-lock.json with message `release vX.XX.XX`
 
 - Make a Pull Request to `main` **IMPORTANT**: The PR title must contain `release` in lowercase. Example: `New release v1.2.0`.
 
