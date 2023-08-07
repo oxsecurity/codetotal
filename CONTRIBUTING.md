@@ -9,6 +9,7 @@
   - [Complete Linter analysis](#complete-linter-analysis)
   - [Complete MegaLinter analysis](#complete-megalinter-analysis)
   - [MegaLinter server error](#megalinter-server-error)
+- [Release Management](#release-management)
 
 ## Development Mode
 
@@ -427,3 +428,23 @@ Example of **serverError** messageType
   "requestId": "RQ_e630c962-1e7c-11ee-9258-0242ac120004"
 }
 ```
+
+## Release Management
+
+- Create a sub-branch `main` branch, name it release/vX.XX.XX (example: `release/v1.2.0`)
+
+- Run `npm version --new-version vX.XX.XX` (example: `npm version --new-version v1.2.0`)
+
+- Update CHANGELOG.md to add the section about the content of the new release. Leave empty the **beta** section.
+
+- Make a Pull Request to `main` **IMPORTANT**: The PR title must contain `release` in lowercase. Example: `New release v1.2.0`.
+
+- Merge the PR if everything is ok, else perform linter fixes until jobs are green, then merge.
+
+- Create a new GitHub Release -> https://github.com/oxsecurity/codetotal/releases/new
+
+  - Select your new tag
+  - Click on Generate Release Notes button
+  - Arrange the result with content of CHANGELOG.md if necessary (like breaking change instructions)
+  - Create the GitHub release: An automated job will be triggered and will release the associated CodeTotal Docker Image
+
