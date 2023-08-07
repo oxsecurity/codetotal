@@ -2,8 +2,8 @@ import { Theme } from "@mui/material";
 import { FC, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { makeStyles } from "tss-react/mui";
-import { AnalysisHeader } from "./components/AnalysisHeader";
-import { AnalysisInputForm } from "./components/AnalysisInputForm";
+import { AnalysisHeader } from "./AnalysisHeader";
+import { AnalysisInputForm } from "./AnalysisInputForm";
 
 const AnalysisPage: FC = () => {
   const { classes } = useStyles();

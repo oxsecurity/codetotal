@@ -1,9 +1,9 @@
 import { Paper, Theme, Typography } from "@mui/material";
 import { FC } from "react";
 import { makeStyles } from "tss-react/mui";
-import { useReportStore } from "../stores/fe-report-store";
+import { SeverityBadge } from "../../../common/SeverityBadge";
+import { useReportStore } from "../../stores/fe-report-store";
 import { IssuesTable } from "./IssuesTable";
-import { SeverityBadge } from "./SeverityBadge";
 
 export const LinterInfo: FC = () => {
   const { classes } = useStyles();

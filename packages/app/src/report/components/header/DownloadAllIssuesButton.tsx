@@ -3,7 +3,7 @@ import { FC } from "react";
 import { CSVLink } from "react-csv";
 import { MdCloudDownload } from "react-icons/md";
 import { makeStyles } from "tss-react/mui";
-import { useReportStore } from "../stores/fe-report-store";
+import { useReportStore } from "../../stores/fe-report-store";
 
 export const DownloadAllIssuesButton: FC = () => {
   const { classes } = useStyles();

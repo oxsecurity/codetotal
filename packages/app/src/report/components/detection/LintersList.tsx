@@ -7,7 +7,7 @@ import {
 } from "@mui/material";
 import { FC } from "react";
 import { makeStyles } from "tss-react/mui";
-import { ReportStore, useReportStore } from "../stores/fe-report-store";
+import { ReportStore, useReportStore } from "../../stores/fe-report-store";
 import { LinterStatus } from "./LinterStatus";
 
 export const LintersList: FC = () => {

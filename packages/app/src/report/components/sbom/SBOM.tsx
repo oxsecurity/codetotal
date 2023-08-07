@@ -1,8 +1,8 @@
 import { Paper } from "@mui/material";
 import { FC } from "react";
 import { AnalysisStatus } from "shared-types";
-import { useReportStore } from "../stores/fe-report-store";
-import { Loader } from "./Loader";
+import { Loader } from "../../../common/Loader";
+import { useReportStore } from "../../stores/fe-report-store";
 import { SBOMTable } from "./SBOMTable";
 
 export const SBOM: FC = () => {
@@ -11,11 +11,7 @@ export const SBOM: FC = () => {
 
   return (
     <Paper>
-      {loading ? (
-        <Loader text="Waiting for SBOM information..." />
-      ) : (
-        <SBOMTable />
-      )}
+      {loading ? <Loader text="Waiting for SBOM info..." /> : <SBOMTable />}
     </Paper>
   );
 };

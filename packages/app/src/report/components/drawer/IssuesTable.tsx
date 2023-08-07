@@ -1,7 +1,7 @@
 import { FC, useMemo } from "react";
 import { Issue } from "shared-types";
-import { ResponsiveTable, TableOptions } from "./ResponsiveTable";
-import { SeverityBadge } from "./SeverityBadge";
+import { ResponsiveTable, TableOptions } from "../../../common/ResponsiveTable";
+import { SeverityBadge } from "../../../common/SeverityBadge";
 
 export const IssuesTable: FC<IssuesTableProps> = ({ linterName, issues }) => {
   const tableOptions = useMemo<TableOptions<Issue>>(

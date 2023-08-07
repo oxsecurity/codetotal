@@ -1,8 +1,8 @@
 import { FC } from "react";
 import { SbomPackage } from "shared-types";
-import { useReportStore } from "../stores/fe-report-store";
-import { ResponsiveTable, TableOptions } from "./ResponsiveTable";
-import { SeverityBadge } from "./SeverityBadge";
+import { ResponsiveTable, TableOptions } from "../../../common/ResponsiveTable";
+import { SeverityBadge } from "../../../common/SeverityBadge";
+import { useReportStore } from "../../stores/fe-report-store";
 
 export const SBOMTable: FC = () => {
   const { packages } = useReportStore();

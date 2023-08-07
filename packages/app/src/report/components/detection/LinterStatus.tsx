@@ -1,8 +1,8 @@
 import { CircularProgress, Theme, Typography } from "@mui/material";
 import { FC } from "react";
 import { makeStyles } from "tss-react/mui";
-import { Linter } from "../fe-report-types";
-import { SeverityBadge } from "./SeverityBadge";
+import { SeverityBadge } from "../../../common/SeverityBadge";
+import { Linter } from "../../fe-report-types";
 
 export const LinterStatus: FC<LinterStatusProps> = ({ status, severity }) => {
   const { classes } = useStyles();

@@ -8,8 +8,8 @@ import {
 import { FC, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { makeStyles } from "tss-react/mui";
-import { AnalysisInputForm } from "../../analysis/components/AnalysisInputForm";
-import { useReportStore } from "../stores/fe-report-store";
+import { AnalysisInputForm } from "../analysis/components/AnalysisInputForm";
+import { useReportStore } from "../report/stores/fe-report-store";
 
 export const NewAnalysisDialog: FC = () => {
   const { classes } = useStyles();

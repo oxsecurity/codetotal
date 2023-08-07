@@ -10,12 +10,12 @@ import {
 } from "@mui/material";
 import { FC, useState } from "react";
 import { makeStyles } from "tss-react/mui";
-import { ReportType } from "../fe-report-types";
-import { Details } from "./Details";
-import { Detection } from "./Detection";
+import { ReportType } from "../../fe-report-types";
+import { Details } from "../details/Details";
+import { Detection } from "../detection/Detection";
+import { SBOM } from "../sbom/SBOM";
 import { ReportPanel } from "./ReportPanel";
 import { ReportTabPanel } from "./ReportTabPanel";
-import { SBOM } from "./SBOM";
 
 export const ReportTabs: FC = () => {
   const theme = useTheme();

@@ -1,9 +1,9 @@
 import { Paper } from "@mui/material";
 import { FC } from "react";
 import { makeStyles } from "tss-react/mui";
-import { useReportStore } from "../stores/fe-report-store";
+import { Loader } from "../../../common/Loader";
+import { useReportStore } from "../../stores/fe-report-store";
 import { LintersList } from "./LintersList";
-import { Loader } from "./Loader";
 
 export const Detection: FC = () => {
   const { classes } = useStyles();

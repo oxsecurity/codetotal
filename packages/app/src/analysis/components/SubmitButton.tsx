@@ -6,14 +6,15 @@ export const SubmitButton: FC<SubmitButtonProps> = ({ loading, ...props }) => {
   return (
     <Button
       {...props}
-      endIcon={<BiSend />}
       startIcon={
-        loading && (
+        loading ? (
           <CircularProgress
             color="inherit"
             size="small"
             sx={{ width: "1em", height: "1em" }}
           />
+        ) : (
+          <BiSend />
         )
       }
     />

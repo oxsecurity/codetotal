@@ -38,7 +38,7 @@ export interface ReportLanguage {
   percentage: number;
 }
 
-interface FileDetails {
+export interface FileDetails {
   language: string;
   fileSize: number;
   md5: string; // DevSkim: ignore DS126858
