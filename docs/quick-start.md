@@ -17,6 +17,8 @@ CodeTotal is based on docker images, so all you need to have is:
 
 ## Start CodeTotal
 
+- Run `npm install`
+
 - Run `npm run codetotal`
 
 - Open <http://localhost:8081/> in your Web browser
