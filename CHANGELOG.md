@@ -6,7 +6,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased] (beta, main branch content)
 
-- Add your updates here !
+- Use `latest` codetotal-server docker image in production docker-compose.yml
 
 ## [v0.1.0] - 2023-08-07
 
