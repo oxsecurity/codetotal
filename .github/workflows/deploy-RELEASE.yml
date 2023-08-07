@@ -70,5 +70,3 @@ jobs:
           tags: |
             ghcr.io/oxsecurity/codetotal-server:latest
             ghcr.io/oxsecurity/codetotal-server:${{ github.event.release.tag_name }}
-
-      
