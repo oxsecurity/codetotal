@@ -439,7 +439,7 @@ Example of **serverError** messageType
 
 - Commit updates on package.json and package-lock.json with message `release vX.XX.XX`
 
-- Make a Pull Request to `main` **IMPORTANT**: The PR title must contain `release` in lowercase. Example: `New release v1.2.0`.
+- Make a Pull Request to `main`. **IMPORTANT**: The PR title must contain `release` in lowercase. Example: `New release v1.2.0`.
 
 - Merge the PR if everything is ok **(use Squash & Merge option)**, else perform linter fixes until jobs are green, then merge.
 
