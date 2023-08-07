@@ -6,6 +6,7 @@ on:
       - docs
     paths:
       - "docs/**"
+      - "**.md"
 
 concurrency:
   group: ${{ github.ref }}-${{ github.workflow }}
