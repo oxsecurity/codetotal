@@ -75,6 +75,7 @@ export interface LinterCompleteMessage extends BaseMessage {
             docUrl: string;
             linterKey: string;
             linterVersion: string;
+            sbom?: any;
           };
         };
         results: [];
