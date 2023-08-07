@@ -145,7 +145,7 @@ const useStyles = makeStyles()((theme: Theme) => ({
     wordBreak: "keep-all",
   },
   resourceValue: {
-    maxWidth: 300,
+    maxWidth: 600,
     whiteSpace: "nowrap",
   },
 }));
