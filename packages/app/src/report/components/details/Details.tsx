@@ -14,6 +14,15 @@ export const Details: FC = () => {
   const loading =
     status === AnalysisStatus.Created && !fileDetails && !repoDetails;
 
+  if (resourceType === AnalysisType.Snippet) {
+    return (
+      <Typography variant="body1" color="text.secondary">
+        Details panel isn't applicable in case of a{" "}
+        <strong>Code Snippet</strong> scan
+      </Typography>
+    );
+  }
+
   const emptyMessage = (
     <Typography variant="body2" color="text.secondary">
       No details found
@@ -23,23 +32,29 @@ export const Details: FC = () => {
   // DevSkim: ignore DS126858
   return (
     <Paper className={classes.reportDetails} elevation={1}>
-      {resourceType === AnalysisType.File && (
+      {loading ? (
+        <Loader text={`Waiting for ${resourceType} info...`} />
+      ) : (
         <>
-          {fileDetails ? <FileInfo fileDetails={fileDetails} /> : emptyMessage}
-          {loading && <Loader text={`Waiting for ${resourceType} info...`} />}
+          {resourceType === AnalysisType.File && (
+            <>
+              {fileDetails ? (
+                <FileInfo fileDetails={fileDetails} />
+              ) : (
+                emptyMessage
+              )}
+            </>
+          )}
+          {resourceType === AnalysisType.Repo && (
+            <>
+              {repoDetails ? (
+                <RepoInfo repoDetails={repoDetails} />
+              ) : (
+                emptyMessage
+              )}
+            </>
+          )}
         </>
-      )}
-      {resourceType === AnalysisType.Repo && (
-        <>
-          {repoDetails ? <RepoInfo repoDetails={repoDetails} /> : emptyMessage}
-          {loading && <Loader text={`Waiting for ${resourceType} info...`} />}
-        </>
-      )}
-      {resourceType === AnalysisType.Snippet && (
-        <Typography variant="body1" color="text.secondary">
-          Details panel isn't applicable in case of a{" "}
-          <strong>Code Snippet</strong> scan
-        </Typography>
       )}
     </Paper>
   );
