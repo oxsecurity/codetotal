@@ -1,10 +1,12 @@
 import { FC, Suspense, lazy } from "react";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import { Loader } from "../../report/components/Loader";
+import { Loader } from "../../common/Loader";
 import { ErrorPage } from "./ErrorPage";
 
-const LazyAnalysisPage = lazy(() => import("../../analysis/AnalysisPage"));
-const LazyReportPage = lazy(() => import("../../report/ReportPage"));
+const LazyAnalysisPage = lazy(
+  () => import("../../analysis/components/AnalysisPage")
+);
+const LazyReportPage = lazy(() => import("../../report/components/ReportPage"));
 
 const router = createBrowserRouter([
   {
