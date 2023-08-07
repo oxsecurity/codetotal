@@ -32,7 +32,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions: write-all
     # Only run this on the main repo
-    if: github.repository == 'oxsecurity/codetotal' && !contains(github.event.head_commit.message, 'skip deploy')
+    if: github.repository == 'oxsecurity/codetotal' && !contains(github.event.head_commit.message, 'skip deploy') && !contains(github.event.head_commit.message, 'release')
     steps:
       ##########################
       # Checkout the code base #
