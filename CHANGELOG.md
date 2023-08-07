@@ -6,4 +6,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased] (beta, main branch content)
 
-Initial version
+## [v1.0.0] - 2023-08-04
+
+- Initial version

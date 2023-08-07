@@ -1,0 +1,39 @@
+import { FC, useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { AnalysisErrorDialog } from "../common/AnalysisErrorDialog";
+import { initReport } from "./actions/init-report-action";
+import { IssuesTable } from "./components/IssuesTable";
+import { NewAnalysisDialog } from "./components/NewAnalysisDialog";
+import { ReportDrawer } from "./components/ReportDrawer";
+import { ReportHeader } from "./components/ReportHeader";
+import { ReportTabs } from "./components/ReportTabs";
+
+const ReportPage: FC = () => {
+  const { requestId } = useParams();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    (async () => {
+      if (requestId) {
+        const success = await initReport(requestId);
+        if (!success) {
+          navigate("/");
+        }
+      }
+    })();
+  }, [requestId, navigate]);
+
+  return (
+    <div style={{ paddingBlockEnd: 60 }}>
+      <ReportHeader ready />
+      <ReportTabs />
+      <ReportDrawer>
+        <IssuesTable />
+      </ReportDrawer>
+      <AnalysisErrorDialog />
+      <NewAnalysisDialog />
+    </div>
+  );
+};
+
+export default ReportPage;

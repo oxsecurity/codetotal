@@ -1,9 +1,8 @@
-name: "DOC - Build and deploy - Beta"
+name: "DOC - Build and deploy - main"
 on:
   push:
     branches:
       - main
-      - development
       - docs
     paths:
       - "docs/**"

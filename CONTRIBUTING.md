@@ -106,6 +106,7 @@ Example of **megalinterStart** messageType:
       "linterCliLintMode": "file",
       "requestId": "RQ_cbdd1d82-1e7b-11ee-9258-0242ac120004",
       "docUrl": "https://megalinter.io/alpha/descriptors/bash_bash_exec",
+      "iconPngUrl": "https://raw.githubusercontent.com/oxsecurity/megalinter/main/docs/assets/icons/linters/bash-exec.png",
       "isFormatter": false,
       "isSBOM": false,
       "filesNumber": 1
@@ -118,6 +119,7 @@ Example of **megalinterStart** messageType:
       "linterCliLintMode": "list_of_files",
       "requestId": "RQ_cbdd1d82-1e7b-11ee-9258-0242ac120004",
       "docUrl": "https://megalinter.io/alpha/descriptors/bash_shellcheck",
+      "iconPngUrl": "https://raw.githubusercontent.com/oxsecurity/megalinter/main/docs/assets/icons/linters/shellcheck.png",
       "isFormatter": false,
       "isSBOM": false,
       "filesNumber": 1
@@ -130,6 +132,7 @@ Example of **megalinterStart** messageType:
       "linterCliLintMode": "list_of_files",
       "requestId": "RQ_cbdd1d82-1e7b-11ee-9258-0242ac120004",
       "docUrl": "https://megalinter.io/alpha/descriptors/bash_shfmt",
+      "iconPngUrl": "https://raw.githubusercontent.com/oxsecurity/megalinter/main/docs/assets/icons/linters/shfmt.png",
       "isFormatter": true,
       "isSBOM": false,
       "filesNumber": 1
@@ -153,6 +156,7 @@ Example of **megalinterStart** messageType:
       "linterCliLintMode": "project",
       "requestId": "RQ_cbdd1d82-1e7b-11ee-9258-0242ac120004",
       "docUrl": "https://megalinter.io/alpha/descriptors/repository_checkov",
+      "iconPngUrl": "https://raw.githubusercontent.com/oxsecurity/megalinter/main/docs/assets/icons/linters/checkov.png",
       "isFormatter": false,
       "isSBOM": false
     },
@@ -164,6 +168,7 @@ Example of **megalinterStart** messageType:
       "linterCliLintMode": "project",
       "requestId": "RQ_cbdd1d82-1e7b-11ee-9258-0242ac120004",
       "docUrl": "https://megalinter.io/alpha/descriptors/repository_devskim",
+      "iconPngUrl": "https://raw.githubusercontent.com/oxsecurity/megalinter/main/docs/assets/icons/linters/devskim.png",
       "isFormatter": false,
       "isSBOM": false
     },
@@ -175,6 +180,7 @@ Example of **megalinterStart** messageType:
       "linterCliLintMode": "project",
       "requestId": "RQ_cbdd1d82-1e7b-11ee-9258-0242ac120004",
       "docUrl": "https://megalinter.io/alpha/descriptors/repository_dustilock",
+      "iconPngUrl": "https://raw.githubusercontent.com/oxsecurity/megalinter/main/docs/assets/icons/linters/dustilock.png",
       "isFormatter": false,
       "isSBOM": false
     },
@@ -197,6 +203,7 @@ Example of **megalinterStart** messageType:
       "linterCliLintMode": "project",
       "requestId": "RQ_cbdd1d82-1e7b-11ee-9258-0242ac120004",
       "docUrl": "https://megalinter.io/alpha/descriptors/repository_gitleaks",
+      "iconPngUrl": "https://raw.githubusercontent.com/oxsecurity/megalinter/main/docs/assets/icons/linters/gitleaks.png",
       "isFormatter": false,
       "isSBOM": false
     },
@@ -208,6 +215,7 @@ Example of **megalinterStart** messageType:
       "linterCliLintMode": "project",
       "requestId": "RQ_cbdd1d82-1e7b-11ee-9258-0242ac120004",
       "docUrl": "https://megalinter.io/alpha/descriptors/repository_kics",
+      "iconPngUrl": "https://raw.githubusercontent.com/oxsecurity/megalinter/main/docs/assets/icons/linters/kics.png",
       "isFormatter": false,
       "isSBOM": false
     },
@@ -219,6 +227,7 @@ Example of **megalinterStart** messageType:
       "linterCliLintMode": "project",
       "requestId": "RQ_cbdd1d82-1e7b-11ee-9258-0242ac120004",
       "docUrl": "https://megalinter.io/alpha/descriptors/repository_secretlint",
+      "iconPngUrl": "https://raw.githubusercontent.com/oxsecurity/megalinter/main/docs/assets/icons/linters/secretlint.png",
       "isFormatter": false,
       "isSBOM": false
     },
@@ -230,6 +239,7 @@ Example of **megalinterStart** messageType:
       "linterCliLintMode": "project",
       "requestId": "RQ_cbdd1d82-1e7b-11ee-9258-0242ac120004",
       "docUrl": "https://megalinter.io/alpha/descriptors/repository_semgrep",
+      "iconPngUrl": "https://raw.githubusercontent.com/oxsecurity/megalinter/main/docs/assets/icons/linters/semgrep.png",
       "isFormatter": false,
       "isSBOM": false
     },
@@ -241,6 +251,7 @@ Example of **megalinterStart** messageType:
       "linterCliLintMode": "project",
       "requestId": "RQ_cbdd1d82-1e7b-11ee-9258-0242ac120004",
       "docUrl": "https://megalinter.io/alpha/descriptors/repository_trivy",
+      "iconPngUrl": "https://raw.githubusercontent.com/oxsecurity/megalinter/main/docs/assets/icons/linters/trivy.png",
       "isFormatter": false,
       "isSBOM": false
     },
