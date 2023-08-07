@@ -13,7 +13,7 @@ import { parseLinterStatus } from "./parse-linter-status";
 import { parseMegalinterComplete } from "./parse-megalinter-complete";
 import { parseMegalinterStart } from "./parse-megalinter-start";
 import { parseSarif } from "./parse-sarif";
-import { parsePackages } from "./parse-sbom-packages";
+import { parseSBOM } from "./parse-sbom";
 
 export const parseMessage = (msg: BaseMessage, reportStore: ReportStore) => {
   switch (msg.messageType) {
@@ -22,17 +22,22 @@ export const parseMessage = (msg: BaseMessage, reportStore: ReportStore) => {
       break;
     case MessageType.MegalinterComplete:
       parseMegalinterComplete(msg as MegalinterCompleteMessage, reportStore);
+
       break;
     case MessageType.LinterComplete:
+      if (msg.isSBOM) {
+        parseSBOM(msg, reportStore);
+        // parse ...
+      } else {
+        runSarif(msg as LinterCompleteMessage, reportStore);
+      }
       parseLinterStatus(msg as LinterCompleteMessage, reportStore);
-      runSarif(msg as LinterCompleteMessage, reportStore);
       break;
     case MessageType.ServerError:
       parseMegalinterError(msg as MegalinterErrorMessage, reportStore);
       break;
   }
 
-  parsePackages(msg, reportStore);
   parseDetails(msg, reportStore);
 };
 
