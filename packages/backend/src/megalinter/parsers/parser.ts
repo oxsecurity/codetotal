@@ -26,8 +26,7 @@ export const parseMessage = (msg: BaseMessage, reportStore: ReportStore) => {
       break;
     case MessageType.LinterComplete:
       if (msg.isSBOM) {
-        parseSBOM(msg, reportStore);
-        // parse ...
+        parseSBOM(msg as LinterCompleteMessage, reportStore);
       } else {
         runSarif(msg as LinterCompleteMessage, reportStore);
       }

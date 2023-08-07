@@ -32,3 +32,4 @@ server-files/
 /redis/
 dump.rdb
 megalinter-reports/
+1.json
