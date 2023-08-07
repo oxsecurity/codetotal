@@ -29,7 +29,8 @@ interface Component {
   type: string;
   name?: string;
   version?: string;
-  properties?: unknown[];
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  properties?: any[]; 
   purl?: string;
 }
 
@@ -127,7 +128,8 @@ async function getPackages(dependencies: Dependency[], components: Component[], 
   return sbomPackages;
 }
 
-async function fetchDataFromPyPi(name: string, version: string): Promise<unknown> {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+async function fetchDataFromPyPi(name: string, version: string): Promise<any> {
   try {
     const url = `https://pypi.org/pypi/${name}/${version}/json`
     const response = await axios.get(url);

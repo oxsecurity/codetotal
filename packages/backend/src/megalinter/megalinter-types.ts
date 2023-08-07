@@ -35,7 +35,8 @@ export interface LinterStartMessage extends BaseMessage {
   linterId: string;
   linterKey: string;
   linterVersion: string;
-  linterCliLintMode: unknown; // TODO: itay: ask Nicolas
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  linterCliLintMode: any; // TODO: itay: ask Nicolas
   requestId: string;
   docUrl: string;
   isFormatter: boolean;
@@ -75,7 +76,8 @@ export interface LinterCompleteMessage extends BaseMessage {
             docUrl: string;
             linterKey: string;
             linterVersion: string;
-            sbom?: unknown;
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            sbom?: any;
           };
         };
         results: [];
