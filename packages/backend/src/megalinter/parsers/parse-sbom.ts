@@ -29,7 +29,7 @@ interface Component {
   type: string;
   name?: string;
   version?: string;
-  properties?: any[];
+  properties?: unknown[];
   purl?: string;
 }
 
@@ -47,13 +47,14 @@ function sortByLicenseLength(arr: LicenseInfo[]): LicenseInfo[] {
   return arr.sort((a, b) => b.license.length - a.license.length);
 }
 
-async function getPackages(dependencies: Dependency[], components: Component[], applications: any) {
+async function getPackages(dependencies: Dependency[], components: Component[], applications: Record<string, string>) {
   const sbomPackages: SbomPackage[] = [];
   const sortedLicenseConfig = sortByLicenseLength(licenseConfig); 
   let filePath = ""
 
   for (const dependency of dependencies) {  
-    if (applications.hasOwnProperty(dependency.ref)) {
+    // if (applications.hasOwnProperty(dependency.ref)) {
+    if ( Object.prototype.hasOwnProperty.call(applications, dependency.ref) ) {
       filePath = applications[dependency.ref] 
     } else {
       console.log(`no application for ref: ${dependency.ref}`);
@@ -126,7 +127,7 @@ async function getPackages(dependencies: Dependency[], components: Component[], 
   return sbomPackages;
 }
 
-async function fetchDataFromPyPi(name: string, version: string): Promise<any> {
+async function fetchDataFromPyPi(name: string, version: string): Promise<unknown> {
   try {
     const url = `https://pypi.org/pypi/${name}/${version}/json`
     const response = await axios.get(url);
@@ -137,8 +138,8 @@ async function fetchDataFromPyPi(name: string, version: string): Promise<any> {
   }
 }
 
-function extractMappingForApplication(components: Component[]): { [key: string]: string } {
-  const mapping: { [key: string]: string } = {};
+function extractMappingForApplication(components: Component[]): Record<string, string> {
+  const mapping: Record<string, string> = {};
 
   for (const component of components) {
     if (component.type === "application") {
