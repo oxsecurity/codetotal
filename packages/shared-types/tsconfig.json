@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist",
+    "target": "ES5",
+    "moduleResolution": "nodenext",
+    "sourceMap": true,
+    "module": "CommonJS",
+    "lib": ["DOM"]
+  },
+  "include": ["src/index.ts"],
+  "exclude": ["node_modules", "./dist"]
+}

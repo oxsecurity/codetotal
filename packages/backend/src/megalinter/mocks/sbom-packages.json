@@ -1,0 +1,196 @@
+{
+  "packages": [
+    {
+      "packageName": "levenshtein",
+      "packageVersion": "0.21.1",
+      "license": "GNU General Public License v2 or later (GPLv2+)",
+      "registry": "PyPi",
+      "severity": "high",
+      "filePath": "poetry.lock"
+    },
+    {
+      "packageName": "paramiko",
+      "packageVersion": "3.2.0",
+      "license": "GNU Library or Lesser General Public License (LGPL)",
+      "registry": "PyPi",
+      "severity": "high",
+      "filePath": "poetry.lock"
+    },
+    {
+      "packageName": "bcrypt",
+      "packageVersion": "4.0.1",
+      "license": "Apache-2.0",
+      "registry": "PyPi",
+      "severity": "clean",
+      "filePath": "poetry.lock"
+    },
+    {
+      "packageName": "blinker",
+      "packageVersion": "1.6.2",
+      "license": "MIT",
+      "registry": "PyPi",
+      "severity": "clean",
+      "filePath": "poetry.lock"
+    },
+    {
+      "packageName": "cffi",
+      "packageVersion": "1.15.1",
+      "license": "MIT",
+      "registry": "PyPi",
+      "severity": "clean",
+      "filePath": "poetry.lock"
+    },
+    {
+      "packageName": "click",
+      "packageVersion": "8.1.4",
+      "license": "BSD License",
+      "registry": "PyPi",
+      "severity": "clean",
+      "filePath": "poetry.lock"
+    },
+    {
+      "packageName": "colorama",
+      "packageVersion": "0.4.6",
+      "license": "BSD License",
+      "registry": "PyPi",
+      "severity": "clean",
+      "filePath": "poetry.lock"
+    },
+    {
+      "packageName": "cryptography",
+      "packageVersion": "41.0.2",
+      "license": "Apache Software License, BSD License",
+      "registry": "PyPi",
+      "severity": "clean",
+      "filePath": "poetry.lock"
+    },
+    {
+      "packageName": "flask",
+      "packageVersion": "2.3.2",
+      "license": "BSD-3-Clause",
+      "registry": "PyPi",
+      "severity": "clean",
+      "filePath": "poetry.lock"
+    },
+    {
+      "packageName": "itsdangerous",
+      "packageVersion": "2.1.2",
+      "license": "BSD-3-Clause",
+      "registry": "PyPi",
+      "severity": "clean",
+      "filePath": "poetry.lock"
+    },
+    {
+      "packageName": "jinja2",
+      "packageVersion": "3.1.2",
+      "license": "BSD-3-Clause",
+      "registry": "PyPi",
+      "severity": "clean",
+      "filePath": "poetry.lock"
+    },
+    {
+      "packageName": "markupsafe",
+      "packageVersion": "2.1.3",
+      "license": "BSD-3-Clause",
+      "registry": "PyPi",
+      "severity": "clean",
+      "filePath": "poetry.lock"
+    },
+    {
+      "packageName": "numpy",
+      "packageVersion": "1.25.1",
+      "license": "BSD License",
+      "registry": "PyPi",
+      "severity": "clean",
+      "filePath": "poetry.lock"
+    },
+    {
+      "packageName": "pandas",
+      "packageVersion": "2.0.3",
+      "license": "BSD License",
+      "registry": "PyPi",
+      "severity": "clean",
+      "filePath": "poetry.lock"
+    },
+    {
+      "packageName": "pycparser",
+      "packageVersion": "2.21",
+      "license": "BSD License",
+      "registry": "PyPi",
+      "severity": "clean",
+      "filePath": "poetry.lock"
+    },
+    {
+      "packageName": "pynacl",
+      "packageVersion": "1.5.0",
+      "license": "Apache-2.0",
+      "registry": "PyPi",
+      "severity": "clean",
+      "filePath": "poetry.lock"
+    },
+    {
+      "packageName": "python-dateutil",
+      "packageVersion": "2.8.2",
+      "license": "Apache Software License, BSD License",
+      "registry": "PyPi",
+      "severity": "clean",
+      "filePath": "poetry.lock"
+    },
+    {
+      "packageName": "pytz",
+      "packageVersion": "2023.3",
+      "license": "MIT License",
+      "registry": "PyPi",
+      "severity": "clean",
+      "filePath": "poetry.lock"
+    },
+    {
+      "packageName": "pyyaml",
+      "packageVersion": "6.0",
+      "license": "MIT License",
+      "registry": "PyPi",
+      "severity": "clean",
+      "filePath": "poetry.lock"
+    },
+    {
+      "packageName": "rapidfuzz",
+      "packageVersion": "3.1.1",
+      "license": "MIT",
+      "registry": "PyPi",
+      "severity": "clean",
+      "filePath": "poetry.lock"
+    },
+    {
+      "packageName": "requests",
+      "packageVersion": "2.1.0",
+      "license": "Apache Software License",
+      "registry": "PyPi",
+      "severity": "clean",
+      "filePath": "poetry.lock"
+    },
+    {
+      "packageName": "six",
+      "packageVersion": "1.16.0",
+      "license": "MIT",
+      "registry": "PyPi",
+      "severity": "clean",
+      "filePath": "poetry.lock"
+    },
+    {
+      "packageName": "tzdata",
+      "packageVersion": "2023.3",
+      "license": "Apache Software License",
+      "registry": "PyPi",
+      "severity": "clean",
+      "filePath": "poetry.lock"
+    },
+    {
+      "packageName": "werkzeug",
+      "packageVersion": "2.3.6",
+      "license": "BSD-3-Clause",
+      "registry": "PyPi",
+      "severity": "clean",
+      "filePath": "poetry.lock"
+    }
+  ]
+}

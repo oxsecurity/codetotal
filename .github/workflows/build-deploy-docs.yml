@@ -1,0 +1,31 @@
+name: "DOC - Build and deploy - main"
+on:
+  push:
+    branches:
+      - main
+      - docs
+    paths:
+      - "docs/**"
+
+concurrency:
+  group: ${{ github.ref }}-${{ github.workflow }}
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    if: github.repository == 'oxsecurity/codetotal'
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v4.5.0
+        with:
+          python-version: 3.10.4
+      - run: pip install --upgrade markdown==3.3.7 mkdocs-material pymdown-extensions==9.11 mkdocs-glightbox==0.3.2 mdx_truly_sane_lists
+      - run: |
+          git config --global user.name megalinter-bot
+          git config --global user.email nicolas.vuillamy@ox.security
+      - run: mkdocs gh-deploy --force

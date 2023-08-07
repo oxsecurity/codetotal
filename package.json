@@ -1,0 +1,59 @@
+{
+  "name": "codetotal",
+  "scripts": {
+    "start": "turbo run start",
+    "postinstall": "npm run build --workspace=packages/shared-types",
+    "lint": "npm run lint --workspaces",
+    "prebuild": "npm run clean",
+    "build": "npm run build --workspaces",
+    "postbuild": "mv ./packages/backend/dist . && mkdir -p ./dist/public && mv ./packages/app/dist/* ./dist/public",
+    "clean": "rm -rf dist && npm run clean --workspaces",
+    "production": "cross-env NODE_ENV=production node -r dotenv/config dist/index.js dotenv_config_path=./.env dotenv_config_debug=true",
+    "build:be": "npm run build:st && npm run build --workspace=packages/backend",
+    "build:st": "npm run build --workspace=packages/shared-types",
+    "start:be": "npm start --workspace=packages/backend",
+    "start:fe": "npm start --workspace=packages/app",
+    "test": "npm test --workspace=packages/backend",
+    "start:test": "npm run start:test --workspace=packages/backend",
+    "prestart:megalinter": "cross-env DOCKER_DEFAULT_PLATFORM=linux/amd64 docker-compose -f docker-compose-megalinter.yml pull",
+    "start:megalinter": "cross-env DOCKER_DEFAULT_PLATFORM=linux/amd64 docker-compose -f docker-compose-megalinter.yml up",
+    "precodetotal:dev": "docker build -t codetotal-server:dev --platform linux/amd64 -f Dockerfile .",
+    "codetotal:dev": "cross-env DOCKER_DEFAULT_PLATFORM=linux/amd64 docker-compose -f docker-compose-local.yml up",
+    "precodetotal": "cross-env DOCKER_DEFAULT_PLATFORM=linux/amd64 docker-compose -f docker-compose.yml pull",
+    "codetotal": "cross-env echo \"When CodeTotal is up, open http://localhost:8081\" && cross-env DOCKER_DEFAULT_PLATFORM=linux/amd64 docker-compose -f docker-compose.yml up",
+    "doc:install": "pip install --upgrade markdown==3.3.7 mkdocs-material pymdown-extensions==9.11 mkdocs-glightbox==0.3.2 mdx_truly_sane_lists",
+    "doc:test": "mkdocs serve",
+    "e2e": "npx cypress open"
+  },
+  "pre-commit": [
+    "test",
+    "lint"
+  ],
+  "workspaces": [
+    "packages/shared-types",
+    "packages/backend",
+    "packages/app"
+  ],
+  "version": "1.0.0",
+  "description": "CodeTotal mono-repo",
+  "devDependencies": {
+    "@jest/globals": "^29.6.1",
+    "@types/jest": "^29.5.3",
+    "cross-env": "^7.0.3",
+    "cypress": "^12.17.1",
+    "jest": "^29.6.1",
+    "nodemon": "^2.0.22",
+    "npm-run-all": "^4.1.5",
+    "pre-commit": "^1.2.2",
+    "ts-jest": "^29.1.1",
+    "ts-node": "^10.9.1",
+    "turbo": "^1.10.12",
+    "typescript": "^5.1.6"
+  },
+  "keywords": [],
+  "author": "Itay",
+  "license": "ISC",
+  "dependencies": {
+    "shared-types": "^1.0.0"
+  }
+}
