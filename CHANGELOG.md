@@ -6,6 +6,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased] (beta, main branch content)
 
+_Can be run using `npm run codetotal:beta`_
+
+- Global
+
+- Front-end
+
+- Back-End
+
+## [v0.2.0] - 2023-08-09
+
 - Global
   - Use `latest` codetotal-server docker image in production docker-compose.yml
   - Deploy online doc when any markdown file is updated
