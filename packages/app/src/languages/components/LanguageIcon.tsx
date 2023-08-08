@@ -1,9 +1,12 @@
-import { Theme, Tooltip, useTheme } from "@mui/material";
+import { Theme, Typography, useTheme } from "@mui/material";
 import { FC } from "react";
 import { ProgrammingLanguage } from "shared-types";
 import { makeStyles } from "tss-react/mui";
 
-export const LanguageIcon: FC<LanguageIconProps> = ({ language }) => {
+export const LanguageIcon: FC<LanguageIconProps> = ({
+  language,
+  withLabel,
+}) => {
   const { classes, cx } = useStyles();
   const theme = useTheme();
   const isDarkmode = theme.palette.mode === "dark";
@@ -17,22 +20,25 @@ export const LanguageIcon: FC<LanguageIconProps> = ({ language }) => {
   const requiresBackground = isDarkmode && language.icon === "plain";
 
   return (
-    <Tooltip title={language.name || ""} arrow placement="top">
-      <span
-        className={cx(
-          classes.languageIcon,
-          requiresBackground && classes.darkmode
-        )}
-      >
-        <img
-          src={`https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${language.name?.toLowerCase()}/${language.name?.toLowerCase()}-${
-            language.icon
-          }.svg`}
-          className={classes.img}
-          alt="programming language icon"
-        />
-      </span>
-    </Tooltip>
+    <span
+      className={cx(
+        classes.languageIcon,
+        requiresBackground && classes.darkmode
+      )}
+    >
+      <img
+        src={`https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${language.name?.toLowerCase()}/${language.name?.toLowerCase()}-${
+          language.icon
+        }.svg`}
+        className={classes.img}
+        alt="programming language icon"
+      />
+      {withLabel && (
+        <Typography component="span" variant="body2" fontWeight={600}>
+          {language.displayName}
+        </Typography>
+      ) }
+    </span>
   );
 };
 
@@ -41,6 +47,8 @@ const useStyles = makeStyles()((theme: Theme) => ({
     display: "inline-flex",
     height: "1em",
     width: "1em",
+    gap: theme.spacing(1),
+    alignItems: "center",
   },
   img: {
     width: "100%",
@@ -55,4 +63,5 @@ const useStyles = makeStyles()((theme: Theme) => ({
 
 interface LanguageIconProps {
   language?: ProgrammingLanguage;
+  withLabel?: boolean;
 }

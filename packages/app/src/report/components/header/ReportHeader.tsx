@@ -71,7 +71,7 @@ export const ReportHeader: FC<ReportBannerProps> = ({ ready }) => {
             valueClassName={classes.resourceValue}
           />
           <div className={classes.languageIcon}>
-            <LanguageIcon language={language} />
+            <LanguageIcon language={language} withLabel />
           </div>
         </div>
         <Divider orientation="horizontal" sx={{ marginBlockStart: 0.5 }} />
@@ -126,6 +126,7 @@ const useStyles = makeStyles()((theme: Theme) => ({
   },
   statsContainer: {
     paddingBlockStart: theme.spacing(2),
+    paddingBlockEnd: theme.spacing(1),
     display: "flex",
     flexDirection: "column",
     gap: theme.spacing(4),
@@ -152,7 +153,7 @@ const useStyles = makeStyles()((theme: Theme) => ({
   },
   languageIcon: {
     display: "flex",
-    marginBlockEnd: "3px",
+    marginBlockEnd: "1px",
   },
 }));
 
