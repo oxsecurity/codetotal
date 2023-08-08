@@ -78,7 +78,6 @@ export const LanguageSelector: FC<LanguageSelectorProps> = ({
       renderInput={(params) => (
         <TextField
           {...params}
-          label="Language"
           placeholder="Select language"
           InputProps={{
             ...params.InputProps,
