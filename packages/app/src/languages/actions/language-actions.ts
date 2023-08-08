@@ -1,6 +1,6 @@
 import axios from "axios";
 import { ProgrammingLanguage } from "shared-types";
-import { backendUrl } from "../../common/utils/backend-url";
+import { ApiUrl } from "../../common/utils/api-url-config";
 import { LanguagesStore } from "../stores/languages-store";
 
 export const loadAllLanguages = async () => {
@@ -11,7 +11,7 @@ export const loadAllLanguages = async () => {
 
     LanguagesStore.setState({ loading: true, error: false });
     const res = await axios.get<ProgrammingLanguage[]>(
-      `${backendUrl}/all-languages`
+      `${ApiUrl}/all-languages`
     );
 
     LanguagesStore.setState({ languages: res.data });

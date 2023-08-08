@@ -1,7 +1,7 @@
 import axios from "axios";
 import debounce from "lodash-es/debounce";
 import { ProgrammingLanguage } from "shared-types";
-import { backendUrl } from "../../common/utils/backend-url";
+import { ApiUrl } from "../../common/utils/api-url-config";
 import { LanguagesStore } from "../stores/languages-store";
 
 export const detect = async (
@@ -16,7 +16,7 @@ export const detect = async (
   LanguagesStore.setState({ loading: true });
 
   const res = await axios.post<ProgrammingLanguage | undefined>(
-    `${backendUrl}/detect`,
+    `${ApiUrl}/detect`,
     { snippet }
   );
 

@@ -6,6 +6,7 @@ import {
   ListItemText,
   Paper,
   TextField,
+  useTheme,
 } from "@mui/material";
 import React, { FC, SyntheticEvent, useCallback } from "react";
 import { ProgrammingLanguage } from "shared-types";
@@ -19,6 +20,7 @@ export const LanguageSelector: FC<LanguageSelectorProps> = ({
   onChange,
   onClear,
 }) => {
+  const theme = useTheme();
   const { languages, loading } = useLanguagesStore();
 
   const handleChange = useCallback(
@@ -65,7 +67,9 @@ export const LanguageSelector: FC<LanguageSelectorProps> = ({
       )}
       renderOption={(props, option) => (
         <ListItem {...props}>
-          <ListItemIcon sx={{ minWidth: "auto", paddingInlineEnd: 2 }}>
+          <ListItemIcon
+            sx={{ minWidth: "auto", paddingInlineEnd: theme.spacing(2) }}
+          >
             <LanguageIcon language={option} />
           </ListItemIcon>
           <ListItemText>{option.displayName}</ListItemText>
@@ -78,6 +82,7 @@ export const LanguageSelector: FC<LanguageSelectorProps> = ({
           placeholder="Select language"
           InputProps={{
             ...params.InputProps,
+            style: { paddingInlineStart: 16 },
             startAdornment: (
               <LanguageIcon
                 language={userSelectedLanguage || detectedLanguage}

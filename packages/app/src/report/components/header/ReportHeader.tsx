@@ -152,7 +152,7 @@ const useStyles = makeStyles()((theme: Theme) => ({
   },
   languageIcon: {
     display: "flex",
-    marginBlockEnd: "1px",
+    marginBlockEnd: "3px",
   },
 }));
 
