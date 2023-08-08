@@ -71,7 +71,7 @@ export const ReportHeader: FC<ReportBannerProps> = ({ ready }) => {
             valueClassName={classes.resourceValue}
           />
           <div className={classes.languageIcon}>
-            <LanguageIcon language={language} />
+            <LanguageIcon language={language} withLabel />
           </div>
         </div>
         <Divider orientation="horizontal" sx={{ marginBlockStart: 0.5 }} />
