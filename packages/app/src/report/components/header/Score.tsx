@@ -3,7 +3,7 @@ import Box from "@mui/material/Box/Box";
 import CircularProgress, {
   CircularProgressProps,
 } from "@mui/material/CircularProgress/CircularProgress";
-import { FC, LegacyRef, useEffect, useState } from "react";
+import { FC, LegacyRef } from "react";
 import CountUp from "react-countup";
 import { makeStyles } from "tss-react/mui";
 
@@ -21,13 +21,6 @@ export const Score: FC<ScoreProps> = ({
   className,
 }) => {
   const { classes } = useStyles();
-  const [progress, setProgress] = useState(0);
-
-  useEffect(() => {
-    if (value > 0) {
-      setProgress(value);
-    }
-  }, [value, progress]);
 
   return (
     <Box
@@ -41,7 +34,7 @@ export const Score: FC<ScoreProps> = ({
       <CircularProgress
         {...sharedProps}
         size={size}
-        value={progress}
+        value={value}
         classes={{
           circle: classes.circle,
         }}
