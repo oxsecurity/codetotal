@@ -7,7 +7,7 @@ export const LanguageIcon: FC<LanguageIconProps> = ({ language }) => {
   const { classes, cx } = useStyles();
   const theme = useTheme();
   const isDarkmode = theme.palette.mode === "dark";
-  if (!language) {
+  if (!language || !language.icon) {
     return null;
   }
 
@@ -38,12 +38,12 @@ export const LanguageIcon: FC<LanguageIconProps> = ({ language }) => {
 const useStyles = makeStyles()((theme: Theme) => ({
   languageIcon: {
     display: "inline-flex",
-    height: "2em",
-    width: "2em",
+    height: "1.3em",
+    // width: "1.3em",
   },
   img: {
     width: "100%",
-    height: "100%",
+    height: "auto",
   },
   darkmode: {
     backgroundColor: theme.palette.text.secondary,

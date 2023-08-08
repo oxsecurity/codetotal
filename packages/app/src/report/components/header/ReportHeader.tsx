@@ -8,11 +8,11 @@ import {
 } from "@mui/material";
 import { FC } from "react";
 import { makeStyles } from "tss-react/mui";
-import { LanguageIcon } from "../../../common/LanguageIcon";
+import { LanguageIcon } from "../../../languages/components/LanguageIcon";
 import { useReportStore } from "../../stores/fe-report-store";
-import { Score } from "./Score";
 import { ReportHeaderSection } from "./ReportHeaderSection";
 import { ReportToolbar } from "./ReportToolbar";
+import { Score } from "./Score";
 
 export const ReportHeader: FC<ReportBannerProps> = ({ ready }) => {
   const { classes } = useStyles();
