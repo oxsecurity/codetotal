@@ -1,6 +1,6 @@
 import axios from "axios";
 import { AnalysisStatus } from "shared-types";
-import { backendUrl } from "../../common/utils/backend-url";
+import { ApiUrl } from "../../common/utils/api-url-config";
 import { ReportStore } from "../stores/fe-report-store";
 import { subscribeToReportProgress } from "./subscribe-report-action";
 
@@ -10,7 +10,7 @@ export const initReport = async (requestId: string) => {
     ReportStore.getState().reset();
 
     // fetch report
-    const res = await axios.get(`${backendUrl}/report/${requestId}`);
+    const res = await axios.get(`${ApiUrl}/report/${requestId}`);
 
     const { status } = res.data;
     switch (status) {

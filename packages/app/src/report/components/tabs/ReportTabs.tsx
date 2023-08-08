@@ -42,7 +42,6 @@ export const ReportTabs: FC = () => {
           onChange={handlePanelTypeChange}
         >
           <Tab
-            autoFocus
             label="Detection"
             className={classes.tab}
             classes={{ selected: classes.selectedTab }}

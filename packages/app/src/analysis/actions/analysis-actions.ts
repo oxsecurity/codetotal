@@ -6,7 +6,7 @@ import {
   RepoAnalysis,
   SnippetAnalysis,
 } from "shared-types";
-import { backendUrl } from "../../common/utils/backend-url";
+import { ApiUrl } from "../../common/utils/api-url-config";
 import { AnalysisStore, AsyncState } from "../stores/analysis-store";
 
 export const startAnalysis = async () => {
@@ -16,7 +16,7 @@ export const startAnalysis = async () => {
 
   try {
     const data = createRequestData();
-    const report = await axios.post(`${backendUrl}/analysis`, data, {
+    const report = await axios.post(`${ApiUrl}/analysis`, data, {
       headers: {
         "Content-Type": "multipart/form-data",
       },
@@ -32,8 +32,14 @@ export const startAnalysis = async () => {
 };
 
 const createRequestData = (): Analysis | undefined => {
-  const { inputType, repositoryURL, file, snippet, language } =
-    AnalysisStore.getState();
+  const {
+    inputType,
+    repositoryURL,
+    file,
+    snippet,
+    userSelectedLanguage,
+    detectedLanguage,
+  } = AnalysisStore.getState();
   const sharedVariables = {
     name: "Lint",
     inputType,
@@ -48,7 +54,7 @@ const createRequestData = (): Analysis | undefined => {
       return {
         ...sharedVariables,
         snippet,
-        language,
+        language: userSelectedLanguage || detectedLanguage,
       } as SnippetAnalysis;
   }
 };

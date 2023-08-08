@@ -18,6 +18,7 @@ const initialState: InitialState = {
   wsError: undefined,
   analysisError: undefined,
   newAnalysisDialogOpen: false,
+  language: undefined,
 };
 
 export const ReportStore = createStore<FeReportStoreState>((set, get) => ({

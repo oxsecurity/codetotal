@@ -17,7 +17,7 @@ export const Footer: FC = () => {
             className={classes.footerText}
             component="div"
           >
-            <p style={{ fontWeight: 400 }}>Brought to you by</p>
+            <p style={{ fontWeight: 400 }}>CodeTotal brought to you by</p>
             <img src={oxLogo} className={classes.oxLogo} alt="OX Logo" />
             <a
               className={classes.link}
@@ -57,13 +57,13 @@ const useStyles = makeStyles()((theme: Theme) => ({
     flexDirection: "column",
     height: FOOTER_HEIGHT,
     background: theme.palette.background.default,
+    zIndex: 10,
   },
   background: {
     backgroundImage: `url(${bg})`,
     backgroundRepeat: "no-repeat",
     backgroundPosition: "top",
     backgroundSize: "contain",
-    zIndex: 10,
     flexGrow: 1,
   },
   footerContent: {
@@ -80,7 +80,8 @@ const useStyles = makeStyles()((theme: Theme) => ({
     alignItems: "center",
     gap: "0.5ch",
     flexWrap: "wrap",
-    fontSize: 12,
+    fontSize: 13,
+    fontWeight: 400,
     lineHeight: 1,
   },
   link: {
