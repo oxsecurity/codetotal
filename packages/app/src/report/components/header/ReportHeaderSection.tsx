@@ -38,6 +38,7 @@ const useStyles = makeStyles()((theme: Theme) => ({
       fontWeight: "bold",
       textOverflow: "ellipsis",
       overflow: "hidden",
+      lineHeight: 1,
     },
   },
 }));

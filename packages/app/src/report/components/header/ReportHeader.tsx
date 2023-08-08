@@ -8,11 +8,11 @@ import {
 } from "@mui/material";
 import { FC } from "react";
 import { makeStyles } from "tss-react/mui";
-import { LanguageIcon } from "../../../common/LanguageIcon";
+import { LanguageIcon } from "../../../languages/components/LanguageIcon";
 import { useReportStore } from "../../stores/fe-report-store";
-import { Score } from "./Score";
 import { ReportHeaderSection } from "./ReportHeaderSection";
 import { ReportToolbar } from "./ReportToolbar";
+import { Score } from "./Score";
 
 export const ReportHeader: FC<ReportBannerProps> = ({ ready }) => {
   const { classes } = useStyles();
@@ -70,7 +70,9 @@ export const ReportHeader: FC<ReportBannerProps> = ({ ready }) => {
             dataCy="resource-value"
             valueClassName={classes.resourceValue}
           />
-          <LanguageIcon language={language} />
+          <div className={classes.languageIcon}>
+            <LanguageIcon language={language} />
+          </div>
         </div>
         <Divider orientation="horizontal" sx={{ marginBlockStart: 0.5 }} />
         <ReportToolbar />
@@ -147,6 +149,10 @@ const useStyles = makeStyles()((theme: Theme) => ({
   resourceValue: {
     maxWidth: 600,
     whiteSpace: "nowrap",
+  },
+  languageIcon: {
+    display: "flex",
+    marginBlockEnd: "3px",
   },
 }));
 

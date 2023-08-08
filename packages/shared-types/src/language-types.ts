@@ -1,5 +1,6 @@
 export interface ProgrammingLanguage {
   id: string;
-  name?: string;
+  name: string;
+  displayName: string;
   icon?: string;
 }

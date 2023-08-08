@@ -8,7 +8,8 @@ const initialState: AnalysisStoreState = {
   file: undefined,
   sending: "idle",
   inputType: AnalysisType.Snippet,
-  language: undefined,
+  userSelectedLanguage: undefined,
+  detectedLanguage: undefined,
 };
 
 export const AnalysisStore = createStore<
@@ -26,7 +27,8 @@ interface AnalysisStoreState {
   file?: File;
   sending: OneOfValues<typeof AsyncState>;
   inputType: OneOfValues<typeof AnalysisType>;
-  language?: ProgrammingLanguage;
+  userSelectedLanguage?: ProgrammingLanguage;
+  detectedLanguage?: ProgrammingLanguage;
 }
 
 interface AnalysisStoreFunctions {

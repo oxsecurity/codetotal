@@ -1,20 +1,29 @@
-import { TextField, Theme, Typography } from "@mui/material";
+import { TextField, Theme } from "@mui/material";
 import { FC, useCallback } from "react";
 import { makeStyles } from "tss-react/mui";
-import { LanguageIcon } from "../../common/LanguageIcon";
-import { fetchDetect } from "../../common/utils/detect-lanauge-utils";
+import { LanguageSelector } from "../../languages/components/LanguageSelector";
+import {
+  clearLanguages,
+  detectSnippetLanguage,
+  setUserSelectedLanguage,
+} from "../actions/analysis-language-actions";
 import { AnalysisStore, useAnalysisStore } from "../stores/analysis-store";
 import { AnalysisFormProps } from "./AnalysisInputForm";
 import { SubmitButton } from "./SubmitButton";
 
 export const CodeSnippetForm: FC<AnalysisFormProps> = ({ onSubmit }) => {
   const { classes } = useStyles();
-  const { snippet, snippetEnabled, sending, language } = useAnalysisStore();
+  const {
+    snippet,
+    snippetEnabled,
+    sending,
+    detectedLanguage,
+    userSelectedLanguage,
+  } = useAnalysisStore();
 
   const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-    const snippet = e.target.value;
-    AnalysisStore.setState({ snippet });
-    fetchDetect(snippet);
+    AnalysisStore.setState({ snippet: e.target.value });
+    detectSnippetLanguage(e.target.value);
   }, []);
 
   return (
@@ -33,19 +42,12 @@ export const CodeSnippetForm: FC<AnalysisFormProps> = ({ onSubmit }) => {
         }}
       />
       <div className={classes.footer}>
-        <div>
-          {language && language.name && (
-            <div className={classes.language}>
-              {language.icon ? (
-                <LanguageIcon language={language} />
-              ) : (
-                <Typography variant="body2" color="text.secondary">
-                  {language.name}
-                </Typography>
-              )}
-            </div>
-          )}
-        </div>
+        <LanguageSelector
+          detectedLanguage={detectedLanguage}
+          userSelectedLanguage={userSelectedLanguage}
+          onChange={setUserSelectedLanguage}
+          onClear={clearLanguages}
+        />
         <SubmitButton
           variant="contained"
           color="primary"
@@ -68,11 +70,6 @@ const useStyles = makeStyles()((theme: Theme) => ({
     alignItems: "center",
     gap: theme.spacing(2),
     padding: theme.spacing(1),
-  },
-  language: {
-    display: "flex",
-    gap: theme.spacing(1),
-    alignSelf: "flex-start",
   },
   footer: {
     display: "flex",
