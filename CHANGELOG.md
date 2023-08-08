@@ -6,11 +6,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased] (beta, main branch content)
 
-- Use `latest` codetotal-server docker image in production docker-compose.yml
-- Deploy online doc when any markdown file is updated
-- Language selection in snippet analysis form
-- Language name added next to the icon in report header
-- "CodeTotal" text added to the footer
+- Global
+  - Use `latest` codetotal-server docker image in production docker-compose.yml
+  - Deploy online doc when any markdown file is updated
+
+- Front-end
+  - Language selection in snippet analysis form
+  - Language name added next to the icon in report header
+  - "CodeTotal" text added to the footer
+
+- Back-End
+  - Add SBOM management for NPM packages
+  - Replace nodemon by ts-node to run back-end in dev mode
 
 ## [v0.1.0] - 2023-08-07
 

@@ -5,7 +5,7 @@
   "types": "./src/index.ts",
   "main": "./dist/index.js",
   "scripts": {
-    "start": "nodemon -r dotenv/config ./src/index.ts dotenv_config_path=../../.env dotenv_config_debug=true",
+    "start": "ts-node -r dotenv/config ./src/index.ts dotenv_config_path=../../.env dotenv_config_debug=true",
     "build": "tsc",
     "test": "jest",
     "start:test": "jest --coverage --watch",
@@ -39,6 +39,7 @@
     "@typescript-eslint/parser": "^5.61.0",
     "eslint": "^8.44.0",
     "nodemon": "^2.0.22",
+    "ts-node": "^10.9.1",
     "typescript": "^5.1.6",
     "typia": "^4.1.7"
   }
