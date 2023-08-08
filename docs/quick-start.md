@@ -20,6 +20,7 @@ CodeTotal is based on docker images, so all you need to have is:
 - Run `npm install`
 
 - Run `npm run codetotal`
+  - _Alternative: `npm run codetotal:beta` to run beta version)_
 
 - Open <http://localhost:8081/> in your Web browser
 

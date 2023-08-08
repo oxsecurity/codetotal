@@ -9,6 +9,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Global
   - Use `latest` codetotal-server docker image in production docker-compose.yml
   - Deploy online doc when any markdown file is updated
+  - Factorize docker-compose
+    - `npm run codetotal` runs latest release of CodeTotal and beta version MegaLinter (in the future it will be latest)
+    - `npm run codetotal:beta` runs beta version of CodeTotal and MegaLinter
+    - `npm run codetotal:dev` locally builds CodeTotal then runs it with beta version of MegaLinter
+
 
 - Front-end
   - Language selection in snippet analysis form
