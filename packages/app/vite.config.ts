@@ -11,6 +11,9 @@ export default defineConfig(({ command }) => {
     plugins.push(
       checker({
         typescript: true,
+        overlay: {
+          initialIsOpen: false,
+        },
       })
     );
   }
