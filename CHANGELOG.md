@@ -14,7 +14,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
     - `npm run codetotal:beta` runs beta version of CodeTotal and MegaLinter
     - `npm run codetotal:dev` locally builds CodeTotal then runs it with beta version of MegaLinter
 
-
 - Front-end
   - Language selection in snippet analysis form
   - Language name added next to the icon in report header
