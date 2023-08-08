@@ -266,6 +266,12 @@
 <li>Global<ul>
 <li>Use <code>latest</code> codetotal-server docker image in production docker-compose.yml</li>
 <li>Deploy online doc when any markdown file is updated</li>
+<li>Factorize docker-compose<ul>
+<li><code>npm run codetotal</code> runs latest release of CodeTotal and beta version MegaLinter (in the future it will be latest)</li>
+<li><code>npm run codetotal:beta</code> runs beta version of CodeTotal and MegaLinter</li>
+<li><code>npm run codetotal:dev</code> locally builds CodeTotal then runs it with beta version of MegaLinter</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
