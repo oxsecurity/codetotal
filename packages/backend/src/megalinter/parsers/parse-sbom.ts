@@ -9,19 +9,19 @@ export const parseSBOM = async (msg: LinterCompleteMessage, reportStore: ReportS
   const { packages } = reportStore.get();
   if (!packages) {
     if (msg?.outputSarif?.runs
-      && msg?.outputSarif?.runs.length > 0 
+      && msg?.outputSarif?.runs.length > 0
       && msg.outputSarif.runs[0]?.properties?.megalinter?.sbom) {
-        console.log('parsing sbom...')
-      
-        const components = msg.outputSarif.runs[0].properties.megalinter.sbom.components as Component[];
-        const dependencies = msg.outputSarif.runs[0].properties.megalinter.sbom.dependencies as Dependency[];
-        const applications = extractMappingForApplication(components);
-        const sbomPackages: SbomPackage[] = await getPackages(dependencies, components, applications);
-        if (sbomPackages && sbomPackages.length > 0) {
-          reportStore.set({ packages: sbomPackages });
-        }
+      console.log('parsing sbom...')
+
+      const components = msg.outputSarif.runs[0].properties.megalinter.sbom.components as Component[];
+      const dependencies = msg.outputSarif.runs[0].properties.megalinter.sbom.dependencies as Dependency[];
+      const applications = extractMappingForApplication(components);
+      const sbomPackages: SbomPackage[] = await getPackages(dependencies, components, applications);
+      if (sbomPackages && sbomPackages.length > 0) {
+        reportStore.set({ packages: sbomPackages });
       }
     }
+  }
 };
 
 interface Component {
@@ -30,7 +30,7 @@ interface Component {
   name?: string;
   version?: string;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  properties?: any[]; 
+  properties?: any[];
   purl?: string;
 }
 
@@ -55,18 +55,18 @@ function sortByLicenseLength(arr: LicenseInfo[]): LicenseInfo[] {
 
 async function getPackages(dependencies: Dependency[], components: Component[], applications: Record<string, string>) {
   const sbomPackages: SbomPackage[] = [];
-  const sortedLicenseConfig = sortByLicenseLength(licenseConfig); 
+  const sortedLicenseConfig = sortByLicenseLength(licenseConfig);
   let filePath = ""
 
-  for (const dependency of dependencies) {  
+  for (const dependency of dependencies) {
     // if (applications.hasOwnProperty(dependency.ref)) {
-    if ( Object.prototype.hasOwnProperty.call(applications, dependency.ref) ) {
-      filePath = applications[dependency.ref] 
+    if (Object.prototype.hasOwnProperty.call(applications, dependency.ref)) {
+      filePath = applications[dependency.ref]
     } else {
       console.log(`no application for ref: ${dependency.ref}`);
     }
     if (dependency.dependsOn) {
-      for(const purl of dependency.dependsOn) { 
+      for (const purl of dependency.dependsOn) {
         console.log(`working on purl ${purl}`);
         const component = components.find((component) => component.purl === purl);
         let registry = "";
@@ -75,7 +75,7 @@ async function getPackages(dependencies: Dependency[], components: Component[], 
         if (component) {
           const packageName = component.name;
           const packageVersion = component.version;
-          const sourceList: string[]= [];
+          const sourceList: string[] = [];
 
           if (purl.startsWith("pkg:pypi")) {
             registry = "PyPi";
@@ -86,22 +86,26 @@ async function getPackages(dependencies: Dependency[], components: Component[], 
               }
               if (packageInfo.info.classifiers) {
                 sourceList.push(packageInfo?.info.classifiers.join(' '));
-              }             
+              }
             } catch (error) {
               console.error('Error:', error);
             }
           } else if (purl.startsWith("pkg:npm")) {
-            const packageInfo = await fetchDataFromNPM(packageName, packageVersion);
-            if (packageInfo?.license) {
-              sourceList.push(packageInfo.license);
-            } else if (packageInfo?.licenses) {
-              packageInfo.licenses.forEach((npmLicense: NpmLicense) => {
-                if (npmLicense.type) {
-                  sourceList.push(npmLicense.type);
-                }
-              });
-            } else {
-              console.log(`missing license for: ${purl}`);
+            try {
+              const packageInfo = await fetchDataFromNPM(packageName, packageVersion);
+              if (packageInfo?.license) {
+                sourceList.push(packageInfo.license);
+              } else if (packageInfo?.licenses) {
+                packageInfo.licenses.forEach((npmLicense: NpmLicense) => {
+                  if (npmLicense.type) {
+                    sourceList.push(npmLicense.type);
+                  }
+                });
+              } else {
+                console.log(`missing license for: ${purl}`);
+              }
+            } catch (error) {
+              console.error('Error:', error);
             }
           } else {
             console.log(`purl: ${purl}`);
@@ -117,7 +121,7 @@ async function getPackages(dependencies: Dependency[], components: Component[], 
                 severity = Severity[licenseItem.severity];
                 break;
               }
-            } 
+            }
           }
 
           sbomPackages.push({
