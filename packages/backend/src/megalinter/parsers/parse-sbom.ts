@@ -44,6 +44,11 @@ interface LicenseInfo {
   severity: string;
 }
 
+interface NpmLicense {
+  type?: string;
+  url?: string;
+}
+
 function sortByLicenseLength(arr: LicenseInfo[]): LicenseInfo[] {
   return arr.sort((a, b) => b.license.length - a.license.length);
 }
@@ -70,39 +75,51 @@ async function getPackages(dependencies: Dependency[], components: Component[], 
         if (component) {
           const packageName = component.name;
           const packageVersion = component.version;
+          const sourceList: string[]= [];
+
           if (purl.startsWith("pkg:pypi")) {
             registry = "PyPi";
             try {
               const packageInfo = await fetchDataFromPyPi(packageName, packageVersion);
-              console.log('Package Info fetched successfully for:', packageName);
-  
-              const sourceList: string[]= [];
               if (packageInfo?.info?.license) {
                 sourceList.push(packageInfo.info.license);
               }
               if (packageInfo.info.classifiers) {
                 sourceList.push(packageInfo?.info.classifiers.join(' '));
-              }
-              
-              if (sourceList.length == 0) {
-                console.log(`no where to get license for ${packageName}`);
-              } else {
-                for (const licenseSoruce of sourceList) {
-                  const licenseItem = sortedLicenseConfig.find(item => licenseSoruce.includes(item.license));
-                  if (licenseItem) {
-                    license = licenseItem.license;
-                    severity = Severity[licenseItem.severity];
-                    break;
-                  }
-                } 
-              }
-              
+              }             
             } catch (error) {
               console.error('Error:', error);
+            }
+          } else if (purl.startsWith("pkg:npm")) {
+            const packageInfo = await fetchDataFromNPM(packageName, packageVersion);
+            if (packageInfo?.license) {
+              sourceList.push(packageInfo.license);
+            } else if (packageInfo?.licenses) {
+              packageInfo.licenses.forEach((npmLicense: NpmLicense) => {
+                if (npmLicense.type) {
+                  sourceList.push(npmLicense.type);
+                }
+              });
+            } else {
+              console.log(`missing license for: ${purl}`);
             }
           } else {
             console.log(`purl: ${purl}`);
           }
+
+          if (sourceList.length == 0) {
+            console.log(`no where to get license for ${packageName}`);
+          } else {
+            for (const licenseSoruce of sourceList) {
+              const licenseItem = sortedLicenseConfig.find(item => licenseSoruce.includes(item.license));
+              if (licenseItem) {
+                license = licenseItem.license;
+                severity = Severity[licenseItem.severity];
+                break;
+              }
+            } 
+          }
+
           sbomPackages.push({
             packageName: component.name,
             packageVersion: component.version,
@@ -135,7 +152,19 @@ async function fetchDataFromPyPi(name: string, version: string): Promise<any> {
     const response = await axios.get(url);
     return response.data;
   } catch (error) {
-    console.error('Error fetching data:', error);
+    console.error('Error fetching data from PyPi:', error);
+    throw error;
+  }
+}
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+async function fetchDataFromNPM(name: string, version: string): Promise<any> {
+  try {
+    const url = `https://registry.npmjs.org/${name}/${version}`
+    const response = await axios.get(url);
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching data from NPM:', error);
     throw error;
   }
 }
