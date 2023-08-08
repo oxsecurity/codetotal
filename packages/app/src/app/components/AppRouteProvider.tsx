@@ -17,6 +17,7 @@ const router = createBrowserRouter([
   {
     path: "/report/:requestId",
     element: <LazyReportPage />,
+    errorElement: <ErrorPage />,
   },
 ]);
 
