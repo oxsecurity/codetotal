@@ -1,7 +1,7 @@
 import axios from "axios";
 import debounce from "lodash-es/debounce";
 import { ProgrammingLanguage } from "shared-types";
-import { ApiUrl } from "../../common/utils/api-url-config";
+import { ApiUrl } from "../../common/utils/backend-url";
 import { LanguagesStore } from "../stores/languages-store";
 
 export const detect = async (

@@ -6,7 +6,7 @@ import {
   RepoAnalysis,
   SnippetAnalysis,
 } from "shared-types";
-import { ApiUrl } from "../../common/utils/api-url-config";
+import { ApiUrl } from "../../common/utils/backend-url";
 import { AnalysisStore, AsyncState } from "../stores/analysis-store";
 
 export const startAnalysis = async () => {
