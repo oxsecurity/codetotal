@@ -35,15 +35,16 @@ export const LanguageIcon: FC<LanguageIconProps> = ({ language }) => {
     </Tooltip>
   );
 };
+
 const useStyles = makeStyles()((theme: Theme) => ({
   languageIcon: {
     display: "inline-flex",
-    height: "1.3em",
-    // width: "1.3em",
+    height: "1em",
+    width: "1em",
   },
   img: {
     width: "100%",
-    height: "auto",
+    height: "100%",
   },
   darkmode: {
     backgroundColor: theme.palette.text.secondary,

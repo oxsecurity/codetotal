@@ -57,13 +57,13 @@ const useStyles = makeStyles()((theme: Theme) => ({
     flexDirection: "column",
     height: FOOTER_HEIGHT,
     background: theme.palette.background.default,
+    zIndex: 10,
   },
   background: {
     backgroundImage: `url(${bg})`,
     backgroundRepeat: "no-repeat",
     backgroundPosition: "top",
     backgroundSize: "contain",
-    zIndex: 10,
     flexGrow: 1,
   },
   footerContent: {

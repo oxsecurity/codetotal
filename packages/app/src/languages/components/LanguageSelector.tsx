@@ -48,10 +48,6 @@ export const LanguageSelector: FC<LanguageSelectorProps> = ({
     [onClear]
   );
 
-  console.log(
-    `detected: ${detectedLanguage?.id}, selected: ${userSelectedLanguage?.id}`
-  );
-
   return (
     <Autocomplete
       size="small"
@@ -67,7 +63,7 @@ export const LanguageSelector: FC<LanguageSelectorProps> = ({
       PaperComponent={(props) => (
         <Paper {...props} sx={{ borderRadius: "4px" }} />
       )}
-      renderOption={(props, option, { selected }) => (
+      renderOption={(props, option) => (
         <ListItem {...props}>
           <ListItemIcon sx={{ minWidth: "auto", paddingInlineEnd: 2 }}>
             <LanguageIcon language={option} />
