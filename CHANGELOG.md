@@ -16,7 +16,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
   - "CodeTotal" text added to the footer
 
 - Back-End
-  - Add SBOM managemnt for NPM packages
+  - Add SBOM management for NPM packages
   - Replace nodemon by ts-node to run back-end in dev mode
 
 ## [v0.1.0] - 2023-08-07
