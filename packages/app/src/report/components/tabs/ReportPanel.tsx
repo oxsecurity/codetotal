@@ -32,6 +32,7 @@ const useStyles = makeStyles()((theme: Theme) => ({
     display: "flex",
     flexDirection: "column-reverse",
     justifyContent: "space-between",
+    paddingInline: theme.spacing(1),
     paddingBlock: theme.spacing(2),
     gap: theme.spacing(2),
     [theme.breakpoints.up("md")]: {
