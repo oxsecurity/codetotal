@@ -126,6 +126,7 @@ const useStyles = makeStyles()((theme: Theme) => ({
   },
   statsContainer: {
     paddingBlockStart: theme.spacing(2),
+    paddingBlockEnd: theme.spacing(1),
     display: "flex",
     flexDirection: "column",
     gap: theme.spacing(4),
@@ -152,7 +153,7 @@ const useStyles = makeStyles()((theme: Theme) => ({
   },
   languageIcon: {
     display: "flex",
-    marginBlockEnd: "3px",
+    marginBlockEnd: "1px",
   },
 }));
 
