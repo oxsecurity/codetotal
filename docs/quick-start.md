@@ -11,11 +11,19 @@ CodeTotal is based on docker images, so all you need to have is:
 - [docker](https://docs.docker.com/engine/install/) installed and started on your computer, so our [docker-compose.yml](https://github.com/oxsecurity/codetotal/blob/main/docker-compose.yml) file can be interpreted.
 - [nodejs](https://nodejs.org/en), to call npm startup script
 
-## Clone the repository
+## Single Command
+
+Run `npx mega-linter-runner@latest --codetotal`
+
+![CodeTotal Screenshot](assets/images/quick-start.gif "QuickStart recording")
+
+## Alternative using repository
+
+### Clone the repository
 
 - Run `git clone https://github.com/oxsecurity/codetotal.git`
 
-## Start CodeTotal
+### Start CodeTotal
 
 - Run `npm install`
 
