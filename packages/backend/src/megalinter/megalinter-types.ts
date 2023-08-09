@@ -126,4 +126,5 @@ export interface RawLinter {
   isSBOM: boolean;
   filesNumber: number;
   linterStatus: LinterStatus;
+  iconPngUrl: string;
 }

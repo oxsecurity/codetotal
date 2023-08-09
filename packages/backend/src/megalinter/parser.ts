@@ -1,4 +1,4 @@
-import { ReportStore } from "../../stores/be-report-store";
+import { ReportStore } from "../stores/be-report-store";
 import {
   BaseMessage,
   LinterCompleteMessage,
@@ -6,16 +6,17 @@ import {
   MegalinterErrorMessage,
   MegalinterStartMessage,
   MessageType,
-} from "../megalinter-types";
-import { parseDetails } from "./parse-details";
-import { parseMegalinterError } from "./parse-errors";
-import { parseLinterStatus } from "./parse-linter-status";
-import { parseMegalinterComplete } from "./parse-megalinter-complete";
-import { parseMegalinterStart } from "./parse-megalinter-start";
-import { parseSarif } from "./parse-sarif";
-import { parseSBOM } from "./parse-sbom";
+} from "./megalinter-types";
+import { parseDetails } from "./parsers/parse-details";
+import { parseMegalinterError } from "./parsers/parse-errors";
+import { parseLinterStatus } from "./parsers/parse-linter-status";
+import { parseMegalinterComplete } from "./parsers/parse-megalinter-complete";
+import { parseMegalinterStart } from "./parsers/parse-megalinter-start";
+import { parseSarif } from "./parsers/parse-sarif";
+import { parseSBOM } from "./parsers/parse-sbom";
 
 export const parseMessage = (msg: BaseMessage, reportStore: ReportStore) => {
+  console.log(msg);
   switch (msg.messageType) {
     case MessageType.MegalinterStart:
       parseMegalinterStart(msg as MegalinterStartMessage, reportStore);
