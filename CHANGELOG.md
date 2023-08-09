@@ -12,7 +12,7 @@ _Can be run using `npm run codetotal:beta`_
   - Doc: display linter icons
 
 - Front-end
-
+  - Fix error page styles and apply the fallback error page to all routes
 - Back-End
 
 ## [v0.2.0] - 2023-08-09
@@ -43,4 +43,3 @@ _Can be run using `npm run codetotal:beta`_
   - Ready to use docker-compose using CodeTotal and MegaLinter images
   - Online Documentation on <https://codetotal.io>
   - Contributing instructions
-
