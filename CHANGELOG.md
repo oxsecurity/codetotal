@@ -9,11 +9,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 _Can be run using `npm run codetotal:beta`_
 
 - Global
+
+- Front-end
+
+- Back-End
+
+## [v0.3.0] - 2023-08-09
+
+- Global
   - Doc: display linter icons
 
 - Front-end
   - Fix error page styles and apply the fallback error page to all routes
-- Back-End
 
 ## [v0.2.0] - 2023-08-09
 
