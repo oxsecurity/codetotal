@@ -12,7 +12,7 @@ _Can be run using `npm run codetotal:beta`_
   - Doc: display linter icons
 
 - Front-end
-
+  - Fix error page styles and apply the fallback error page to all routes
 - Back-End
 
 ## [v0.2.0] - 2023-08-09
