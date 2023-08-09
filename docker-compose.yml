@@ -18,7 +18,7 @@ services:
 
   # Server to receive requests and post them in redis queue
   megalinter_server_api:
-    image: "ghcr.io/oxsecurity/megalinter-server:${MEGALINTER_SERVER_VERSION:-beta}"
+    image: "ghcr.io/oxsecurity/megalinter-server:${MEGALINTER_SERVER_VERSION:-latest}"
     command: uvicorn server.server:app --host 0.0.0.0 --port 8000
     environment:
       - MEGALINTER_SERVER_REDIS_HOST=megalinter_server_redis
@@ -35,7 +35,7 @@ services:
 
   # Worker to process requests and post results in redis stream or pubsub
   megalinter_server_worker:
-    image: "ghcr.io/oxsecurity/megalinter-worker-security:${MEGALINTER_WORKER_VERSION:-beta}"
+    image: "ghcr.io/oxsecurity/megalinter-worker-security:${MEGALINTER_WORKER_VERSION:-latest}"
     environment:
       # ignore tool
       - DISABLE_LINTERS=REPOSITORY_SYFT,REPOSITORY_DUSTILOCK
