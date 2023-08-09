@@ -1,3 +1,11 @@
+---
+# Variables (all with default values)
+# - REDIS_VERSION
+# - MEGALINTER_SERVER_VERSION
+# - MEGALINTER_WORKER_VERSION
+# - CODETOTAL_SERVER_IMAGE
+# - CODETOTAL_SERVER_VERSION
+
 version: "3"
 services:
   # Redis server to manage request queues and results
