@@ -9,6 +9,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 _Can be run using `npm run codetotal:beta`_
 
 - Global
+
+- Front-end
+
+- Back-End
+
+## [v0.4.0] - 2023-08-09
+
+- Global
   - Use latest version for production mode (by default), or beta version of MegaLinter to run CodeTotal in development mode
   - Documentation of docker-compose variables
   - docker-compose new variable: `REPOSITORY_TRUFFLEHOG_COMMAND_REMOVE_ARGUMENTS=--only-verified`
