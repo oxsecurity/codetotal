@@ -17,13 +17,21 @@ export const Footer: FC = () => {
             className={classes.footerText}
             component="div"
           >
-            <p style={{ fontWeight: 400 }}>CodeTotal brought to you by</p>
+            <a
+              href="https://codetotal.io/"
+              target="_blank"
+              rel="noreferrer"
+              className={classes.link}
+            >
+              CodeTotal
+            </a>
+            brought to you by
             <img src={oxLogo} className={classes.oxLogo} alt="OX Logo" />
             <a
-              className={classes.link}
-              rel="noreferrer"
-              target="_blank"
               href="https://ox.security"
+              target="_blank"
+              rel="noreferrer"
+              className={classes.link}
             >
               OX Security,
             </a>
