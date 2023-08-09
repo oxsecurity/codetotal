@@ -6,7 +6,6 @@
 [![GitHub contributors](https://img.shields.io/github/contributors/oxsecurity/codetotal.svg)](https://github.com/oxsecurity/codetotal/graphs/contributors/)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 
-
 **CodeTotal** analyzes any **snippet**, **file**, or **repository** to detect possible **security flaws** such as **secret in code**, **open source vulnerability**, **code security**, **vulnerability**, insecure **infrastructure as code**, and potential **legal issues** with open source licenses.
 
 To see how to use CodeTotal, please read [**online documentation**](https://codetotal.io) :)
