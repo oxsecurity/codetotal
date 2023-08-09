@@ -12,6 +12,7 @@ _Can be run using `npm run codetotal:beta`_
   - Use latest version for production mode (by default), or beta version of MegaLinter to run CodeTotal in development mode
   - Documentation of docker-compose variables
   - docker-compose new variable: `REPOSITORY_TRUFFLEHOG_COMMAND_REMOVE_ARGUMENTS=--only-verified`
+  - Badges in README
 
 - Front-end
 
