@@ -9,6 +9,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 _Can be run using `npm run codetotal:beta`_
 
 - Global
+  - Use beta version of MegaLinter to run Code!total development mode.
 
 - Front-end
 
