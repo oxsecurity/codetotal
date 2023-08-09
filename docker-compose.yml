@@ -42,6 +42,7 @@ services:
       - FLAVOR_SUGGESTIONS=false
       - LOG_LEVEL=DEBUG # Activate to have output commands in logs
       - REPOSITORY_TRUFFLEHOG_ARGUMENTS=--json
+      - REPOSITORY_TRUFFLEHOG_COMMAND_REMOVE_ARGUMENTS=--only-verified
       # Worker variables
       - MEGALINTER_SERVER=true
       - MEGALINTER_SERVER_REDIS_HOST=megalinter_server_redis
