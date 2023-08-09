@@ -11,6 +11,10 @@
 
 To see how to use CodeTotal, please read [**online documentation**](https://codetotal.io) :)
 
+TLDR; Just run `npx mega-linter-runner@latest --codetotal`
+
+![CodeTotal Screenshot](docs/assets/images/quick-start.gif "QuickStart recording")
+
 _Brought to you by [OX Security](https://ox.security), powered by [MegaLinter](https://megalinter.io)_
 
 [![CodeTotal Screenshot](docs/assets/images/screen.jpg "A screenshot from the app")](https://codetotal.io)
