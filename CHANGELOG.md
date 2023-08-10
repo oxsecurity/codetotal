@@ -10,15 +10,19 @@ _Can be run using `npm run codetotal:beta`_
 
 - Global
 
-  - Add animations to documentation
+- Front-end
+
+- Back-End
+
+## [v0.5.0] - 2023-08-10
+
+- Global
+  - Add animations to documentation - Refactor animations with black mode & linter icons
   - Add Google Tag Id for online doc
 
 - Front-end
 
   - Add linters logos
-
-- Back-End
-  - Async parsing of packages in SBOM
 
 ## [v0.4.0] - 2023-08-09
 
@@ -28,10 +32,6 @@ _Can be run using `npm run codetotal:beta`_
   - Documentation of docker-compose variables
   - docker-compose new variable: `REPOSITORY_TRUFFLEHOG_COMMAND_REMOVE_ARGUMENTS=--only-verified`
   - Badges in README
-
-- Front-end
-
-- Back-End
 
 ## [v0.3.0] - 2023-08-09
 
