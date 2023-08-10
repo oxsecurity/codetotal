@@ -18,7 +18,7 @@ services:
 
   # Server to receive requests and post them in redis queue
   megalinter_server_api:
-    image: "ghcr.io/oxsecurity/megalinter-server:${MEGALINTER_SERVER_VERSION:-latest}"
+    image: "ghcr.io/oxsecurity/megalinter-server:${MEGALINTER_SERVER_VERSION:-beta}"
     command: uvicorn server.server:app --host 0.0.0.0 --port 8000
     environment:
       - MEGALINTER_SERVER_REDIS_HOST=megalinter_server_redis
