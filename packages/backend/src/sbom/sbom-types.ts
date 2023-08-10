@@ -22,3 +22,8 @@ export interface NpmLicense {
   type?: string;
   url?: string;
 }
+
+export interface PackageRequestData {
+  name: string;
+  version: string;
+}

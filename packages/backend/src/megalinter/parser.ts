@@ -16,7 +16,6 @@ import { parseSarif } from "./parsers/parse-sarif";
 import { parseSBOM } from "./parsers/parse-sbom";
 
 export const parseMessage = (msg: BaseMessage, reportStore: ReportStore) => {
-  console.log(msg);
   switch (msg.messageType) {
     case MessageType.MegalinterStart:
       parseMegalinterStart(msg as MegalinterStartMessage, reportStore);
