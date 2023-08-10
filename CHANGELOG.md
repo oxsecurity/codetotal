@@ -11,8 +11,10 @@ _Can be run using `npm run codetotal:beta`_
 - Global
 
 - Front-end
+  - Add language label
   - Add missing icon for Java
 - Back-End
+  - Bug fix: SBOM packages not showing up in report page. Async parsing of packages information in SBOM module
 
 ## [v0.5.0] - 2023-08-10
 
@@ -21,11 +23,13 @@ _Can be run using `npm run codetotal:beta`_
   - Add Google Tag Id for online doc
 
 - Front-end
+
   - Add linters logos
 
 ## [v0.4.0] - 2023-08-09
 
 - Global
+
   - Use latest version for production mode (by default), or beta version of MegaLinter to run CodeTotal in development mode
   - Documentation of docker-compose variables
   - docker-compose new variable: `REPOSITORY_TRUFFLEHOG_COMMAND_REMOVE_ARGUMENTS=--only-verified`
@@ -34,6 +38,7 @@ _Can be run using `npm run codetotal:beta`_
 ## [v0.3.0] - 2023-08-09
 
 - Global
+
   - Doc: display linter icons
 
 - Front-end
@@ -42,6 +47,7 @@ _Can be run using `npm run codetotal:beta`_
 ## [v0.2.0] - 2023-08-09
 
 - Global
+
   - Use `latest` codetotal-server docker image in production docker-compose.yml
   - Deploy online doc when any markdown file is updated
   - Factorize docker-compose
@@ -50,6 +56,7 @@ _Can be run using `npm run codetotal:beta`_
     - `npm run codetotal:dev` locally builds CodeTotal then runs it with beta version of MegaLinter
 
 - Front-end
+
   - Language selection in snippet analysis form
   - Language name added next to the icon in report header
   - "CodeTotal" text added to the footer
