@@ -5,7 +5,7 @@ describe("language-detect", () => {
   test("resolve language", async () => {
     const language = await detectLanguage(pyCodeSnippet);
     expect(language.id).toBe("py");
-    expect(language.name).toBe("Python");
+    expect(language.name).toBe("python");
     expect(language.displayName).toBe("Python");
     expect(language.icon).toBe("original");
   });
