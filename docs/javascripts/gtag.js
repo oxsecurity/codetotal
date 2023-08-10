@@ -1,4 +1,4 @@
-var gtag_id = ""; //"G-9B8BSP0VV7"; replace by GTAG if you want stats
+var gtag_id = "G-PMP0RQ4L7Q"; //"G-9B8BSP0VV7"; replace by GTAG if you want stats
 
 if (gtag_id === "") {
   return;

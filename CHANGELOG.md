@@ -10,6 +10,7 @@ _Can be run using `npm run codetotal:beta`_
 
 - Global
   - Add animations to documentation
+  - Add Google Tag Id for online doc
 
 - Front-end
   - Add linters logos
