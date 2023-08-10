@@ -30,7 +30,7 @@ Copy-paste a snippet in any language.
 
 ___
 
-## Scan file(e)
+## Scan file(s)
 
 Select a file to scan, it can be:
 
