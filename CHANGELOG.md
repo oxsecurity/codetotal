@@ -12,6 +12,7 @@ _Can be run using `npm run codetotal:beta`_
   - Doc: display linter icons
 
 - Front-end
+  - Add linters logos
 
 - Back-End
 
