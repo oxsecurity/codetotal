@@ -36,7 +36,7 @@
     "packages/backend",
     "packages/app"
   ],
-  "version": "0.4.0",
+  "version": "0.5.0",
   "description": "CodeTotal mono-repo",
   "devDependencies": {
     "@jest/globals": "^29.6.1",
