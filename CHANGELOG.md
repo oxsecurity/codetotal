@@ -11,7 +11,7 @@ _Can be run using `npm run codetotal:beta`_
 - Global
 
 - Front-end
-
+  - Add language label
 - Back-End
 
 ## [v0.5.0] - 2023-08-10

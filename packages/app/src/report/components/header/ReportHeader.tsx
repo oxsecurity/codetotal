@@ -70,9 +70,11 @@ export const ReportHeader: FC<ReportBannerProps> = ({ ready }) => {
             dataCy="resource-value"
             valueClassName={classes.resourceValue}
           />
-          <div className={classes.languageIcon}>
-            <LanguageIcon language={language} withLabel />
-          </div>
+          <ReportHeaderSection
+            label="Language"
+            value={<LanguageIcon language={language} withLabel />}
+            dataCy="language"
+          />
         </div>
         <Divider orientation="horizontal" sx={{ marginBlockStart: 0.5 }} />
         <ReportToolbar />
@@ -150,10 +152,6 @@ const useStyles = makeStyles()((theme: Theme) => ({
   resourceValue: {
     maxWidth: 600,
     whiteSpace: "nowrap",
-  },
-  languageIcon: {
-    display: "flex",
-    marginBlockEnd: "1px",
   },
 }));
 
