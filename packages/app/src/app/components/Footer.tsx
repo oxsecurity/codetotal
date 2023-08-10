@@ -1,7 +1,7 @@
 import { Container, Theme, Typography } from "@mui/material";
 import { FC } from "react";
 import { makeStyles } from "tss-react/mui";
-import bg from "../../assets/bg.svg";
+import { ReactComponent as BackgroundSvg } from "../../assets/bg.svg";
 import oxLogo from "../../assets/ox.svg";
 import { ToggleThemeButton } from "./ToggleThemeButton";
 
@@ -48,7 +48,7 @@ export const Footer: FC = () => {
           <ToggleThemeButton />
         </div>
       </Container>
-      <div className={classes.background} />
+      <BackgroundSvg />
     </div>
   );
 };
@@ -66,13 +66,6 @@ const useStyles = makeStyles()((theme: Theme) => ({
     height: FOOTER_HEIGHT,
     background: theme.palette.background.default,
     zIndex: 10,
-  },
-  background: {
-    backgroundImage: `url(${bg})`,
-    backgroundRepeat: "no-repeat",
-    backgroundPosition: "top",
-    backgroundSize: "contain",
-    flexGrow: 1,
   },
   footerContent: {
     display: "grid",

@@ -1,20 +1,23 @@
 {
   "ts": {
-    "name": "TypeScript",
+    "name": "typescript",
     "displayName": "TypeScript",
     "icon": "original"
   },
-  "py": { "name": "Python", "displayName": "Python", "icon": "original" },
+  "py": { "name": "python", "displayName": "Python", "icon": "original" },
   "js": {
-    "name": "JavaScript",
+    "name": "javascript",
     "displayName": "JavaScript",
     "icon": "original"
   },
-  "rs": { "name": "Rust", "displayName": "Rust", "icon": "plain" },
+  "rs": { "name": "rust", "displayName": "Rust", "icon": "plain" },
   "csharp": { "name": "csharp", "displayName": "C#", "icon": "plain" },
-  "java": { "name": "Java", "displayName": "Java", "icon": "original" },
-  "go": { "name": "Go", "displayName": "Go", "icon": "original" },
-  "kt": { "name": "Kotlin", "displayName": "Kotlin", "icon": "original" },
-  "dart": { "name": "Dart", "displayName": "Dart", "icon": "original" },
-  "scala": { "name": "Scala", "displayName": "Scala", "icon": "original" }
+  "java": {
+    "name": "java",
+    "displayName": "Java"
+  },
+  "go": { "name": "go", "displayName": "Go", "icon": "original" },
+  "kt": { "name": "kotlin", "displayName": "Kotlin", "icon": "original" },
+  "dart": { "name": "dart", "displayName": "Dart", "icon": "original" },
+  "scala": { "name": "scala", "displayName": "Scala", "icon": "original" }
 }

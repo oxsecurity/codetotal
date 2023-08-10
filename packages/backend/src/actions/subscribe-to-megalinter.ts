@@ -1,5 +1,5 @@
 import config from "../config";
-import { parseMessage } from "../megalinter/parsers/parser";
+import { parseMessage } from "../megalinter/parser";
 import { ReportStore } from "../stores/be-report-store";
 import { subscribeToRedis } from "../transport/redis-client";
 import { logger } from "../utils/logger";

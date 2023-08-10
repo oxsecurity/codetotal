@@ -12,6 +12,7 @@ _Can be run using `npm run codetotal:beta`_
   - Add animations to documentation
 
 - Front-end
+  - Add linters logos
 
 - Back-End
 

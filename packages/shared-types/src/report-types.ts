@@ -53,6 +53,7 @@ export interface Linter {
   status: LinterStatus;
   issues?: Issue[];
   docUrl: string;
+  logoUrl: string;
 }
 
 export enum LinterStatus {

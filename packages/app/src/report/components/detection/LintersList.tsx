@@ -8,6 +8,7 @@ import {
 import { FC } from "react";
 import { makeStyles } from "tss-react/mui";
 import { ReportStore, useReportStore } from "../../stores/fe-report-store";
+import { LinterLogo } from "./LinterLogo";
 import { LinterStatus } from "./LinterStatus";
 
 export const LintersList: FC = () => {
@@ -35,9 +36,7 @@ export const LintersList: FC = () => {
                 onClick={() => handleToolClick(linter.name)}
                 className={classes.listItem}
               >
-                <Typography variant="body1" className={classes.toolName}>
-                  {linter.name}
-                </Typography>
+                <LinterLogo className={classes.nameContainer} linter={linter} />
 
                 <div className={classes.statsContainer}>
                   {issues > 0 && (
@@ -72,14 +71,8 @@ const useStyles = makeStyles()((theme: Theme) => ({
   listItem: {
     minHeight: 50,
   },
-  toolName: {
+  nameContainer: {
     flexGrow: 1,
-    textOverflow: "ellipsis",
-    overflow: "hidden",
-    display: "-webkit-box",
-    whiteSpace: "normal",
-    WebkitLineClamp: 2,
-    WebkitBoxOrient: "vertical",
   },
   statsContainer: {
     display: "flex",

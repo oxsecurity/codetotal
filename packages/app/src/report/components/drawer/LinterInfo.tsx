@@ -3,6 +3,7 @@ import { FC } from "react";
 import { makeStyles } from "tss-react/mui";
 import { SeverityBadge } from "../../../common/SeverityBadge";
 import { useReportStore } from "../../stores/fe-report-store";
+import { LinterLogo } from "../detection/LinterLogo";
 import { IssuesTable } from "./IssuesTable";
 
 export const LinterInfo: FC = () => {
@@ -13,34 +14,37 @@ export const LinterInfo: FC = () => {
     (linter) => linter.name === selectedLinterName
   );
 
-  if (!selectedLinterName) {
+  if (!selectedLinter) {
     return null;
   }
 
   return (
-    <div>
+    <div className={classes.linterInfo}>
       {selectedLinter && (
         <div className={classes.header}>
-          <Typography variant="body1" color="text.primary" fontWeight="bold">
-            {selectedLinter?.name}&nbsp; (
-            <a
-              className={classes.link}
-              target="_blank"
-              rel="noreferrer"
-              href={selectedLinter.docUrl.replace("/alpha/", "/beta/")}
-            >
-              docs
-            </a>
-            )
+          <LinterLogo linter={selectedLinter} />
+          <Typography
+            variant="body1"
+            color="text.primary"
+            fontWeight="bold"
+            component="a"
+            href={selectedLinter.docUrl.replace("/alpha/", "/beta/")}
+            target="_blank"
+            rel="noreferrer"
+            className={classes.link}
+          >
+            docs
           </Typography>
-          {selectedLinter.severity && (
-            <SeverityBadge severity={selectedLinter.severity} />
-          )}
         </div>
       )}
+      <div>
+        {selectedLinter.severity && (
+          <SeverityBadge severity={selectedLinter.severity} />
+        )}
+      </div>
       <Paper>
         <IssuesTable
-          linterName={selectedLinterName}
+          linterName={selectedLinter.name}
           issues={selectedLinter?.issues || []}
         />
       </Paper>
@@ -49,12 +53,16 @@ export const LinterInfo: FC = () => {
 };
 
 const useStyles = makeStyles()((theme: Theme) => ({
-  header: {
-    paddingBlockEnd: theme.spacing(2),
-    marginBlockEnd: theme.spacing(2),
+  linterInfo: {
     display: "flex",
     flexDirection: "column",
-    gap: theme.spacing(1),
+    gap: theme.spacing(3),
+  },
+  header: {
+    display: "flex",
+    gap: theme.spacing(3),
+    paddingBlockEnd: theme.spacing(1),
+    borderBottom: `1px solid ${theme.palette.divider}`,
   },
   link: {
     color: theme.palette.primary.main,

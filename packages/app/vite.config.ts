@@ -1,9 +1,10 @@
 import react from "@vitejs/plugin-react";
 import { PluginOption, defineConfig } from "vite";
 import checker from "vite-plugin-checker";
+import svgr from "vite-plugin-svgr";
 
 export default defineConfig(({ command }) => {
-  const plugins: PluginOption[] = [react()];
+  const plugins: PluginOption[] = [react(), svgr()];
 
   // local development only plugins
   if (command === "serve") {
