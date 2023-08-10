@@ -14,7 +14,8 @@
   "csharp": { "name": "csharp", "displayName": "C#", "icon": "plain" },
   "java": {
     "name": "java",
-    "displayName": "Java"
+    "displayName": "Java",
+    "icon": "original"
   },
   "go": { "name": "go", "displayName": "Go", "icon": "original" },
   "kt": { "name": "kotlin", "displayName": "Kotlin", "icon": "original" },
