@@ -1,4 +1,5 @@
 import axios from "axios";
+import axiosRetry from 'axios-retry';
 import { SbomPackage, Severity } from "shared-types";
 import licenseConfig from "./licenseConfig.json";
 import {
@@ -106,8 +107,8 @@ export async function getPackages(
               if (packageInfo?.info?.license) {
                 sourceList.push(packageInfo.info.license);
               }
-              if (packageInfo.info.classifiers) {
-                sourceList.push(packageInfo?.info.classifiers.join(" "));
+              if (packageInfo?.info?.classifiers) {
+                sourceList.push(packageInfo.info.classifiers.join(" "));
               }
             } catch (error) {
               console.error("Error:", error);
@@ -181,7 +182,8 @@ async function fetchDataFromPyPi({
   name,
   version,
 }: // eslint-disable-next-line @typescript-eslint/no-explicit-any
-PackageRequestData): Promise<any> {
+  PackageRequestData): Promise<any> {
+  axiosRetry(axios, { retries: 15, retryDelay: axiosRetry.exponentialDelay });
   try {
     const url = `https://pypi.org/pypi/${name}/${version}/json`;
     const response = await axios.get(url);
@@ -195,7 +197,8 @@ async function fetchDataFromNPM({
   name,
   version,
 }: // eslint-disable-next-line @typescript-eslint/no-explicit-any
-PackageRequestData): Promise<any> {
+  PackageRequestData): Promise<any> {
+  axiosRetry(axios, { retries: 15, retryDelay: axiosRetry.exponentialDelay });
   try {
     const url = `https://registry.npmjs.org/${name}/${version}`;
     const response = await axios.get(url);

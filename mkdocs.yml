@@ -4,10 +4,8 @@ site_url: https://codetotal.io
 repo_url: https://github.com/oxsecurity/codetotal
 edit_uri: tree/main/docs
 site_author: Nicolas Vuillamy
-# site_description-start
-site_description:
-# site_description-end
-copyright: Copyright &copy; 2022 <a href="https://www.ox.security/?ref=codetotal" target= "_blank">OX Security</a>
+site_description: CodeTotal analyzes any snippet, file, or repository to detect possible security flaws such as secret in code, open source vulnerability, code security, vulnerability, insecure infrastructure as code, and potential legal issues with open source licenses.
+copyright: Copyright &copy; 2023 <a href="https://www.ox.security/?ref=codetotal" target= "_blank">OX Security</a>
 theme:
   name: material
   font:

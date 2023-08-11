@@ -13,8 +13,10 @@ _Can be run using `npm run codetotal:beta`_
 - Front-end
   - Add language label
   - Add missing icon for Java
+
 - Back-End
   - Bug fix: SBOM packages not showing up in report page. Async parsing of packages information in SBOM module
+  - Retry calls to pypi or npm in case first attempts are failing
 
 ## [v0.5.0] - 2023-08-10
 
@@ -23,7 +25,6 @@ _Can be run using `npm run codetotal:beta`_
   - Add Google Tag Id for online doc
 
 - Front-end
-
   - Add linters logos
 
 ## [v0.4.0] - 2023-08-09
@@ -38,7 +39,6 @@ _Can be run using `npm run codetotal:beta`_
 ## [v0.3.0] - 2023-08-09
 
 - Global
-
   - Doc: display linter icons
 
 - Front-end
