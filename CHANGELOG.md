@@ -13,6 +13,7 @@ _Can be run using `npm run codetotal:beta`_
 - Front-end
   - Add language label
   - Add missing icon for Java
+  - Show language only if it's available
 - Back-End
   - Bug fix: SBOM packages not showing up in report page. Async parsing of packages information in SBOM module
 
