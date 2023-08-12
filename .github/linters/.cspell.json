@@ -190,6 +190,7 @@
     "pymdown",
     "pymdownx",
     "pynacl",
+    "pypi",
     "pytz",
     "pyyaml",
     "qsharp",
