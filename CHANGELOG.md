@@ -14,6 +14,9 @@ _Can be run using `npm run codetotal:beta`_
   - Add language label
   - Add missing icon for Java
   - Change score to risk
+  - Remove auto focus from analysis tabs
+  - Add auto focus to snippet & repo inputs
+  - Highlight resource type in report header
 - Back-End
   - Bug fix: SBOM packages not showing up in report page. Async parsing of packages information in SBOM module
 
