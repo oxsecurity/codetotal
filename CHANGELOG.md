@@ -13,6 +13,8 @@ _Can be run using `npm run codetotal:beta`_
 - Front-end
   - Add language label
   - Add missing icon for Java
+  - Show language only if it's available
+  - Detect language for file analysis
   - Change score to risk
   - Remove auto focus from analysis tabs
   - Add auto focus to snippet & repo inputs

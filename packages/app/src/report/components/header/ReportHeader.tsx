@@ -82,11 +82,13 @@ export const ReportHeader: FC<ReportBannerProps> = ({ ready }) => {
             dataCy="resource-value"
             valueClassName={classes.resourceValue}
           />
-          <ReportHeaderSection
-            label="Language"
-            value={<LanguageIcon language={language} withLabel />}
-            dataCy="language"
-          />
+          {!!language && (
+            <ReportHeaderSection
+              label="Language"
+              value={<LanguageIcon language={language} withLabel />}
+              dataCy="language"
+            />
+          )}
         </div>
         <Divider orientation="horizontal" sx={{ marginBlockStart: 0.5 }} />
         <ReportToolbar />
