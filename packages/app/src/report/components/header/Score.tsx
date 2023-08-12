@@ -73,7 +73,7 @@ export const Score: FC<ScoreProps> = ({
               color="text.secondary"
               className={classes.label}
             >
-              Score
+              Risk
             </Typography>
           </div>
         )}
@@ -101,7 +101,7 @@ const useStyles = makeStyles()((theme: Theme) => ({
   },
   countUp: {
     fontSize: 20,
-    [theme.breakpoints.up("sm")]: {
+    [theme.breakpoints.up("md")]: {
       fontSize: 35,
     },
     fontWeight: 700,
