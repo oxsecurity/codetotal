@@ -49,11 +49,23 @@ export const ReportHeader: FC<ReportBannerProps> = ({ ready }) => {
           style={{ color }}
           data-cy="report-header"
         >
-          {linters.length === 0 && <>Scanning {resourceType}...</>}
+          {linters.length === 0 && (
+            <>
+              Scanning
+              <span className={classes.resourceTypeText}>
+                &nbsp;{resourceType}&nbsp;
+              </span>
+              ...
+            </>
+          )}
           {linters.length > 0 && (
             <>
               {lintersWithIssuesCount} / {linters.length} security linters
-              flagged this&nbsp;{resourceType} to have security issues
+              flagged this
+              <span className={classes.resourceTypeText}>
+                &nbsp;{resourceType}&nbsp;
+              </span>
+              to have security issues
             </>
           )}
         </Typography>
@@ -152,6 +164,10 @@ const useStyles = makeStyles()((theme: Theme) => ({
   resourceValue: {
     maxWidth: 600,
     whiteSpace: "nowrap",
+  },
+  resourceTypeText: {
+    // fontStyle: "italic",
+    fontWeight: 300,
   },
 }));
 
