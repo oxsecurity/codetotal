@@ -10,6 +10,7 @@ import {
   SnippetAnalysis,
 } from "shared-types";
 import config from "../config";
+import { detectLanguage } from "../language-detection/language-detect";
 import { logger } from "../utils/logger";
 
 export const createAnalysisRequestData = async (
@@ -41,6 +42,7 @@ export const createAnalysisRequestData = async (
       const file = fileAction.file as Express.Multer.File;
 
       try {
+        const language = await detectLanguage(file.buffer.toString());
         const form = new FormData();
         form.append("file", file.buffer, {
           filename: file.originalname,
@@ -52,7 +54,11 @@ export const createAnalysisRequestData = async (
           form
         );
 
-        return [{ fileUploadId: res.data.fileUploadId }, file.originalname];
+        return [
+          { fileUploadId: res.data.fileUploadId },
+          file.originalname,
+          language,
+        ];
       } catch (err) {
         logger.actions.error("Unable to upload file");
         throw err;
