@@ -38,7 +38,6 @@ export const AnalysisInputForm: FC<AnalysisInputFormProps> = ({
           variant="fullWidth"
         >
           <Tab
-            autoFocus
             label="Code Snippet"
             value={AnalysisType.Snippet}
             className={classes.tab}
