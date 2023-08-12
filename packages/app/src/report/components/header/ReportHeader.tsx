@@ -166,7 +166,6 @@ const useStyles = makeStyles()((theme: Theme) => ({
     whiteSpace: "nowrap",
   },
   resourceTypeText: {
-    // fontStyle: "italic",
     fontWeight: 300,
   },
 }));
