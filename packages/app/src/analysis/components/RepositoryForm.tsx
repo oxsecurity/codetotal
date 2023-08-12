@@ -17,6 +17,7 @@ export const RepositoryForm: FC<AnalysisFormProps> = ({ onSubmit }) => {
     <div className={classes.repositoryForm}>
       <FormControl fullWidth>
         <TextField
+          autoFocus
           placeholder="Enter Repository URL"
           value={repositoryURL}
           onChange={handleChange}
