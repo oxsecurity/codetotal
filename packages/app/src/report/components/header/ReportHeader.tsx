@@ -41,11 +41,7 @@ export const ReportHeader: FC<ReportBannerProps> = ({ ready }) => {
   const color = theme.palette[scoreColorKey].main || theme.palette.divider;
 
   return (
-    <Paper
-      square
-      style={{ borderColor: color }}
-      className={classes.reportBanner}
-    >
+    <Paper className={classes.reportBanner}>
       <LinearProgress
         color="inherit"
         sx={{
@@ -55,6 +51,7 @@ export const ReportHeader: FC<ReportBannerProps> = ({ ready }) => {
           top: 0,
           left: 0,
           width: "100%",
+          transitionDuration: "0 !important",
         }}
         variant="determinate"
         value={progress()}
@@ -96,6 +93,7 @@ export const ReportHeader: FC<ReportBannerProps> = ({ ready }) => {
           {resourceType === AnalysisType.Snippet && !!snippet ? (
             <ReportHeaderSection
               label="Resource"
+              // DevSkim: ignore DS126858
               value={`md5: ${resourceValue}`}
               valueClassName={classes.resourceValue}
               dataCy="resource-value"
@@ -136,11 +134,10 @@ const useStyles = makeStyles()((theme: Theme) => ({
     position: "relative",
     columnGap: theme.spacing(4),
     gridTemplateColumns: "1fr auto",
-    // borderTop: "solid 6px",
     minHeight: 170,
     padding: theme.spacing(1, 2),
-    borderBottomLeftRadius: 15,
-    borderBottomRightRadius: 15,
+    borderTopLeftRadius: 0,
+    borderTopRightRadius: 0,
     display: "flex",
     flexDirection: "column-reverse",
     alignItems: "center",
@@ -151,6 +148,7 @@ const useStyles = makeStyles()((theme: Theme) => ({
     },
   },
   textContainer: {
+    width: "100%",
     flexGrow: 1,
     [theme.breakpoints.up("md")]: {
       display: "flex",
@@ -173,9 +171,10 @@ const useStyles = makeStyles()((theme: Theme) => ({
     paddingBlockEnd: theme.spacing(1),
     display: "flex",
     flexDirection: "column",
-    gap: theme.spacing(4),
+    gap: theme.spacing(2),
     maxWidth: 600,
     [theme.breakpoints.up("md")]: {
+      gap: theme.spacing(4),
       flexDirection: "row",
       alignItems: "flex-end",
     },
