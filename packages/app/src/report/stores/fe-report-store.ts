@@ -6,7 +6,6 @@ import { resolveScoreColor } from "../utils/score-utils";
 const initialState: InitialState = {
   status: AnalysisStatus.Created,
   linters: [],
-  selectedLinterName: undefined,
   packages: [],
   score: 0,
   inProgress: true,
@@ -17,7 +16,6 @@ const initialState: InitialState = {
   fileDetails: undefined,
   wsError: undefined,
   analysisError: undefined,
-  newAnalysisDialogOpen: false,
   language: undefined,
   code: undefined,
 };
@@ -68,8 +66,6 @@ export const ReportStore = createStore<FeReportStoreState>((set, get) => ({
       )
       .flat();
   },
-  openNewAnalysisDialog: () => set({ newAnalysisDialogOpen: true }),
-  closeNewAnalysisDialog: () => set({ newAnalysisDialogOpen: false }),
 }));
 
 export const useReportStore = () => useStore(ReportStore);
@@ -83,12 +79,10 @@ type InitialState = Omit<
   | "lintersCompleted"
   | "progress"
   | "allIssues"
-  | "openNewAnalysisDialog"
-  | "closeNewAnalysisDialog"
 >;
 
 interface FeReportStoreState extends ReportState {
-  selectedLinterName?: string;
+  // selectedLinterName?: string;
   inProgress: boolean;
   wsError?: string;
   issuesCount(toolName: string): number;
@@ -99,7 +93,4 @@ interface FeReportStoreState extends ReportState {
   progress(): number;
   reset(): void;
   allIssues(): Issue[];
-  newAnalysisDialogOpen: boolean;
-  openNewAnalysisDialog(): void;
-  closeNewAnalysisDialog(): void;
 }

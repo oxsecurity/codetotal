@@ -9,36 +9,30 @@ import {
 import { FC, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { makeStyles } from "tss-react/mui";
-import { AnalysisInputForm } from "../analysis/components/AnalysisInputForm";
-import { useReportStore } from "../report/stores/fe-report-store";
+import { AnalysisInputForm } from "../../../analysis/components/AnalysisInputForm";
+import { useNewAnalysisDialogStore } from "../../stores/analysis-dialog-store";
 
 export const NewAnalysisDialog: FC = () => {
   const { classes } = useStyles();
-  const { newAnalysisDialogOpen, closeNewAnalysisDialog } = useReportStore();
+  const { close, isOpen } = useNewAnalysisDialogStore();
   const navigate = useNavigate();
 
   const handleAfterSubmit = useCallback(
     (requestId: string) => {
-      closeNewAnalysisDialog();
+      close();
       navigate(`/report/${requestId}`);
     },
-    [closeNewAnalysisDialog, navigate]
+    [close, navigate]
   );
 
   return (
-    <Dialog
-      maxWidth="md"
-      fullWidth
-      open={newAnalysisDialogOpen}
-      onClose={closeNewAnalysisDialog}
-      scroll="body"
-    >
+    <Dialog maxWidth="md" fullWidth open={isOpen} onClose={close} scroll="body">
       <DialogContent className={classes.dialogContent}>
         <AnalysisInputForm onAfterSubmit={handleAfterSubmit} />
       </DialogContent>
       <Divider />
       <DialogActions sx={{ padding: 2 }}>
-        <Button onClick={closeNewAnalysisDialog}>Close (ESC)</Button>
+        <Button onClick={close}>Close (ESC)</Button>
       </DialogActions>
     </Dialog>
   );
