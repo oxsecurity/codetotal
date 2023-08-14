@@ -33,7 +33,7 @@ export const Details: FC = () => {
   return (
     <Paper className={classes.reportDetails} elevation={1}>
       {loading ? (
-        <Loader text={`Waiting for ${resourceType} info...`} />
+        <Loader text={`Waiting for ${resourceType} info`} />
       ) : (
         <>
           {resourceType === AnalysisType.File && (

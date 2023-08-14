@@ -18,6 +18,7 @@ export interface ReportState {
     errorDetails?: string;
   };
   language?: ProgrammingLanguage;
+  code?: string;
 }
 
 export interface RepoDetails {

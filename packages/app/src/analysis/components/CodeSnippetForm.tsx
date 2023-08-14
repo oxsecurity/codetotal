@@ -50,6 +50,7 @@ export const CodeSnippetForm: FC<AnalysisFormProps> = ({ onSubmit }) => {
           onClear={clearLanguages}
         />
         <SubmitButton
+          fullWidth
           variant="contained"
           color="primary"
           onClick={onSubmit}
@@ -68,14 +69,17 @@ const useStyles = makeStyles()((theme: Theme) => ({
   codeSnippetForm: {
     display: "flex",
     flexDirection: "column",
-    alignItems: "center",
     gap: theme.spacing(2),
     padding: theme.spacing(1),
   },
   footer: {
     display: "flex",
-    gap: theme.spacing(1),
-    alignSelf: "stretch",
-    justifyContent: "space-between",
+    flexDirection: "column",
+    gap: theme.spacing(2),
+    alignItems: "stretch",
+    
+    [theme.breakpoints.up("md")]: {
+      flexDirection: "row",
+    },
   },
 }));

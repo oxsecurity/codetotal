@@ -5,8 +5,8 @@ import {
   Analysis,
   AnalysisType,
   FileAnalysis,
-  ProgrammingLanguage,
   RepoAnalysis,
+  ReportState,
   SnippetAnalysis,
 } from "shared-types";
 import config from "../config";
@@ -15,12 +15,15 @@ import { logger } from "../utils/logger";
 
 export const createAnalysisRequestData = async (
   action: Analysis
-): Promise<[unknown, string, ProgrammingLanguage?]> => {
+): Promise<[unknown, Partial<ReportState>]> => {
   switch (action.inputType) {
     case AnalysisType.Repo: {
       return [
         { repositoryUrl: (<RepoAnalysis>action).url },
-        (<RepoAnalysis>action).url,
+        {
+          resourceType: AnalysisType.Repo,
+          resourceValue: (<RepoAnalysis>action).url,
+        },
       ];
     }
     case AnalysisType.Snippet: {
@@ -33,16 +36,20 @@ export const createAnalysisRequestData = async (
           snippet: snippetAction.snippet,
           snippetExtension,
         },
-        snippetMd5, // DevSkim: ignore DS126858
-        snippetAction.language,
+        {
+          resourceType: AnalysisType.Snippet,
+          resourceValue: snippetMd5, // DevSkim: ignore DS126858
+          language: snippetAction.language,
+          code: snippetAction.snippet,
+        },
       ];
     }
     case AnalysisType.File: {
-      const fileAction = action as FileAnalysis;
-      const file = fileAction.file as Express.Multer.File;
-
       try {
-        const language = await detectLanguage(file.buffer.toString());
+        const fileAction = action as FileAnalysis;
+        const file = fileAction.file as Express.Multer.File;
+        const code = file.buffer.toString();
+        const language = await detectLanguage(code);
         const form = new FormData();
         form.append("file", file.buffer, {
           filename: file.originalname,
@@ -56,8 +63,12 @@ export const createAnalysisRequestData = async (
 
         return [
           { fileUploadId: res.data.fileUploadId },
-          file.originalname,
-          language,
+          {
+            resourceType: AnalysisType.File,
+            resourceValue: file.originalname,
+            language,
+            code,
+          },
         ];
       } catch (err) {
         logger.actions.error("Unable to upload file");

@@ -6,6 +6,7 @@ import { NewAnalysisDialog } from "../../common/NewAnalysisDialog";
 import { initReport } from "../actions/init-report-action";
 import { LinterInfo } from "./drawer/LinterInfo";
 import { ReportHeader } from "./header/ReportHeader";
+import { CodeDialog } from "./header/CodeDialog";
 import { ReportTabs } from "./tabs/ReportTabs";
 
 const ReportPage: FC = () => {
@@ -17,6 +18,7 @@ const ReportPage: FC = () => {
       if (requestId) {
         const success = await initReport(requestId);
         if (!success) {
+          // TODO: show error page to the user instead of auto redirecting
           navigate("/");
         }
       }
@@ -32,6 +34,7 @@ const ReportPage: FC = () => {
       </CodeTotalDrawer>
       <AnalysisErrorDialog />
       <NewAnalysisDialog />
+      <CodeDialog />
     </div>
   );
 };

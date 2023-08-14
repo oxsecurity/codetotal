@@ -52,8 +52,8 @@ const useStyles = makeStyles()((theme: Theme) => ({
     alignItems: "center",
   },
   img: {
-    width: "100%",
-    height: "100%",
+    width: "1em",
+    height: "1em",
   },
   darkmode: {
     backgroundColor: theme.palette.text.secondary,

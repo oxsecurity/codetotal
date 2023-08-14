@@ -7,6 +7,7 @@ import {
   useTheme,
 } from "@mui/material";
 import { FC } from "react";
+import { AnalysisType } from "shared-types";
 import { makeStyles } from "tss-react/mui";
 import { LanguageIcon } from "../../../languages/components/LanguageIcon";
 import { useReportStore } from "../../stores/fe-report-store";
@@ -23,6 +24,7 @@ export const ReportHeader: FC<ReportBannerProps> = ({ ready }) => {
     scoreColor,
     resourceType,
     resourceValue,
+    code: snippet,
     linters = [],
     lintersWithIssues,
     progress,
@@ -32,6 +34,7 @@ export const ReportHeader: FC<ReportBannerProps> = ({ ready }) => {
   if (!lintersWithIssues) {
     return null;
   }
+
   const lintersWithIssuesCount = lintersWithIssues();
   const scoreColorKey = scoreColor();
   const color = theme.palette[scoreColorKey].main || theme.palette.divider;
@@ -76,12 +79,22 @@ export const ReportHeader: FC<ReportBannerProps> = ({ ready }) => {
             valueClassName={classes.nowrap}
             dataCy="progress"
           />
-          <ReportHeaderSection
-            label="Resource"
-            value={resourceValue || "-"}
-            dataCy="resource-value"
-            valueClassName={classes.resourceValue}
-          />
+          {resourceType === AnalysisType.Snippet && !!snippet ? (
+            <ReportHeaderSection
+              label="Resource"
+              value={`md5: ${resourceValue}`}
+              valueClassName={classes.resourceValue}
+              dataCy="resource-value"
+            />
+          ) : (
+            <ReportHeaderSection
+              label="Resource"
+              value={resourceValue || "-"}
+              valueClassName={classes.resourceValue}
+              dataCy="resource-value"
+            />
+          )}
+
           {!!language && (
             <ReportHeaderSection
               label="Language"
