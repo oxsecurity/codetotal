@@ -1,6 +1,6 @@
 import { Button, Divider, Theme } from "@mui/material";
 import { FC } from "react";
-import { GrFormAdd } from "react-icons/gr";
+import { MdAdd } from "react-icons/md";
 import { makeStyles } from "tss-react/mui";
 import { useReportStore } from "../../stores/fe-report-store";
 import { BackButton } from "./BackButton";
@@ -24,7 +24,7 @@ export const ReportToolbar: FC = () => {
         <Button
           style={{ textTransform: "none" }}
           onClick={openNewAnalysisDialog}
-          startIcon={<GrFormAdd />}
+          startIcon={<MdAdd />}
           variant="contained"
           size="small"
         >
