@@ -3,7 +3,6 @@ import { FC, memo } from "react";
 import { Linter } from "shared-types";
 import { makeStyles } from "tss-react/mui";
 import { selectLinter } from "../../actions/selected-linter-actions";
-import { useSelectedLinterStore } from "../../stores/selected-linter-store";
 import { LinterLogo } from "./LinterLogo";
 import { LinterStatus } from "./LinterStatus";
 
@@ -12,9 +11,9 @@ const LinterListItemComponent: FC<LinterListItemProps> = ({
   index,
   lintersCount,
   issuesCount,
+  selected,
 }) => {
   const { classes } = useStyles();
-  const { linter: selectedLinter } = useSelectedLinterStore();
 
   return (
     <ListItem
@@ -23,7 +22,7 @@ const LinterListItemComponent: FC<LinterListItemProps> = ({
       divider={index < lintersCount - 1}
     >
       <ListItemButton
-        selected={linter.name === selectedLinter?.name}
+        selected={selected}
         onClick={() => selectLinter(linter.name)}
         className={classes.listItem}
       >
@@ -61,6 +60,7 @@ interface LinterListItemProps {
   index: number;
   lintersCount: number;
   issuesCount: number;
+  selected: boolean;
 }
 
 export const LinterListItem = memo(LinterListItemComponent);
