@@ -1,5 +1,6 @@
 import {
   Divider,
+  LinearProgress,
   Paper,
   Theme,
   Typography,
@@ -45,6 +46,19 @@ export const ReportHeader: FC<ReportBannerProps> = ({ ready }) => {
       style={{ borderColor: color }}
       className={classes.reportBanner}
     >
+      <LinearProgress
+        color="inherit"
+        sx={{
+          height: 6,
+          color,
+          position: "absolute",
+          top: 0,
+          left: 0,
+          width: "100%",
+        }}
+        variant="determinate"
+        value={progress()}
+      />
       <div className={classes.textContainer}>
         <Typography
           variant="h1"
@@ -119,9 +133,10 @@ export const ReportHeader: FC<ReportBannerProps> = ({ ready }) => {
 
 const useStyles = makeStyles()((theme: Theme) => ({
   reportBanner: {
+    position: "relative",
     columnGap: theme.spacing(4),
     gridTemplateColumns: "1fr auto",
-    borderTop: "solid 6px",
+    // borderTop: "solid 6px",
     minHeight: 170,
     padding: theme.spacing(1, 2),
     borderBottomLeftRadius: 15,
