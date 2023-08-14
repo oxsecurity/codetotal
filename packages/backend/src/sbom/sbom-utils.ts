@@ -1,5 +1,5 @@
 import axios from "axios";
-import axiosRetry from 'axios-retry';
+import axiosRetry from "axios-retry";
 import { SbomPackage, Severity } from "shared-types";
 import licenseConfig from "./licenseConfig.json";
 import {
@@ -9,6 +9,7 @@ import {
   NpmLicense,
   PackageRequestData,
 } from "./sbom-types";
+// import { PromisePool } from '@supercharge/promise-pool'
 
 function sortByLicenseLength(arr: LicenseInfo[]): LicenseInfo[] {
   return arr.sort((a, b) => b.license.length - a.license.length);
@@ -182,7 +183,7 @@ async function fetchDataFromPyPi({
   name,
   version,
 }: // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  PackageRequestData): Promise<any> {
+PackageRequestData): Promise<any> {
   axiosRetry(axios, { retries: 15, retryDelay: axiosRetry.exponentialDelay });
   try {
     const url = `https://pypi.org/pypi/${name}/${version}/json`;
@@ -197,7 +198,7 @@ async function fetchDataFromNPM({
   name,
   version,
 }: // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  PackageRequestData): Promise<any> {
+PackageRequestData): Promise<any> {
   axiosRetry(axios, { retries: 15, retryDelay: axiosRetry.exponentialDelay });
   try {
     const url = `https://registry.npmjs.org/${name}/${version}`;
