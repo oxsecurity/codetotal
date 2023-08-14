@@ -3,6 +3,7 @@ import {
   Dialog,
   DialogActions,
   DialogContent,
+  Divider,
   Theme,
 } from "@mui/material";
 import { FC, useCallback } from "react";
@@ -35,6 +36,7 @@ export const NewAnalysisDialog: FC = () => {
       <DialogContent className={classes.dialogContent}>
         <AnalysisInputForm onAfterSubmit={handleAfterSubmit} />
       </DialogContent>
+      <Divider />
       <DialogActions sx={{ padding: 2 }}>
         <Button onClick={closeNewAnalysisDialog}>Close (ESC)</Button>
       </DialogActions>

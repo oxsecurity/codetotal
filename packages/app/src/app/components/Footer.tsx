@@ -95,6 +95,6 @@ const useStyles = makeStyles()((theme: Theme) => ({
   },
   oxLogo: {
     width: "1.3em",
-    height: "auto",
+    height: "1.3em",
   },
 }));

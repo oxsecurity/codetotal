@@ -52,8 +52,8 @@ export const LanguageSelector: FC<LanguageSelectorProps> = ({
 
   return (
     <Autocomplete
+      fullWidth
       size="small"
-      sx={{ width: 300 }}
       value={userSelectedLanguage || detectedLanguage || null}
       onChange={handleChange}
       onInputChange={handleInputChange}

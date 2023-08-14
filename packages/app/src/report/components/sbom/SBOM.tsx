@@ -11,7 +11,7 @@ export const SBOM: FC = () => {
 
   return (
     <Paper>
-      {loading ? <Loader text="Waiting for SBOM info..." /> : <SBOMTable />}
+      {loading ? <Loader text="Waiting for SBOM info" /> : <SBOMTable />}
     </Paper>
   );
 };

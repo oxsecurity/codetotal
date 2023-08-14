@@ -109,6 +109,7 @@ const useStyles = makeStyles()((theme: Theme) => ({
     color: theme.palette.primary.main,
   },
   container: {
+    margin: theme.spacing(1),
     outline: `2px dashed ${theme.palette.divider}`,
     transition: theme.transitions.create("all", {
       duration: theme.transitions.duration.short,

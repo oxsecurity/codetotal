@@ -17,6 +17,7 @@ export const createReportStore = (requestId: string) => {
     fileDetails: undefined,
     score: 0,
     analysisError: undefined,
+    code: undefined,
   });
 
   // save the store instance for later use

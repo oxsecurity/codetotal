@@ -1,7 +1,7 @@
-import { Button, Theme, Tooltip } from "@mui/material";
+import { IconButton, Theme, Tooltip } from "@mui/material";
 import { FC } from "react";
 import { CSVLink } from "react-csv";
-import { MdCloudDownload } from "react-icons/md";
+import { IoMdCloudDownload } from "react-icons/io";
 import { makeStyles } from "tss-react/mui";
 import { useReportStore } from "../../stores/fe-report-store";
 
@@ -11,15 +11,14 @@ export const DownloadAllIssuesButton: FC = () => {
 
   const disabled = allIssues().length === 0;
   const button = (
-    <Button
-      startIcon={<MdCloudDownload />}
+    <IconButton
       size="small"
       color="primary"
       disabled={disabled}
       sx={{ textTransform: "none" }}
     >
-      Issues
-    </Button>
+      <IoMdCloudDownload />
+    </IconButton>
   );
   const downloadLink = (
     <CSVLink
@@ -53,8 +52,5 @@ const useStyles = makeStyles()((theme: Theme) => ({
     color: theme.palette.primary.main,
     fontWeight: 400,
     textDecoration: "none",
-    "&:hover": {
-      textDecoration: "underline",
-    },
   },
 }));

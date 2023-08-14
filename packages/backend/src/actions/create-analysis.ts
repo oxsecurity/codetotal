@@ -10,9 +10,8 @@ export const createAnalysis = async (
   action: Analysis
 ): Promise<{ requestId: string }> => {
   try {
-    const [data, resourceValue, language] = await createAnalysisRequestData(
-      action
-    );
+    const [data, reportState] = await createAnalysisRequestData(action);
+
     const response = await axios.post<{ request_id: string }>(
       config.MEGALINTER_ANALYSIS_URL,
       data
@@ -20,11 +19,7 @@ export const createAnalysis = async (
 
     const requestId = response.data.request_id;
     const reportStore = createReportStore(requestId);
-    reportStore.set({
-      resourceType: action.inputType,
-      resourceValue,
-      language,
-    });
+    reportStore.set(reportState);
     subscribeToMegaLinter(requestId, reportStore);
     return { requestId };
   } catch (err) {
