@@ -2,33 +2,29 @@ import { Paper, Theme, Typography } from "@mui/material";
 import { FC } from "react";
 import { makeStyles } from "tss-react/mui";
 import { SeverityBadge } from "../../../common/SeverityBadge";
-import { useReportStore } from "../../stores/fe-report-store";
+import { useSelectedLinterStore } from "../../stores/selected-linter-store";
 import { LinterLogo } from "../detection/LinterLogo";
 import { IssuesTable } from "./IssuesTable";
 
 export const LinterInfo: FC = () => {
   const { classes } = useStyles();
-  const { selectedLinterName, linters = [] } = useReportStore();
+  const { linter } = useSelectedLinterStore();
 
-  const selectedLinter = linters.find(
-    (linter) => linter.name === selectedLinterName
-  );
-
-  if (!selectedLinter) {
+  if (!linter) {
     return null;
   }
 
   return (
     <div className={classes.linterInfo}>
-      {selectedLinter && (
+      {linter && (
         <div className={classes.header}>
-          <LinterLogo linter={selectedLinter} />
+          <LinterLogo linter={linter} />
           <Typography
             variant="body1"
             color="text.primary"
             fontWeight="bold"
             component="a"
-            href={selectedLinter.docUrl.replace("/alpha/", "/beta/")}
+            href={linter.docUrl.replace("/alpha/", "/beta/")}
             target="_blank"
             rel="noreferrer"
             className={classes.link}
@@ -38,15 +34,10 @@ export const LinterInfo: FC = () => {
         </div>
       )}
       <div>
-        {selectedLinter.severity && (
-          <SeverityBadge severity={selectedLinter.severity} />
-        )}
+        {linter.severity && <SeverityBadge severity={linter.severity} />}
       </div>
       <Paper>
-        <IssuesTable
-          linterName={selectedLinter.name}
-          issues={selectedLinter?.issues || []}
-        />
+        <IssuesTable linterName={linter.name} issues={linter?.issues || []} />
       </Paper>
     </div>
   );

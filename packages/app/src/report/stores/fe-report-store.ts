@@ -6,7 +6,6 @@ import { resolveScoreColor } from "../utils/score-utils";
 const initialState: InitialState = {
   status: AnalysisStatus.Created,
   linters: [],
-  selectedLinterName: undefined,
   packages: [],
   score: 0,
   inProgress: true,
@@ -83,7 +82,7 @@ type InitialState = Omit<
 >;
 
 interface FeReportStoreState extends ReportState {
-  selectedLinterName?: string;
+  // selectedLinterName?: string;
   inProgress: boolean;
   wsError?: string;
   issuesCount(toolName: string): number;

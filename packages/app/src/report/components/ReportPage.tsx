@@ -1,9 +1,8 @@
 import { FC, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { AnalysisErrorDialog } from "../../common/AnalysisErrorDialog";
-import { CodeTotalDrawer } from "../../common/CodeTotalDrawer";
 import { initReport } from "../actions/init-report-action";
-import { LinterInfo } from "./drawer/LinterInfo";
+import { LinterDrawer } from "./drawer/LinterDrawer";
 import { CodeDialog } from "./header/CodeDialog";
 import { NewAnalysisDialog } from "./header/NewAnalysisDialog";
 import { ReportHeader } from "./header/ReportHeader";
@@ -29,9 +28,7 @@ const ReportPage: FC = () => {
     <div style={{ paddingBlockEnd: 60 }}>
       <ReportHeader ready />
       <ReportTabs />
-      <CodeTotalDrawer>
-        <LinterInfo />
-      </CodeTotalDrawer>
+      <LinterDrawer />
       <AnalysisErrorDialog />
       <NewAnalysisDialog />
       <CodeDialog />
