@@ -6,9 +6,6 @@ import { subscribeToReportProgress } from "./subscribe-report-action";
 
 export const initReport = async (requestId: string) => {
   try {
-    // reset report store
-    ReportStore.getState().reset();
-
     // fetch report
     const res = await axios.get(`${ApiUrl}/report/${requestId}`);
 

@@ -22,6 +22,7 @@ _Can be run using `npm run codetotal:beta`_
   - Add a button in report toolbar to show code for snippet & file analysis
   - Add a report progress bar
   - Optimize new analysis dialog, drawer and linters list components' renders
+  - Fix completed report receiving updates from ongoing analysis
 - Back-End
   - Bug fix: SBOM packages not showing up in report page. Async parsing of packages information in SBOM module
   - Retry calls to pypi or npm in case first attempts are failing
