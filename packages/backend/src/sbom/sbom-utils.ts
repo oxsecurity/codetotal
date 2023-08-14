@@ -44,8 +44,6 @@ export const fetchPackages = async (
 
   const allPackagesPromises = [...npmPackages, ...pyPackages];
   const allPackages = await Promise.all(allPackagesPromises);
-  console.log("All packages");
-  console.log(allPackages);
   return allPackages;
 };
 
