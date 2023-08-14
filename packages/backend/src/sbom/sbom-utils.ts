@@ -44,8 +44,8 @@ export const fetchPackages = async (
 
   const allPackagesPromises = [...npmPackages, ...pyPackages];
   const allPackages = await Promise.all(allPackagesPromises);
-  console.log("All packages");
-  console.log(allPackages);
+  // console.log("All packages");
+  // console.log(allPackages);
   return allPackages;
 };
 
@@ -100,7 +100,7 @@ export async function getPackages(
             registry = "PyPi";
             try {
               const packageInfo = pkgsInfo.find(
-                (pkg) =>
+                (pkg) => pkg &&
                   pkg.name === component.name &&
                   pkg.version === component.version
               );
@@ -116,7 +116,7 @@ export async function getPackages(
           } else if (isNpmPackage(purl)) {
             try {
               const packageInfo = pkgsInfo.find(
-                (pkg) =>
+                (pkg) => pkg &&
                   pkg.name === component.name &&
                   pkg.version === component.version
               );

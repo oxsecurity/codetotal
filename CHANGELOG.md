@@ -20,9 +20,11 @@ _Can be run using `npm run codetotal:beta`_
   - Add auto focus to snippet & repo inputs
   - Highlight resource type in report header
   - Add a button in report toolbar to show code for snippet & file analysis
+
 - Back-End
   - Bug fix: SBOM packages not showing up in report page. Async parsing of packages information in SBOM module
   - Retry calls to pypi or npm in case first attempts are failing
+  - Fix issue when there is no SBOM package info
 
 ## [v0.5.0] - 2023-08-10
 
