@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "start": "vite --clearScreen false",
+    "watch": "vite --clearScreen false",
     "build": "tsc --noEmit && vite build",
     "preview": "vite preview",
     "lint": "npx eslint src --max-warnings=0",
