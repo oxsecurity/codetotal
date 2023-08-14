@@ -193,12 +193,12 @@ export async function getPackages(
     (a, b) => {
       // First, order by severity
       const orderRes = severityOrder.indexOf(b.severity) - severityOrder.indexOf(a.severity);
-      if (orderRes in [1, -1]) {
+      if ([1, -1].includes(orderRes)) {
         return orderRes;
       }
       // Then order by package name
       const packageNameRes = a.packageName.localeCompare(b.packageName);
-      if (packageNameRes in [1, -1]) {
+      if ([1, -1].includes(packageNameRes)) {
         return orderRes;
       }
       // Otherwise use version number
