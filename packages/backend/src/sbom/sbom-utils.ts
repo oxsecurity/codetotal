@@ -30,11 +30,20 @@ export const fetchPackages = async (
     components.some((component) => component.purl === purl)
   );
 
+  // List npm packages
   const npmPackages = withComponent
     .filter((purl) => isNpmPackage(purl))
     .map((purl) => resolvePackageRequestData(purl, components))
-    .filter((pkg) => !!pkg)
-    .map(fetchDataFromNPM);
+    .filter((pkg) => !!pkg);
+  // Remove duplicate package & version
+  const npmPackagesUnique = npmPackages.reduce((unique, o) => {
+    if (!unique.some(obj => obj.name === o.name && obj.version === o.version)) {
+      unique.push(o);
+    }
+    return unique;
+  }, []);
+  // Fetch packages infos (in parallel promises)
+  const npmPackagesPromises = npmPackagesUnique.map(fetchDataFromNPM);
 
   const pyPackages = withComponent
     .filter((purl) => isPythonPackage(purl))
@@ -42,9 +51,9 @@ export const fetchPackages = async (
     .filter((pkg) => !!pkg)
     .map(fetchDataFromPyPi);
 
-  const allPackagesPromises = [...npmPackages, ...pyPackages];
+  const allPackagesPromises = [...npmPackagesPromises, ...pyPackages];
   const allPackages = await Promise.all(allPackagesPromises);
-  // console.log("All packages");
+  console.log("Fetched dependent packages info");
   // console.log(allPackages);
   return allPackages;
 };
@@ -170,12 +179,33 @@ export async function getPackages(
     }
   }
 
+  // Remove duplicates
+  const sbomPackagesUnique = sbomPackages.reduce((unique, o) => {
+    if (!unique.some(obj => obj.packageName === o.packageName && obj.packageVersion === o.packageVersion)) {
+      unique.push(o);
+    }
+    return unique;
+  }, []);
+
+  // Order SBOM packages
   const severityOrder = ["critical", "high", "medium", "low"];
-  sbomPackages.sort(
-    (a, b) =>
-      severityOrder.indexOf(b.severity) - severityOrder.indexOf(a.severity)
+  sbomPackagesUnique.sort(
+    (a, b) => {
+      // First, order by severity
+      const orderRes = severityOrder.indexOf(b.severity) - severityOrder.indexOf(a.severity);
+      if (orderRes in [1, -1]) {
+        return orderRes;
+      }
+      // Then order by package name
+      const packageNameRes = a.packageName.localeCompare(b.packageName);
+      if (packageNameRes in [1, -1]) {
+        return orderRes;
+      }
+      // Otherwise use version number
+      return a.packageVersion.localeCompare(b.packageVersion);
+    }
   );
-  return sbomPackages;
+  return sbomPackagesUnique;
 }
 
 async function fetchDataFromPyPi({

@@ -25,6 +25,7 @@ _Can be run using `npm run codetotal:beta`_
   - Bug fix: SBOM packages not showing up in report page. Async parsing of packages information in SBOM module
   - Retry calls to pypi or npm in case first attempts are failing
   - Fix issue when there is no SBOM package info
+  - SBOM results: Remove duplicate packages and sort them alphabetically (as a second criteria, after severity)
 
 ## [v0.5.0] - 2023-08-10
 
