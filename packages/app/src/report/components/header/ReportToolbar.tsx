@@ -1,15 +1,13 @@
-import { Button, Divider, Theme } from "@mui/material";
+import { Divider, Theme } from "@mui/material";
 import { FC } from "react";
-import { MdAdd } from "react-icons/md";
 import { makeStyles } from "tss-react/mui";
-import { useReportStore } from "../../stores/fe-report-store";
 import { BackButton } from "./BackButton";
 import { DownloadAllIssuesButton } from "./DownloadAllIssuesButton";
+import { NewAnalysisButton } from "./NewAnalysisButton";
 import { ShowCodeButton } from "./ShowCodeButton";
 
 export const ReportToolbar: FC = () => {
   const { classes } = useStyles();
-  const { openNewAnalysisDialog } = useReportStore();
 
   return (
     <div className={classes.reportToolbar}>
@@ -21,15 +19,7 @@ export const ReportToolbar: FC = () => {
           sx={{ marginInline: 1 }}
           flexItem
         />
-        <Button
-          style={{ textTransform: "none" }}
-          onClick={openNewAnalysisDialog}
-          startIcon={<MdAdd />}
-          variant="contained"
-          size="small"
-        >
-          New Analysis
-        </Button>
+        <NewAnalysisButton />
       </div>
       <div className={classes.actionsContainer}>
         <ShowCodeButton />
