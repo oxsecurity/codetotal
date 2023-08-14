@@ -1,6 +1,7 @@
 import { FC, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { AnalysisErrorDialog } from "../../common/AnalysisErrorDialog";
+import { clearReport } from "../actions/clear-report-actions";
 import { initReport } from "../actions/init-report-action";
 import { LinterDrawer } from "./drawer/LinterDrawer";
 import { CodeDialog } from "./header/CodeDialog";
@@ -23,6 +24,10 @@ const ReportPage: FC = () => {
       }
     })();
   }, [requestId, navigate]);
+
+  useEffect(() => {
+    return clearReport;
+  });
 
   return (
     <div style={{ paddingBlockEnd: 60 }}>
