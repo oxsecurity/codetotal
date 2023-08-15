@@ -6,7 +6,7 @@ export interface ReportState {
   requestId?: string;
   resourceType?: string;
   resourceValue?: string;
-  status: AnalysisStatus;
+  status?: AnalysisStatus;
   linters?: Linter[];
   packages: SbomPackage[];
   repoDetails?: RepoDetails;

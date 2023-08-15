@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { AnalysisErrorDialog } from "../../common/AnalysisErrorDialog";
 import { clearReport } from "../actions/clear-report-actions";
 import { initReport } from "../actions/init-report-action";
+import { SuccessfulAnalysisNotice } from "./SuccessfulAnalysisNotice";
 import { LinterDrawer } from "./drawer/LinterDrawer";
 import { CodeDialog } from "./header/CodeDialog";
 import { NewAnalysisDialog } from "./header/NewAnalysisDialog";
@@ -37,6 +38,7 @@ const ReportPage: FC = () => {
       <AnalysisErrorDialog />
       <NewAnalysisDialog />
       <CodeDialog />
+      <SuccessfulAnalysisNotice />
     </div>
   );
 };

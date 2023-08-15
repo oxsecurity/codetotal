@@ -6,6 +6,7 @@ export const SubmitButton: FC<SubmitButtonProps> = ({ loading, ...props }) => {
   return (
     <Button
       {...props}
+      disabled={props.disabled || loading}
       endIcon={
         loading ? (
           <CircularProgress

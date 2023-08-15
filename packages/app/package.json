@@ -20,6 +20,7 @@
     "md5": "^2.3.0",
     "monaco-editor": "^0.40.0",
     "react": "^18.2.0",
+    "react-confetti": "^6.1.0",
     "react-countup": "^6.4.2",
     "react-csv": "^2.2.2",
     "react-dom": "^18.2.0",
@@ -27,6 +28,7 @@
     "react-icons": "^4.10.1",
     "react-router-dom": "^6.13.0",
     "react-syntax-highlighter": "^15.5.0",
+    "react-use": "^17.4.0",
     "shared-types": "^1.0.0",
     "tss-react": "^4.8.6",
     "zustand": "^4.3.8"
