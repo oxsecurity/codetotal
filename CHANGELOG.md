@@ -30,6 +30,7 @@ _Can be run using `npm run codetotal:beta`_
   - Fetch SBOM packages with concurrency of 10
   - Fix issue when there is no SBOM package info
   - SBOM results: Remove duplicate packages and sort them alphabetically (as a second criteria, after severity)
+  - Allow to override parallel number of SBOM packages fetches using env var CODETOTAL_SBOM_FETCH_PARALLEL_NB (default is now 30)
 
 ## [v0.5.0] - 2023-08-10
 

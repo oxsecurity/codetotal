@@ -3,6 +3,7 @@ import axios from "axios";
 import axiosRetry from "axios-retry";
 import { logger } from "../utils/logger";
 import { Component, Dependency, PackageRequestData } from "./sbom-types";
+import config from "../config";
 
 export const fetchPackages = async (
   dependencies: Dependency[],
@@ -36,17 +37,20 @@ export const fetchPackages = async (
   // Fetch packages infos using PromisePool: default concurrency is 10 requests in parallel
   logger.sbom.log(`Fetching ${packagesToFetchUnique.length} packages...`);
   const start = performance.now();
-  const { results } = await PromisePool.for(packagesToFetchUnique).process(
-    async (pkg) => {
-      if (isNpmPackage(pkg.purl || '')) {
-        return await fetchDataFromNPM(pkg);
+  const { results } = await PromisePool
+    .withConcurrency(Number(config.CODETOTAL_SBOM_FETCH_PARALLEL_NB))
+    .for(packagesToFetchUnique)
+    .process(
+      async (pkg) => {
+        if (isNpmPackage(pkg.purl || '')) {
+          return await fetchDataFromNPM(pkg);
+        }
+        else if (isPythonPackage(pkg.purl || '')) {
+          return await fetchDataFromPyPi(pkg);
+        }
+        return pkg;
       }
-      else if (isPythonPackage(pkg.purl || '')) {
-        return await fetchDataFromPyPi(pkg);
-      }
-      return pkg;
-    }
-  );
+    );
   const elapsedMs = performance.now() - start;
 
   const resultsClean = results.filter(pkg => pkg !== null);
