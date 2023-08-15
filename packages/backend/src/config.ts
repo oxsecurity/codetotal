@@ -8,6 +8,7 @@ declare const process: {
     CODETOTAL_HTTP_HOST: string;
     CODETOTAL_WS_PORT: number;
     CODETOTAL_WS_HOST: string;
+    CODETOTAL_SBOM_FETCH_PARALLEL_NB: number;
     DEBUG_MODULES: string;
   };
 };
@@ -21,6 +22,7 @@ const config = {
   CODETOTAL_HTTP_HOST: process.env.CODETOTAL_HTTP_HOST,
   CODETOTAL_WS_PORT: process.env.CODETOTAL_WS_PORT,
   CODETOTAL_WS_HOST: process.env.CODETOTAL_WS_HOST,
+  CODETOTAL_SBOM_FETCH_PARALLEL_NB: process.env.CODETOTAL_SBOM_FETCH_PARALLEL_NB || 30,
   DEBUG_MODULES: process.env.DEBUG_MODULES,
 };
 
