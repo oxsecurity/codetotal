@@ -1,11 +1,15 @@
 import bodyParser from "body-parser";
 import cors from "cors";
 import express, { RequestHandler } from "express";
+import monitor from "express-status-monitor";
 import path from "node:path";
 import { logger } from "../utils/logger";
 
 export const createHttpServer = (factory: ServerFactory) => {
   const app = factory();
+
+  // enable status monitoring
+  app.use(monitor());
 
   // enable cors
   app.use(cors());
