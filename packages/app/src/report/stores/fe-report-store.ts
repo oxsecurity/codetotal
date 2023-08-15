@@ -1,10 +1,10 @@
-import { AnalysisStatus, Issue, ReportState } from "shared-types";
+import { Issue, ReportState } from "shared-types";
 import { createStore, useStore } from "zustand";
 import { ScoreColorKey } from "../fe-report-types";
 import { resolveScoreColor } from "../utils/score-utils";
 
 const initialState: InitialState = {
-  status: AnalysisStatus.Created,
+  status: undefined,
   linters: [],
   packages: [],
   score: 0,
