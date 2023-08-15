@@ -35,6 +35,7 @@ export const fetchPackages = async (
 
   // Fetch packages infos using PromisePool: default concurrency is 10 requests in parallel
   logger.sbom.log(`Fetching ${packagesToFetchUnique.length} packages...`);
+  const start = performance.now();
   const { results } = await PromisePool.for(packagesToFetchUnique).process(
     async (pkg) => {
       if (isNpmPackage(pkg.purl || '')) {
@@ -46,9 +47,10 @@ export const fetchPackages = async (
       return pkg;
     }
   );
+  const elapsedMs = performance.now() - start;
 
   const resultsClean = results.filter(pkg => pkg !== null);
-  logger.sbom.log(`Fetched ${resultsClean.length} packages successfully`);
+  logger.sbom.log(`Fetched ${resultsClean.length} packages successfully in ${elapsedMs} ms`);
   return resultsClean;
 };
 
