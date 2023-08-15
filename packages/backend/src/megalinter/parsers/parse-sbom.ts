@@ -1,8 +1,8 @@
 import { SbomPackage } from "shared-types";
+import { fetchPackages } from "../../sbom/sbom-fetching-utils";
 import { Component, Dependency } from "../../sbom/sbom-types";
 import {
   extractMappingForApplication,
-  fetchPackages,
   getPackages,
 } from "../../sbom/sbom-utils";
 import { ReportStore } from "../../stores/be-report-store";
