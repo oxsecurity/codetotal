@@ -323,9 +323,14 @@
 <li>Fix completed report receiving updates from ongoing analysis</li>
 </ul>
 </li>
+</ul>
+<ul>
 <li>Back-End<ul>
 <li>Bug fix: SBOM packages not showing up in report page. Async parsing of packages information in SBOM module</li>
 <li>Retry calls to pypi or npm in case first attempts are failing</li>
+<li>Fetch SBOM packages with concurrency of 10</li>
+<li>Fix issue when there is no SBOM package info</li>
+<li>SBOM results: Remove duplicate packages and sort them alphabetically (as a second criteria, after severity)</li>
 </ul>
 </li>
 </ul>
