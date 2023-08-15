@@ -5,9 +5,6 @@ import { subscribe } from "../utils/ws-client";
 let unsubscribe: () => void;
 
 export const subscribeToReportProgress = (requestId: string) => {
-  // unsubscribe from previous connection
-  unsubscribe && unsubscribe();
-
   // clear previous error
   ReportStore.setState({ wsError: undefined });
 

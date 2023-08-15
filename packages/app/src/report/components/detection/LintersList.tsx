@@ -1,24 +1,15 @@
-import {
-  List,
-  ListItem,
-  ListItemButton,
-  Theme,
-  Typography,
-} from "@mui/material";
+import { List } from "@mui/material";
 import { FC } from "react";
 import { makeStyles } from "tss-react/mui";
-import { ReportStore, useReportStore } from "../../stores/fe-report-store";
-import { LinterLogo } from "./LinterLogo";
-import { LinterStatus } from "./LinterStatus";
+import { useReportStore } from "../../stores/fe-report-store";
+import { LinterListItem } from "./LinterListItem";
+import { useSelectedLinterStore } from "../../stores/selected-linter-store";
 
 export const LintersList: FC = () => {
   const { classes } = useStyles();
-  const { linters = [], issuesCount, selectedLinterName } = useReportStore();
-
-  const handleToolClick = (name: string) => {
-    ReportStore.setState({ selectedLinterName: name });
-  };
-
+  const { linters = [], issuesCount } = useReportStore();
+  const { linter: selectedLinter } = useSelectedLinterStore();
+  
   return (
     <div className={classes.lintersList}>
       <List className={classes.list}>
@@ -26,32 +17,14 @@ export const LintersList: FC = () => {
           const issues = issuesCount(linter.name);
 
           return (
-            <ListItem
-              key={linter.name || ""}
-              disablePadding
-              divider={index < linters.length - 1}
-            >
-              <ListItemButton
-                selected={linter.name === selectedLinterName}
-                onClick={() => handleToolClick(linter.name)}
-                className={classes.listItem}
-              >
-                <LinterLogo className={classes.nameContainer} linter={linter} />
-
-                <div className={classes.statsContainer}>
-                  {issues > 0 && (
-                    <Typography variant="body2" color="text.secondary">
-                      {issues} issues
-                    </Typography>
-                  )}
-
-                  <LinterStatus
-                    severity={linter.severity}
-                    status={linter.status}
-                  />
-                </div>
-              </ListItemButton>
-            </ListItem>
+            <LinterListItem
+              key={linter.name}
+              linter={linter}
+              index={index}
+              lintersCount={linters.length}
+              issuesCount={issues}
+              selected={selectedLinter?.name === linter.name}
+            />
           );
         })}
       </List>
@@ -59,7 +32,7 @@ export const LintersList: FC = () => {
   );
 };
 
-const useStyles = makeStyles()((theme: Theme) => ({
+const useStyles = makeStyles()(() => ({
   lintersList: {
     overflow: "hidden",
   },
@@ -67,15 +40,5 @@ const useStyles = makeStyles()((theme: Theme) => ({
     listStyle: "none",
     padding: 0,
     margin: 0,
-  },
-  listItem: {
-    minHeight: 50,
-  },
-  nameContainer: {
-    flexGrow: 1,
-  },
-  statsContainer: {
-    display: "flex",
-    gap: theme.spacing(2),
   },
 }));
