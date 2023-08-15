@@ -26,4 +26,5 @@ export interface NpmLicense {
 export interface PackageRequestData {
   name: string;
   version: string;
+  purl: string;
 }

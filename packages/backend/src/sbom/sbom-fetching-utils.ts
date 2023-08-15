@@ -20,36 +20,36 @@ export const fetchPackages = async (
     components.some((component) => component.purl === purl)
   );
 
-  const npmPackages = withComponent
-    .filter((purl) => isNpmPackage(purl))
+  // Build packages to fetch
+  const packagesToFetch = withComponent
     .map((purl) => resolvePackageRequestData(purl, components))
-    .filter((pkg) => !!pkg)
-    .map(fetchDataFromNPM);
+    .filter((pkg) => !!pkg);
 
-  const pyPackages = withComponent
-    .filter((purl) => isPythonPackage(purl))
-    .map((purl) => resolvePackageRequestData(purl, components))
-    .filter((pkg) => !!pkg)
-    .map(fetchDataFromPyPi);
+  // Make package list unique
+  const packagesToFetchUnique = packagesToFetch.reduce((unique, o) => {
+    if (!unique.some(obj => obj.name === o.name && obj.version === o.version)) {
+      unique.push(o);
+    }
+    return unique;
+  }, []);
 
-  const allPackagesPromises = [...npmPackages, ...pyPackages];
-  if (allPackagesPromises.length === 0) {
-    // no need to fetch anything
-    return [];
-  }
-
-  logger.sbom.log(`Fetching ${allPackagesPromises.length} packages...`);
-
-  // default concurrency is 10
-  const { results } = await PromisePool.for(allPackagesPromises).process(
-    async (pkgPromise) => {
-      const pkg = await pkgPromise;
+  // Fetch packages infos using PromisePool: default concurrency is 10 requests in parallel
+  logger.sbom.log(`Fetching ${packagesToFetchUnique.length} packages...`);
+  const { results } = await PromisePool.for(packagesToFetchUnique).process(
+    async (pkg) => {
+      if (isNpmPackage(pkg.purl || '')) {
+        return await fetchDataFromNPM(pkg);
+      }
+      else if (isPythonPackage(pkg.purl || '')) {
+        return await fetchDataFromPyPi(pkg);
+      }
       return pkg;
     }
   );
 
-  logger.sbom.log(`Fetching packages completed`);
-  return results;
+  const resultsClean = results.filter(pkg => pkg !== null);
+  logger.sbom.log(`Fetched ${resultsClean.length} packages successfully`);
+  return resultsClean;
 };
 
 export const isPythonPackage = (purl: string) => purl.startsWith("pkg:pypi");
@@ -64,37 +64,50 @@ const resolvePackageRequestData = (
     return {
       name: component.name,
       version: component.version,
+      purl: purl
     };
   }
   return undefined;
 };
 
+// Fetch data from PyPi packages registry
 async function fetchDataFromPyPi({
   name,
   version,
 }: // eslint-disable-next-line @typescript-eslint/no-explicit-any
-PackageRequestData): Promise<any> {
+  PackageRequestData): Promise<any> {
   axiosRetry(axios, { retries: 15, retryDelay: axiosRetry.exponentialDelay });
   try {
     const url = `https://pypi.org/pypi/${name}/${version}/json`;
     const response = await axios.get(url);
-    return response.data;
+    if (response.status === 200) {
+      return response.data;
+    }
+    logger.sbom.error(`Error fetching data from PyPi for ${name}:${version} : ${response.status}`);
+    return null;
   } catch (error) {
-    console.error("Error fetching data from PyPi:", error);
+    logger.sbom.error(`Error fetching data from PyPi for ${name}:${version} : ${error.message}`);
+    return null;
   }
 }
 
+// Fetch data from NPM packages registry
 async function fetchDataFromNPM({
   name,
   version,
 }: // eslint-disable-next-line @typescript-eslint/no-explicit-any
-PackageRequestData): Promise<any> {
+  PackageRequestData): Promise<any> {
   axiosRetry(axios, { retries: 15, retryDelay: axiosRetry.exponentialDelay });
   try {
     const url = `https://registry.npmjs.org/${name}/${version}`;
     const response = await axios.get(url);
-    return response.data;
+    if (response.status === 200) {
+      return response.data;
+    }
+    logger.sbom.error(`Error fetching data from NPM for ${name}:${version} : ${response.status}`);
+    return null;
   } catch (error) {
-    console.error("Error fetching data from NPM:", error);
+    logger.sbom.error(`Error fetching data from NPM for ${name}:${version} : ${error.message}`);
+    return null;
   }
 }
