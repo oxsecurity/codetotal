@@ -3,6 +3,7 @@ import { SbomPackage } from "shared-types";
 import { ResponsiveTable, TableOptions } from "../../../common/ResponsiveTable";
 import { SeverityBadge } from "../../../common/SeverityBadge";
 import { useReportStore } from "../../stores/fe-report-store";
+import { SBOMTableNameCell } from "./SBOMTableNameCell";
 
 export const SBOMTable: FC = () => {
   const { packages } = useReportStore();
@@ -12,7 +13,10 @@ export const SBOMTable: FC = () => {
 const tableOptions: TableOptions<SbomPackage> = {
   emptyMessage: "No packages information found",
   cells: [
-    { label: "Name", key: "packageName" },
+    {
+      label: "Name",
+      cellRenderer: (row) => <SBOMTableNameCell pkg={row} />,
+    },
     { label: "Version", key: "packageVersion" },
     {
       label: "Severity",
