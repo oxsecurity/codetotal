@@ -37,6 +37,7 @@ export const Score: FC<ScoreProps> = ({
         value={value}
         classes={{
           circle: classes.circle,
+          svg: classes.svg,
         }}
         sx={{ zIndex: 1 }}
         color="inherit"
@@ -48,6 +49,9 @@ export const Score: FC<ScoreProps> = ({
           size={size}
           value={100}
           className={classes.centerAbsolute}
+          classes={{
+            svg: classes.svg,
+          }}
           sx={{
             zIndex: 0,
             color: "#d9d9d9",
@@ -109,6 +113,10 @@ const useStyles = makeStyles()((theme: Theme) => ({
   },
   label: {
     fontSize: theme.typography.caption.fontSize,
+  },
+  svg: {
+    width: "100%",
+    height: "100%",
   },
 }));
 
