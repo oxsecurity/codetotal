@@ -60,18 +60,6 @@ const readFileSyncSpy = jest
   .mockReturnValueOnce("HTML content");
 
 describe("register-http-routes", () => {
-  const OLD_ENV = process.env;
-
-  beforeEach(() => {
-    // see: https://stackoverflow.com/a/48042799/17566189
-    jest.resetModules(); // Most important - it clears the cache
-    process.env = { ...OLD_ENV }; // Make a copy
-  });
-
-  afterAll(() => {
-    process.env = OLD_ENV; // Restore old environment
-  });
-
   test("registerRoutes", () => {
     process.env.NODE_ENV = "production";
     registerRoutes(expressAppMock as unknown as express.Express);
