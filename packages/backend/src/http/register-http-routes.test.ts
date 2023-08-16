@@ -53,7 +53,7 @@ const expressAppMock = {
 
 const resolveSpy = jest
   .spyOn(path, "resolve")
-  .mockReturnValueOnce("/some-path");
+  .mockImplementation(() => "/some-path");
 
 const readFileSyncSpy = jest
   .spyOn(fs, "readFileSync")
