@@ -25,4 +25,5 @@ export const logger = {
   megalinter: createLogger("megalinter"),
   stores: createLogger("stores"),
   transport: createLogger("transport"),
+  sbom: createLogger("sbom"),
 };

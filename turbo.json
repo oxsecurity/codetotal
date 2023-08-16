@@ -5,6 +5,10 @@
       "cache": false,
       "dependsOn": ["prestart", "^start"]
     },
+    "watch": {
+      "cache": false,
+      "dependsOn": ["prestart", "^watch"]
+    },
     "prestart": {
       "cache": false
     },
