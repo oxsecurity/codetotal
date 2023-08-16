@@ -24,6 +24,7 @@ _Can be run using `npm run codetotal:beta`_
   - Optimize new analysis dialog, drawer and linters list components' renders
   - Fix completed report receiving updates from ongoing analysis
   - Repo input form: ENTER keypad must start the scan if repo has been input
+  - Add a toggle button for wrapping text in CodeViewer modal dialog
   
 - Back-End
   - Bug fix: SBOM packages not showing up in report page. Async parsing of packages information in SBOM module
