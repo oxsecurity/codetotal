@@ -12,7 +12,7 @@ export const BackButton: FC = () => {
   };
 
   return (
-    <Tooltip arrow title="Back to homepage" placement="top">
+    <Tooltip arrow title="Back to homepage">
       <IconButton size="small" href="/" onClick={navigateBack}>
         <IoMdArrowBack />
       </IconButton>

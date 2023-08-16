@@ -13,7 +13,7 @@ export const ShowCodeButton: FC = () => {
   }
 
   return (
-    <Tooltip placement="top" arrow title="Show code">
+    <Tooltip title="Show code">
       <IconButton onClick={open} size="small" color="primary">
         <BiCodeAlt style={{ width: "1em", height: "1em" }} />
       </IconButton>
