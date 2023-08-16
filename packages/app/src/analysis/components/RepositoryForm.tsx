@@ -1,5 +1,5 @@
 import { FormControl, TextField, Theme } from "@mui/material";
-import { FC, SyntheticEvent, useCallback } from "react";
+import { FC, useCallback } from "react";
 import { makeStyles } from "tss-react/mui";
 import { AnalysisStore, useAnalysisStore } from "../stores/analysis-store";
 import { AnalysisFormProps } from "./AnalysisInputForm";
@@ -13,13 +13,8 @@ export const RepositoryForm: FC<AnalysisFormProps> = ({ onSubmit }) => {
     AnalysisStore.setState({ repositoryURL: e.target.value });
   }, []);
 
-  const handleSubmit = (e: SyntheticEvent) => {
-    e.preventDefault();
-    onSubmit();
-  };
-
   return (
-    <form className={classes.repositoryForm} onSubmit={handleSubmit}>
+    <form className={classes.repositoryForm}>
       <FormControl fullWidth>
         <TextField
           autoFocus
@@ -34,6 +29,7 @@ export const RepositoryForm: FC<AnalysisFormProps> = ({ onSubmit }) => {
         color="primary"
         loading={sending === "loading"}
         disabled={!repoEnabled()}
+        onClick={onSubmit}
       >
         Check Repository
       </SubmitButton>
