@@ -5,6 +5,7 @@ import { BiSend } from "react-icons/bi";
 export const SubmitButton: FC<SubmitButtonProps> = ({ loading, ...props }) => {
   return (
     <Button
+      type="submit"
       {...props}
       endIcon={
         loading ? (
