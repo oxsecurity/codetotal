@@ -1,6 +1,4 @@
 import express from "express";
-import fs from "node:fs";
-import path from "node:path";
 
 // imports (module) mocks
 const multerFileUploadHandlerMock = jest.fn();
@@ -28,6 +26,16 @@ jest.mock("./handlers/all-languages-http-handler", () => ({
   allLanguagesHttpHandler: allLanguagesHttpHandlerMock,
 }));
 
+const pathResolveMock = jest.fn(() => "/some-path");
+jest.mock("node:path", () => ({
+  resolve: pathResolveMock,
+}));
+
+const fsReadFileMock = jest.fn(() => "HTML Content");
+jest.mock("node:fs", () => ({
+  readFileSync: fsReadFileMock,
+}));
+
 const logMockFunction = jest.fn();
 jest.mock("../utils/logger", () => ({
   logger: {
@@ -50,14 +58,6 @@ const expressAppMock = {
   post: jest.fn(),
   get: jest.fn(),
 };
-
-const resolveSpy = jest
-  .spyOn(path, "resolve")
-  .mockImplementation(() => "/some-path");
-
-const readFileSyncSpy = jest
-  .spyOn(fs, "readFileSync")
-  .mockReturnValueOnce("HTML content");
 
 describe("register-http-routes", () => {
   test("registerRoutes", () => {
@@ -90,12 +90,12 @@ describe("register-http-routes", () => {
       `${prefix}/all-languages`,
       allLanguagesHttpHandlerMock
     );
-    expect(resolveSpy).toBeCalledWith("./dist", "public", "index.html");
-    expect(readFileSyncSpy).toBeCalledWith("/some-path");
+    expect(pathResolveMock).toBeCalledWith("./dist", "public", "index.html");
+    expect(fsReadFileMock).toBeCalledWith("/some-path");
     expect(logMockFunction).toBeCalledWith(
       "Serving the following index.html file for all GET requests"
     );
-    expect(logMockFunction).toBeCalledWith("HTML content");
+    expect(logMockFunction).toBeCalledWith("HTML Content");
 
     // static files route
     expect(expressAppMock.get).toBeCalledWith("*", staticFilesHttpHandlerMock);
