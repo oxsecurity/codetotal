@@ -23,7 +23,7 @@ _Can be run using `npm run codetotal:beta`_
   - Add a report progress bar
   - Optimize new analysis dialog, drawer and linters list components' renders
   - Fix completed report receiving updates from ongoing analysis
-  - Add link to packages' registry in SNOM panel
+  - Add link to packages' registry in SBOM panel
   
 - Back-End
   - Bug fix: SBOM packages not showing up in report page. Async parsing of packages information in SBOM module
