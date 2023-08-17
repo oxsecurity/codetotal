@@ -1,4 +1,4 @@
-import { ReportState } from "shared-types";
+import { ReportState } from "@ct/shared-types";
 import config from "../../config";
 
 export const subscribe = ({

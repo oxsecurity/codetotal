@@ -1,4 +1,4 @@
-import { AnalysisType, ReportState } from "shared-types";
+import { AnalysisType, ReportState } from "@ct/shared-types";
 import { ReportStore } from "../../stores/be-report-store";
 import { logger } from "../../utils/logger";
 import { BaseMessage } from "../megalinter-types";

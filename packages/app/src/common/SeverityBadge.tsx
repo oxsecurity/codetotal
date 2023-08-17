@@ -1,10 +1,10 @@
+import { OneOfValues, Severity } from "@ct/shared-types";
 import { Theme, Typography } from "@mui/material";
 import { FC } from "react";
 import { BsExclamation } from "react-icons/bs";
 import { IoMdCheckmarkCircleOutline } from "react-icons/io";
 import { MdErrorOutline, MdOutlineWarningAmber } from "react-icons/md";
 import { TbUrgent } from "react-icons/tb";
-import { OneOfValues, Severity } from "shared-types";
 import { makeStyles } from "tss-react/mui";
 
 export const SeverityBadge: FC<SeverityBadgeProps> = ({ severity }) => {
