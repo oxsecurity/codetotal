@@ -1,6 +1,6 @@
+import { RepoDetails } from "@ct/shared-types";
 import { Theme, Typography } from "@mui/material";
 import { FC } from "react";
-import { RepoDetails } from "shared-types";
 import { makeStyles } from "tss-react/mui";
 import { DetailsItem } from "./DetailsItem";
 

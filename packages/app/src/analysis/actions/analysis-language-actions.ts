@@ -1,4 +1,4 @@
-import { ProgrammingLanguage } from "shared-types";
+import { ProgrammingLanguage } from "@ct/shared-types";
 import { fetchDetect } from "../../languages/actions/detect-language-actions";
 import { AnalysisStore } from "../stores/analysis-store";
 
@@ -19,6 +19,8 @@ export const clearLanguages = () => {
   });
 };
 
-export const setUserSelectedLanguage = (newValue: ProgrammingLanguage | undefined) => {
-    AnalysisStore.setState({ userSelectedLanguage: newValue });
-}
+export const setUserSelectedLanguage = (
+  newValue: ProgrammingLanguage | undefined
+) => {
+  AnalysisStore.setState({ userSelectedLanguage: newValue });
+};

@@ -1,4 +1,4 @@
-import { SbomPackage, Severity } from "shared-types";
+import { Registry, SbomPackage, Severity } from "@ct/shared-types";
 import { logger } from "../utils/logger";
 import licenseConfig from "./licenseConfig.json";
 import { isNpmPackage, isPythonPackage } from "./sbom-fetching-utils";
@@ -36,14 +36,13 @@ export function createSBOMPackages(
         const component = components.find(
           (component) => component.purl === purl
         );
-        let registry = "";
+        let registry: Registry = undefined;
         let license = "Unknown";
         let severity = Severity.Medium;
         if (component) {
           const sourceList: string[] = [];
 
           if (isPythonPackage(purl)) {
-            registry = "PyPi";
             try {
               const packageInfo = rawPackages.find(
                 (pkg) =>
@@ -57,6 +56,7 @@ export function createSBOMPackages(
               if (packageInfo?.info?.classifiers) {
                 sourceList.push(packageInfo.info.classifiers.join(" "));
               }
+              registry = packageInfo ? Registry.Pypi : undefined;
             } catch (error) {
               logger.sbom.error("Error:", error.message);
             }
@@ -79,6 +79,7 @@ export function createSBOMPackages(
               } else {
                 logger.sbom.log(`missing license for: ${purl}`);
               }
+              registry = packageInfo ? Registry.Npm : undefined;
             } catch (error) {
               logger.sbom.error(error);
             }
@@ -87,7 +88,7 @@ export function createSBOMPackages(
           }
 
           if (sourceList.length == 0) {
-            logger.sbom.log(`no where to get license for ${purl}`);
+            logger.sbom.log(`nowhere to get license for ${purl}`);
           } else {
             for (const licenseSoruce of sourceList) {
               const licenseItem = sortedLicenseConfig.find((item) =>
@@ -104,10 +105,10 @@ export function createSBOMPackages(
           sbomPackages.push({
             packageName: component.name,
             packageVersion: component.version,
-            license: license,
-            registry: registry,
-            severity: severity,
-            filePath: filePath,
+            license,
+            registry,
+            severity,
+            filePath,
           });
         } else {
           logger.sbom.log(`missing component info, purl: ${purl}`);

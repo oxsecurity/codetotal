@@ -1,6 +1,6 @@
+import { AnalysisType, OneOfValues } from "@ct/shared-types";
 import { Box } from "@mui/material";
 import { FC, PropsWithChildren } from "react";
-import { AnalysisType, OneOfValues } from "shared-types";
 
 export const AnalysisTabPanel: FC<PropsWithChildren<AnalysisTabPanelProps>> = (
   props

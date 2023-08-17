@@ -1,6 +1,6 @@
+import { AnalysisStatus } from "@ct/shared-types";
 import { Paper } from "@mui/material";
 import { FC } from "react";
-import { AnalysisStatus } from "shared-types";
 import { Loader } from "../../../common/Loader";
 import { useReportStore } from "../../stores/fe-report-store";
 import { SBOMTable } from "./SBOMTable";

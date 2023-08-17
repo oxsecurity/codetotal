@@ -1,11 +1,11 @@
-import axios from "axios";
 import {
   Analysis,
   AnalysisType,
   FileAnalysis,
   RepoAnalysis,
   SnippetAnalysis,
-} from "shared-types";
+} from "@ct/shared-types";
+import axios from "axios";
 import { ApiUrl } from "../../common/utils/backend-url";
 import { AnalysisStore, AsyncState } from "../stores/analysis-store";
 

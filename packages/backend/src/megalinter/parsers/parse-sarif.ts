@@ -1,5 +1,5 @@
 /* eslint-disable */
-import { Issue, OneOfValues, Severity } from "shared-types";
+import { Issue, OneOfValues, Severity } from "@ct/shared-types";
 import { BaseMessage } from "../megalinter-types";
 
 export const parseSarif = (msg: any) => {
