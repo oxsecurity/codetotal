@@ -27,6 +27,7 @@ _Can be run using `npm run codetotal:beta`_
   - Fix Safari not showing Score component correctly #81
   - Display "snippet" in results page instead of md5: xxxx
   - Add a share button in the footer
+  - Fix focus/hover effects for the links in the footer
   
 - Back-End
   - Bug fix: SBOM packages not showing up in report page. Async parsing of packages information in SBOM module
