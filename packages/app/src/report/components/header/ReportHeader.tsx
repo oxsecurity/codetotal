@@ -25,7 +25,6 @@ export const ReportHeader: FC<ReportBannerProps> = ({ ready }) => {
     scoreColor,
     resourceType,
     resourceValue,
-    code: snippet,
     linters = [],
     lintersWithIssues,
     progress,
@@ -90,22 +89,17 @@ export const ReportHeader: FC<ReportBannerProps> = ({ ready }) => {
             valueClassName={classes.nowrap}
             dataCy="progress"
           />
-          {resourceType === AnalysisType.Snippet && !!snippet ? (
-            <ReportHeaderSection
-              label="Resource"
-              // DevSkim: ignore DS126858
-              value={`md5: ${resourceValue}`}
-              valueClassName={classes.resourceValue}
-              dataCy="resource-value"
-            />
-          ) : (
-            <ReportHeaderSection
-              label="Resource"
-              value={resourceValue || "-"}
-              valueClassName={classes.resourceValue}
-              dataCy="resource-value"
-            />
-          )}
+
+          <ReportHeaderSection
+            label="Resource"
+            value={
+              resourceType === AnalysisType.Snippet
+                ? "snippet"
+                : resourceValue || "-"
+            }
+            valueClassName={classes.resourceValue}
+            dataCy="resource-value"
+          />
 
           {!!language && (
             <ReportHeaderSection
