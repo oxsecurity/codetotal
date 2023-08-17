@@ -1,4 +1,4 @@
-import { SbomPackage } from "shared-types";
+import { SbomPackage } from "@ct/shared-types";
 import { fetchPackages } from "../../sbom/sbom-fetching-utils";
 import { Component, Dependency } from "../../sbom/sbom-types";
 import {
@@ -19,6 +19,7 @@ export const parseSBOM = async (
       msg?.outputSarif?.runs.length > 0 &&
       msg.outputSarif.runs[0]?.properties?.megalinter?.sbom
     ) {
+      reportStore.set({ fetchingSBOMPackages: true });
       console.log("parsing sbom...");
 
       const components = msg.outputSarif.runs[0].properties.megalinter.sbom
@@ -27,7 +28,7 @@ export const parseSBOM = async (
         .dependencies as Dependency[];
       const applications = extractMappingForApplication(components);
       const pkgsInfo = await fetchPackages(dependencies, components);
-      const sbomPackages: SbomPackage[] = await getPackages(
+      const sbomPackages: SbomPackage[] = getPackages(
         dependencies,
         components,
         applications,
@@ -36,6 +37,7 @@ export const parseSBOM = async (
       if (sbomPackages && sbomPackages.length > 0) {
         reportStore.set({ packages: sbomPackages });
       }
+      reportStore.set({ fetchingSBOMPackages: false });
     }
   }
 };

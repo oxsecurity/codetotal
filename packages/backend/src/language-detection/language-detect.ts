@@ -1,4 +1,4 @@
-import { ProgrammingLanguage } from "shared-types";
+import { ProgrammingLanguage } from "@ct/shared-types";
 import { resolveId } from "./language-resolve-id";
 import supportedLanguages from "./supported-languages.json";
 

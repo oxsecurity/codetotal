@@ -1,4 +1,4 @@
-import { OneOfValues, Severity } from "shared-types";
+import { OneOfValues, Severity } from "@ct/shared-types";
 
 export enum ReportType {
   Detection,

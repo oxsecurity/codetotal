@@ -1,3 +1,4 @@
+import { AnalysisType } from "@ct/shared-types";
 import {
   Divider,
   LinearProgress,
@@ -8,7 +9,6 @@ import {
   useTheme,
 } from "@mui/material";
 import { FC } from "react";
-import { AnalysisType } from "shared-types";
 import { makeStyles } from "tss-react/mui";
 import { LanguageIcon } from "../../../languages/components/LanguageIcon";
 import { useReportStore } from "../../stores/fe-report-store";

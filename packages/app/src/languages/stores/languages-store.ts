@@ -1,4 +1,4 @@
-import { ProgrammingLanguage } from "shared-types";
+import { ProgrammingLanguage } from "@ct/shared-types";
 import { useStore } from "zustand";
 import { createStore } from "zustand/vanilla";
 

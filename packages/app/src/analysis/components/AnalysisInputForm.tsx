@@ -1,6 +1,6 @@
+import { AnalysisType, OneOfValues } from "@ct/shared-types";
 import { Alert, Paper, Tab, Tabs, Theme } from "@mui/material";
 import { FC, useCallback } from "react";
-import { AnalysisType, OneOfValues } from "shared-types";
 import { makeStyles } from "tss-react/mui";
 import { startAnalysis } from "../actions/analysis-actions";
 import { AnalysisStore, useAnalysisStore } from "../stores/analysis-store";
