@@ -85,7 +85,7 @@ const useStyles = makeStyles()((theme: Theme) => ({
         : `0px 0px 10px 10px #00000010`,
     width: "100%",
     marginInline: "auto",
-    minHeight: 280,
+    minHeight: 300,
   },
   tabsContainer: {
     borderBottom: 1,
