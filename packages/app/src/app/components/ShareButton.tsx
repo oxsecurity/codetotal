@@ -8,7 +8,7 @@ export const ShareButton: FC = () => {
   const { classes } = useStyles();
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [success, setSuccess] = useState(true);
+  const [success, setSuccess] = useState(false);
 
   const handleShare = async () => {
     try {
@@ -42,6 +42,7 @@ export const ShareButton: FC = () => {
       <Snackbar
         open={error}
         onClose={handleClose}
+        autoHideDuration={10000}
         anchorOrigin={{ vertical: "top", horizontal: "center" }}
         TransitionComponent={Slide}
       >
@@ -62,13 +63,14 @@ export const ShareButton: FC = () => {
       <Snackbar
         open={success}
         onClose={handleClose}
+        autoHideDuration={10000}
         anchorOrigin={{ vertical: "top", horizontal: "center" }}
         TransitionComponent={Slide}
       >
-        <Alert onClose={handleClose} severity="success">
+        <Alert severity="info" onClose={handleClose}>
           <AlertTitle>URL copied successfully</AlertTitle>
           <div className={classes.thankYou}>
-            Thank you for sharing CodeTotal with the community{" "}
+            Thank you for sharing CodeTotal with the community&nbsp;
             <span style={{ fontSize: "2em" }}>&#x1F497;</span>
           </div>
         </Alert>
@@ -85,6 +87,6 @@ const useStyles = makeStyles()((theme) => ({
   thankYou: {
     display: "flex",
     alignItems: "center",
-    gap: theme.spacing(1)
+    gap: theme.spacing(1),
   },
 }));
