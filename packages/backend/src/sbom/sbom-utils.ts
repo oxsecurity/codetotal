@@ -2,19 +2,24 @@ import { Registry, SbomPackage, Severity } from "@ct/shared-types";
 import { logger } from "../utils/logger";
 import licenseConfig from "./licenseConfig.json";
 import { isNpmPackage, isPythonPackage } from "./sbom-fetching-utils";
-import { Component, Dependency, LicenseInfo, NpmLicense } from "./sbom-types";
+import {
+  Component,
+  Dependency,
+  LicenseInfo,
+  NpmLicense,
+  RawPackage,
+} from "./sbom-types";
 
 function sortByLicenseLength(arr: LicenseInfo[]): LicenseInfo[] {
   return arr.sort((a, b) => b.license.length - a.license.length);
 }
 
-export function getPackages(
+export function createSBOMPackages(
   dependencies: Dependency[],
   components: Component[],
   applications: Record<string, string>,
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  pkgsInfo: any[]
-) {
+  rawPackages: RawPackage[]
+): SbomPackage[] | undefined {
   const sbomPackages: SbomPackage[] = [];
   const sortedLicenseConfig = sortByLicenseLength(licenseConfig);
   let filePath = "";
@@ -39,7 +44,7 @@ export function getPackages(
 
           if (isPythonPackage(purl)) {
             try {
-              const packageInfo = pkgsInfo.find(
+              const packageInfo = rawPackages.find(
                 (pkg) =>
                   pkg &&
                   pkg.name === component.name &&
@@ -57,7 +62,7 @@ export function getPackages(
             }
           } else if (isNpmPackage(purl)) {
             try {
-              const packageInfo = pkgsInfo.find(
+              const packageInfo = rawPackages.find(
                 (pkg) =>
                   pkg &&
                   pkg.name === component.name &&
