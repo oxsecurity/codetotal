@@ -92,7 +92,10 @@ export const ResponsiveTable = <P extends object>({
               {cells.map((cell, cellIndex) => (
                 <Fragment key={cellIndex}>
                   {cell.key && (
-                    <TableCell className={classes.bodyCell}>
+                    <TableCell
+                      className={classes.bodyCell}
+                      style={cell.cellStyle}
+                    >
                       {row[cell.key]}
                     </TableCell>
                   )}
@@ -119,6 +122,7 @@ const useStyles = makeStyles()((theme: Theme) => ({
   bodyCell: {
     height: 50,
     padding: theme.spacing(1, 2),
+    wordBreak: "break-word",
   },
   tableRow: {
     "&:last-of-type td": {
@@ -145,6 +149,7 @@ export interface CellOptions<TData> {
   label?: string;
   cellRenderer?: (row: TData) => ReactNode;
   headerCellStyle?: CSSProperties;
+  cellStyle?: CSSProperties;
 }
 
 export interface TableOptions<TData> {
