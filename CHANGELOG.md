@@ -26,6 +26,7 @@ _Can be run using `npm run codetotal:beta`_
   - Add link to packages' registry in SBOM panel
   - Fix Safari not showing Score component correctly #81
   - Display "snippet" in results page instead of md5: xxxx
+  - Add a share button in the footer
   
 - Back-End
   - Bug fix: SBOM packages not showing up in report page. Async parsing of packages information in SBOM module
