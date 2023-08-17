@@ -1,5 +1,5 @@
+import { SbomPackage } from "@ct/shared-types";
 import { FC } from "react";
-import { SbomPackage } from "shared-types";
 import { ResponsiveTable, TableOptions } from "../../../common/ResponsiveTable";
 import { SeverityBadge } from "../../../common/SeverityBadge";
 import { useReportStore } from "../../stores/fe-report-store";

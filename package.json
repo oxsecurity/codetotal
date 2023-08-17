@@ -57,6 +57,6 @@
   "author": "Itay",
   "license": "ISC",
   "dependencies": {
-    "shared-types": "^1.0.0"
+    "@ct/shared-types": "^1.0.0"
   }
 }

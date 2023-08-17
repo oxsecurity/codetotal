@@ -1,4 +1,4 @@
-import { SbomPackage } from "shared-types";
+import { SbomPackage } from "@ct/shared-types";
 import { fetchPackages } from "../../sbom/sbom-fetching-utils";
 import { Component, Dependency } from "../../sbom/sbom-types";
 import {

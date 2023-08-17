@@ -1,6 +1,3 @@
-import axios from "axios";
-import FormData from "form-data";
-import md5 from "md5"; // DevSkim: ignore DS126858
 import {
   Analysis,
   AnalysisType,
@@ -8,7 +5,10 @@ import {
   RepoAnalysis,
   ReportState,
   SnippetAnalysis,
-} from "shared-types";
+} from "@ct/shared-types";
+import axios from "axios";
+import FormData from "form-data";
+import md5 from "md5"; // DevSkim: ignore DS126858
 import config from "../config";
 import { detectLanguage } from "../language-detection/language-detect";
 import { logger } from "../utils/logger";

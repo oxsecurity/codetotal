@@ -1,4 +1,4 @@
-import { AnalysisStatus } from "shared-types";
+import { AnalysisStatus } from "@ct/shared-types";
 import { MegalinterCompleteMessage } from "../megalinter-types";
 import { parseMegalinterComplete } from "./parse-megalinter-complete";
 

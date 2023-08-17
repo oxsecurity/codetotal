@@ -1,5 +1,5 @@
+import { SbomPackage } from "@ct/shared-types";
 import { FC } from "react";
-import { SbomPackage } from "shared-types";
 import { makeStyles } from "tss-react/mui";
 import { resolveRegistryUrl } from "../../utils/registry-utils";
 

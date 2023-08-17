@@ -1,4 +1,4 @@
-import { Registry, SbomPackage } from "shared-types";
+import { Registry, SbomPackage } from "@ct/shared-types";
 
 export const resolveRegistryUrl = ({
   packageName,

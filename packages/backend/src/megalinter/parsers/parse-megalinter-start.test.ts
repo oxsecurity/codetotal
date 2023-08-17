@@ -1,4 +1,4 @@
-import { AnalysisStatus, LinterStatus } from "shared-types";
+import { AnalysisStatus, LinterStatus } from "@ct/shared-types";
 import {
   MegalinterStartMessage,
   MessageType,

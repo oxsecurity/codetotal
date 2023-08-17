@@ -1,4 +1,4 @@
-import { AnalysisStatus, ReportState } from "shared-types";
+import { AnalysisStatus, ReportState } from "@ct/shared-types";
 import { logger } from "../utils/logger";
 import { Store, createStore } from "./store";
 import { addStore } from "./stores-map";

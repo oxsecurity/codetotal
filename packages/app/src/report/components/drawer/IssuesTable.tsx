@@ -1,5 +1,5 @@
+import { Issue } from "@ct/shared-types";
 import { FC, useMemo } from "react";
-import { Issue } from "shared-types";
 import { ResponsiveTable, TableOptions } from "../../../common/ResponsiveTable";
 import { SeverityBadge } from "../../../common/SeverityBadge";
 

@@ -1,4 +1,4 @@
-import { Registry, SbomPackage, Severity } from "shared-types";
+import { Registry, SbomPackage, Severity } from "@ct/shared-types";
 import { logger } from "../utils/logger";
 import licenseConfig from "./licenseConfig.json";
 import { isNpmPackage, isPythonPackage } from "./sbom-fetching-utils";

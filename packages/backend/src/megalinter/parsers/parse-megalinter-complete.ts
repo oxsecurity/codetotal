@@ -1,4 +1,4 @@
-import { AnalysisStatus } from "shared-types";
+import { AnalysisStatus } from "@ct/shared-types";
 import { ReportStore } from "../../stores/be-report-store";
 import { MegalinterCompleteMessage } from "../megalinter-types";
 
