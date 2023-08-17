@@ -8,7 +8,7 @@ function sortByLicenseLength(arr: LicenseInfo[]): LicenseInfo[] {
   return arr.sort((a, b) => b.license.length - a.license.length);
 }
 
-export async function getPackages(
+export function getPackages(
   dependencies: Dependency[],
   components: Component[],
   applications: Record<string, string>,
@@ -38,7 +38,6 @@ export async function getPackages(
           const sourceList: string[] = [];
 
           if (isPythonPackage(purl)) {
-            registry = Registry.Pypi;
             try {
               const packageInfo = pkgsInfo.find(
                 (pkg) =>
@@ -52,11 +51,11 @@ export async function getPackages(
               if (packageInfo?.info?.classifiers) {
                 sourceList.push(packageInfo.info.classifiers.join(" "));
               }
+              registry = packageInfo ? Registry.Pypi : undefined;
             } catch (error) {
               logger.sbom.error("Error:", error.message);
             }
           } else if (isNpmPackage(purl)) {
-            registry = Registry.Npm;
             try {
               const packageInfo = pkgsInfo.find(
                 (pkg) =>
@@ -75,6 +74,7 @@ export async function getPackages(
               } else {
                 logger.sbom.log(`missing license for: ${purl}`);
               }
+              registry = packageInfo ? Registry.Npm : undefined;
             } catch (error) {
               logger.sbom.error(error);
             }

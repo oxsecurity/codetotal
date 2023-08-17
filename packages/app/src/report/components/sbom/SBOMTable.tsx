@@ -23,7 +23,10 @@ const tableOptions: TableOptions<SbomPackage> = {
       cellRenderer: (row) => <SeverityBadge severity={row.severity} />,
     },
     { label: "License", key: "license" },
-    { label: "Registry", key: "registry" },
+    {
+      label: "Registry",
+      cellRenderer: (row) => row.registry || "Unknown",
+    },
     { label: "File Path", key: "filePath" },
   ],
 };

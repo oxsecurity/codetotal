@@ -18,6 +18,7 @@ const initialState: InitialState = {
   analysisError: undefined,
   language: undefined,
   code: undefined,
+  fetchingSBOMPackages: false,
 };
 
 export const ReportStore = createStore<FeReportStoreState>((set, get) => ({

@@ -19,6 +19,7 @@ export interface ReportState {
   };
   language?: ProgrammingLanguage;
   code?: string;
+  fetchingSBOMPackages: boolean;
 }
 
 export interface RepoDetails {
@@ -83,7 +84,7 @@ export interface SbomPackage {
   packageName: string;
   packageVersion: string;
   license: string;
-  registry: Registry;
+  registry?: Registry;
   severity: OneOfValues<typeof Severity>;
   filePath: string;
 }

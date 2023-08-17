@@ -2,9 +2,9 @@ import { AnalysisStatus } from "@ct/shared-types";
 import { MegalinterCompleteMessage } from "../megalinter-types";
 import { parseMegalinterComplete } from "./parse-megalinter-complete";
 
-const storeMock = {
+const reportStoreMock = {
+  get: jest.fn(),
   set: jest.fn(),
-  get: jest.fn().mockImplementation(() => ({ linters: [{ name: "devskim" }] })),
   subscribe: jest.fn(),
 };
 
@@ -14,14 +14,43 @@ describe("parse-megalinter-complete", () => {
   });
 
   test("set status to completed", () => {
+    reportStoreMock.get.mockImplementation(() => ({
+      status: AnalysisStatus.Completed,
+    }));
+
     const megalinterCompleteMessage = {
       megaLinterStatus: AnalysisStatus.Completed,
     };
+
     parseMegalinterComplete(
       megalinterCompleteMessage as MegalinterCompleteMessage,
-      storeMock
+      reportStoreMock
     );
-    expect(storeMock.set).toBeCalledWith({
+
+    expect(reportStoreMock.set).toBeCalledWith({
+      status: AnalysisStatus.Completed,
+    });
+  });
+
+  test("waiting for fetchingSBOMPackages to complete", () => {
+    reportStoreMock.get.mockImplementation(() => ({
+      fetchingSBOMPackages: true,
+    }));
+    reportStoreMock.subscribe.mockImplementation((callback) => {
+      callback({ fetchingSBOMPackages: false });
+    });
+
+    const megalinterCompleteMessage = {
+      megaLinterStatus: AnalysisStatus.Completed,
+    };
+
+    parseMegalinterComplete(
+      megalinterCompleteMessage as MegalinterCompleteMessage,
+      reportStoreMock
+    );
+
+    expect(reportStoreMock.subscribe).toBeCalled();
+    expect(reportStoreMock.set).toBeCalledWith({
       status: AnalysisStatus.Completed,
     });
   });
@@ -30,11 +59,13 @@ describe("parse-megalinter-complete", () => {
     const megalinterCompleteMessage = {
       megaLinterStatus: AnalysisStatus.Created,
     };
+
     parseMegalinterComplete(
       megalinterCompleteMessage as MegalinterCompleteMessage,
-      storeMock
+      reportStoreMock
     );
-    expect(storeMock.set).toBeCalledWith({
+
+    expect(reportStoreMock.set).toBeCalledWith({
       status: AnalysisStatus.Created,
     });
   });
@@ -43,10 +74,12 @@ describe("parse-megalinter-complete", () => {
     const megalinterCompleteMessage = {
       megaLinterStatus: "someUnknownStatus",
     };
+
     parseMegalinterComplete(
       megalinterCompleteMessage as MegalinterCompleteMessage,
-      storeMock
+      reportStoreMock
     );
-    expect(storeMock.set).not.toBeCalled();
+
+    expect(reportStoreMock.set).not.toBeCalled();
   });
 });

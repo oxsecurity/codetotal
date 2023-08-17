@@ -18,6 +18,7 @@ export const createReportStore = (requestId: string) => {
     score: 0,
     analysisError: undefined,
     code: undefined,
+    fetchingSBOMPackages: false,
   });
 
   // save the store instance for later use
