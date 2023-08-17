@@ -2,8 +2,8 @@ import { SbomPackage } from "shared-types";
 import { fetchPackages } from "../../sbom/sbom-fetching-utils";
 import { Component, Dependency } from "../../sbom/sbom-types";
 import {
+  createSBOMPackages,
   extractMappingForApplication,
-  getPackages,
 } from "../../sbom/sbom-utils";
 import { ReportStore } from "../../stores/be-report-store";
 import { LinterCompleteMessage } from "../megalinter-types";
@@ -26,12 +26,12 @@ export const parseSBOM = async (
       const dependencies = msg.outputSarif.runs[0].properties.megalinter.sbom
         .dependencies as Dependency[];
       const applications = extractMappingForApplication(components);
-      const pkgsInfo = await fetchPackages(dependencies, components);
-      const sbomPackages: SbomPackage[] = await getPackages(
+      const rawPackages = await fetchPackages(dependencies, components);
+      const sbomPackages: SbomPackage[] = createSBOMPackages(
         dependencies,
         components,
         applications,
-        pkgsInfo
+        rawPackages
       );
       if (sbomPackages && sbomPackages.length > 0) {
         reportStore.set({ packages: sbomPackages });
