@@ -1,6 +1,6 @@
+import { Linter } from "@ct/shared-types";
 import { ListItem, ListItemButton, Theme, Typography } from "@mui/material";
 import { FC, memo } from "react";
-import { Linter } from "shared-types";
 import { makeStyles } from "tss-react/mui";
 import { selectLinter } from "../../actions/selected-linter-actions";
 import { LinterLogo } from "./LinterLogo";

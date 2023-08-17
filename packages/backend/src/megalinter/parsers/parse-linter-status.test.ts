@@ -1,4 +1,4 @@
-import { LinterStatus } from "shared-types";
+import { LinterStatus } from "@ct/shared-types";
 import { LinterCompleteMessage } from "../megalinter-types";
 import { parseLinterStatus } from "./parse-linter-status";
 

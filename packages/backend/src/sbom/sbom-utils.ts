@@ -1,20 +1,25 @@
-import { SbomPackage, Severity } from "shared-types";
+import { Registry, SbomPackage, Severity } from "@ct/shared-types";
 import { logger } from "../utils/logger";
 import licenseConfig from "./licenseConfig.json";
 import { isNpmPackage, isPythonPackage } from "./sbom-fetching-utils";
-import { Component, Dependency, LicenseInfo, NpmLicense } from "./sbom-types";
+import {
+  Component,
+  Dependency,
+  LicenseInfo,
+  NpmLicense,
+  RawPackage,
+} from "./sbom-types";
 
 function sortByLicenseLength(arr: LicenseInfo[]): LicenseInfo[] {
   return arr.sort((a, b) => b.license.length - a.license.length);
 }
 
-export async function getPackages(
+export function createSBOMPackages(
   dependencies: Dependency[],
   components: Component[],
   applications: Record<string, string>,
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  pkgsInfo: any[]
-) {
+  rawPackages: RawPackage[]
+): SbomPackage[] | undefined {
   const sbomPackages: SbomPackage[] = [];
   const sortedLicenseConfig = sortByLicenseLength(licenseConfig);
   let filePath = "";
@@ -31,17 +36,17 @@ export async function getPackages(
         const component = components.find(
           (component) => component.purl === purl
         );
-        let registry = "";
+        let registry: Registry = undefined;
         let license = "Unknown";
         let severity = Severity.Medium;
         if (component) {
           const sourceList: string[] = [];
 
           if (isPythonPackage(purl)) {
-            registry = "PyPi";
             try {
-              const packageInfo = pkgsInfo.find(
-                (pkg) => pkg &&
+              const packageInfo = rawPackages.find(
+                (pkg) =>
+                  pkg &&
                   pkg.name === component.name &&
                   pkg.version === component.version
               );
@@ -51,13 +56,15 @@ export async function getPackages(
               if (packageInfo?.info?.classifiers) {
                 sourceList.push(packageInfo.info.classifiers.join(" "));
               }
+              registry = packageInfo ? Registry.Pypi : undefined;
             } catch (error) {
               logger.sbom.error("Error:", error.message);
             }
           } else if (isNpmPackage(purl)) {
             try {
-              const packageInfo = pkgsInfo.find(
-                (pkg) => pkg &&
+              const packageInfo = rawPackages.find(
+                (pkg) =>
+                  pkg &&
                   pkg.name === component.name &&
                   pkg.version === component.version
               );
@@ -72,6 +79,7 @@ export async function getPackages(
               } else {
                 logger.sbom.log(`missing license for: ${purl}`);
               }
+              registry = packageInfo ? Registry.Npm : undefined;
             } catch (error) {
               logger.sbom.error(error);
             }
@@ -80,7 +88,7 @@ export async function getPackages(
           }
 
           if (sourceList.length == 0) {
-            logger.sbom.log(`no where to get license for ${purl}`);
+            logger.sbom.log(`nowhere to get license for ${purl}`);
           } else {
             for (const licenseSoruce of sourceList) {
               const licenseItem = sortedLicenseConfig.find((item) =>
@@ -97,10 +105,10 @@ export async function getPackages(
           sbomPackages.push({
             packageName: component.name,
             packageVersion: component.version,
-            license: license,
-            registry: registry,
-            severity: severity,
-            filePath: filePath,
+            license,
+            registry,
+            severity,
+            filePath,
           });
         } else {
           logger.sbom.log(`missing component info, purl: ${purl}`);
@@ -113,7 +121,13 @@ export async function getPackages(
 
   // Remove duplicates
   const sbomPackagesUnique = sbomPackages.reduce((unique, o) => {
-    if (!unique.some(obj => obj.packageName === o.packageName && obj.packageVersion === o.packageVersion)) {
+    if (
+      !unique.some(
+        (obj) =>
+          obj.packageName === o.packageName &&
+          obj.packageVersion === o.packageVersion
+      )
+    ) {
       unique.push(o);
     }
     return unique;
@@ -121,22 +135,21 @@ export async function getPackages(
 
   // Order SBOM packages
   const severityOrder = ["critical", "high", "medium", "low"];
-  sbomPackagesUnique.sort(
-    (a, b) => {
-      // First, order by severity
-      const orderRes = severityOrder.indexOf(b.severity) - severityOrder.indexOf(a.severity);
-      if (orderRes !== 0) {
-        return orderRes;
-      }
-      // Then order by package name
-      const packageNameRes = a.packageName.localeCompare(b.packageName);
-      if ([1, -1].includes(packageNameRes)) {
-        return packageNameRes;
-      }
-      // Otherwise use version number
-      return a.packageVersion.localeCompare(b.packageVersion);
+  sbomPackagesUnique.sort((a, b) => {
+    // First, order by severity
+    const orderRes =
+      severityOrder.indexOf(b.severity) - severityOrder.indexOf(a.severity);
+    if (orderRes !== 0) {
+      return orderRes;
     }
-  );
+    // Then order by package name
+    const packageNameRes = a.packageName.localeCompare(b.packageName);
+    if ([1, -1].includes(packageNameRes)) {
+      return packageNameRes;
+    }
+    // Otherwise use version number
+    return a.packageVersion.localeCompare(b.packageVersion);
+  });
   return sbomPackagesUnique;
 }
 

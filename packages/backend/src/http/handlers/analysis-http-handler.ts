@@ -1,5 +1,5 @@
+import { Analysis, FileAnalysis } from "@ct/shared-types";
 import { Request, Response } from "express";
-import { Analysis, FileAnalysis } from "shared-types";
 import { createAnalysis } from "../../actions/create-analysis";
 import { logger } from "../../utils/logger";
 

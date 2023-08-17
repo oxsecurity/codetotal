@@ -1,4 +1,4 @@
-import { AnalysisStatus, ReportState } from "shared-types";
+import { AnalysisStatus, ReportState } from "@ct/shared-types";
 import { ReportStore } from "../stores/fe-report-store";
 import { subscribe } from "../utils/ws-client";
 

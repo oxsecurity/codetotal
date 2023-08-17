@@ -3,10 +3,12 @@ import { FC } from "react";
 import { makeStyles } from "tss-react/mui";
 import { ReactComponent as BackgroundSvg } from "../../assets/bg.svg";
 import oxLogo from "../../assets/ox.svg";
+import { ShareButton } from "./ShareButton";
 import { ToggleThemeButton } from "./ToggleThemeButton";
 
 export const Footer: FC = () => {
   const { classes } = useStyles();
+  
 
   return (
     <div className={classes.footer}>
@@ -48,7 +50,10 @@ export const Footer: FC = () => {
               MegaLinter
             </Button>
           </Typography>
-          <ToggleThemeButton />
+          <div className={classes.actions}>
+            <ShareButton />
+            <ToggleThemeButton />
+          </div>
         </div>
       </Container>
       <BackgroundSvg />
@@ -100,5 +105,9 @@ const useStyles = makeStyles()((theme: Theme) => ({
   oxLogo: {
     width: "1.3em",
     height: "1.3em",
+  },
+  actions: {
+    display: "flex",
+    gap: theme.spacing(2),
   },
 }));

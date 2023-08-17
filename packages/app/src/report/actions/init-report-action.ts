@@ -1,5 +1,5 @@
+import { AnalysisStatus } from "@ct/shared-types";
 import axios from "axios";
-import { AnalysisStatus } from "shared-types";
 import { ApiUrl } from "../../common/utils/backend-url";
 import { ReportStore } from "../stores/fe-report-store";
 import { subscribeToReportProgress } from "./subscribe-report-action";
