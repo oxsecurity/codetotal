@@ -13,7 +13,7 @@ export const ToggleThemeButton: FC = () => {
   };
 
   return (
-    <Tooltip title="Toggle light/dark mode" placement="top" arrow>
+    <Tooltip title="Toggle light/dark mode">
       <IconButton
         onClick={handleToggle}
         size="small"

@@ -35,6 +35,18 @@ declare module "@mui/material/styles" {
 
 const sharedProps: Partial<Theme> = {
   components: {
+    MuiTooltip: {
+      defaultProps: {
+        arrow: true,
+        placement: "top",
+      },
+      styleOverrides: {
+        tooltip: {
+          fontWeight: 400,
+          fontSize: "clamp(13px, 0.8rem, 20px)",
+        },
+      },
+    },
     MuiPaper: {
       styleOverrides: {
         rounded: {

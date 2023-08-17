@@ -27,7 +27,7 @@ export const CodeSnippetForm: FC<AnalysisFormProps> = ({ onSubmit }) => {
   }, []);
 
   return (
-    <div className={classes.codeSnippetForm}>
+    <form className={classes.codeSnippetForm}>
       <TextField
         autoFocus
         rows={5}
@@ -61,7 +61,7 @@ export const CodeSnippetForm: FC<AnalysisFormProps> = ({ onSubmit }) => {
           Send Snippet
         </SubmitButton>
       </div>
-    </div>
+    </form>
   );
 };
 

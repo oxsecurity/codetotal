@@ -23,6 +23,8 @@ _Can be run using `npm run codetotal:beta`_
   - Add a report progress bar
   - Optimize new analysis dialog, drawer and linters list components' renders
   - Fix completed report receiving updates from ongoing analysis
+  - Repo input form: ENTER keypad must start the scan if repo has been input
+  - Add a toggle button for wrapping text in CodeViewer modal dialog
   - Add link to packages' registry in SBOM panel
   - Fix Safari not showing Score component correctly #81
   - Display "snippet" in results page instead of md5: xxxx
