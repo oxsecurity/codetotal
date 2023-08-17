@@ -11,6 +11,14 @@ _Can be run using `npm run codetotal:beta`_
 - Global
 
 - Front-end
+  
+- Back-End
+
+## [v0.6.0] - 2023-08-17
+
+- Global
+
+- Front-end
   - Add language label
   - Add missing icon for Java
   - Show language only if it's available
@@ -25,7 +33,7 @@ _Can be run using `npm run codetotal:beta`_
   - Fix completed report receiving updates from ongoing analysis
   - Repo input form: ENTER keypad must start the scan if repo has been input
   - Add a toggle button for wrapping text in CodeViewer modal dialog
-  - Add link to packages' registry in SBOM panel
+  - Add link to packages registry in SBOM panel
   - Fix Safari not showing Score component correctly #81
   - Display "snippet" in results page instead of md5: xxxx
   - Add a share button in the footer
