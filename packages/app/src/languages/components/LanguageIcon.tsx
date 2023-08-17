@@ -1,6 +1,6 @@
+import { ProgrammingLanguage } from "@ct/shared-types";
 import { Theme, Typography, useTheme } from "@mui/material";
 import { FC } from "react";
-import { ProgrammingLanguage } from "shared-types";
 import { makeStyles } from "tss-react/mui";
 
 export const LanguageIcon: FC<LanguageIconProps> = ({

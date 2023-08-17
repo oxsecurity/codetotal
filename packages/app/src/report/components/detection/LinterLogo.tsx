@@ -1,6 +1,6 @@
+import { Linter } from "@ct/shared-types";
 import { Theme, Typography } from "@mui/material";
 import { FC } from "react";
-import { Linter } from "shared-types";
 import { makeStyles } from "tss-react/mui";
 import { ReactComponent as CheckovLogo } from "../../../assets/linters/checkov.svg";
 import { ReactComponent as DevSkimLogo } from "../../../assets/linters/devskim.svg";

@@ -25,10 +25,15 @@ _Can be run using `npm run codetotal:beta`_
   - Fix completed report receiving updates from ongoing analysis
   - Repo input form: ENTER keypad must start the scan if repo has been input
   - Add a toggle button for wrapping text in CodeViewer modal dialog
+  - Add link to packages' registry in SBOM panel
+  - Fix Safari not showing Score component correctly #81
+  - Display "snippet" in results page instead of md5: xxxx
+  - Add a share button in the footer
   
 - Back-End
   - Bug fix: SBOM packages not showing up in report page. Async parsing of packages information in SBOM module
   - Retry calls to pypi or npm in case first attempts are failing
+  - Increase unit test coverage #88
   - Fetch SBOM packages with concurrency of 10
   - Fix issue when there is no SBOM package info
   - SBOM results: Remove duplicate packages and sort them alphabetically (as a second criteria, after severity)

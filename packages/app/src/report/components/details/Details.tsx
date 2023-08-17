@@ -1,6 +1,6 @@
+import { AnalysisStatus, AnalysisType } from "@ct/shared-types";
 import { Paper, Theme, Typography } from "@mui/material";
 import { FC } from "react";
-import { AnalysisStatus, AnalysisType } from "shared-types";
 import { makeStyles } from "tss-react/mui";
 import { Loader } from "../../../common/Loader";
 import { useReportStore } from "../../stores/fe-report-store";

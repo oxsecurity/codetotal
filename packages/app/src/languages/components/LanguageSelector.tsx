@@ -1,3 +1,4 @@
+import { ProgrammingLanguage } from "@ct/shared-types";
 import {
   Autocomplete,
   CircularProgress,
@@ -9,7 +10,6 @@ import {
   useTheme,
 } from "@mui/material";
 import React, { FC, SyntheticEvent, useCallback } from "react";
-import { ProgrammingLanguage } from "shared-types";
 import { loadAllLanguages } from "../actions/language-actions";
 import { useLanguagesStore } from "../stores/languages-store";
 import { LanguageIcon } from "./LanguageIcon";

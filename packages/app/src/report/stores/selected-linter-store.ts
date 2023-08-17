@@ -1,4 +1,4 @@
-import { Linter } from "shared-types";
+import { Linter } from "@ct/shared-types";
 import { useStore } from "zustand";
 import { createStore } from "zustand/vanilla";
 

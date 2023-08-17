@@ -1,6 +1,6 @@
+import { AnalysisType, OneOfValues } from "@ct/shared-types";
 import { Alert, Paper, Tab, Tabs, Theme } from "@mui/material";
 import { FC, useCallback } from "react";
-import { AnalysisType, OneOfValues } from "shared-types";
 import { makeStyles } from "tss-react/mui";
 import { startAnalysis } from "../actions/analysis-actions";
 import { AnalysisStore, useAnalysisStore } from "../stores/analysis-store";
@@ -85,7 +85,7 @@ const useStyles = makeStyles()((theme: Theme) => ({
         : `0px 0px 10px 10px #00000010`,
     width: "100%",
     marginInline: "auto",
-    minHeight: 280,
+    minHeight: 300,
   },
   tabsContainer: {
     borderBottom: 1,

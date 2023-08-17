@@ -7,7 +7,7 @@ import config from "../config";
 
 export const fetchPackages = async (
   dependencies: Dependency[],
-  components: Component[]
+  components: Component[],
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
 ): Promise<any[]> => {
   // filter out deps without "dependsOn"

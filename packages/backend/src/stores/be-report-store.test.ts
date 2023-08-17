@@ -1,4 +1,4 @@
-import { AnalysisStatus } from "shared-types";
+import { AnalysisStatus } from "@ct/shared-types";
 import { createReportStore } from "./be-report-store";
 import { getStore } from "./stores-map";
 

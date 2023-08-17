@@ -1,6 +1,6 @@
+import { ProgrammingLanguage } from "@ct/shared-types";
 import axios from "axios";
 import debounce from "lodash-es/debounce";
-import { ProgrammingLanguage } from "shared-types";
 import { ApiUrl } from "../../common/utils/backend-url";
 import { LanguagesStore } from "../stores/languages-store";
 

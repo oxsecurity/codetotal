@@ -1,4 +1,4 @@
-import { LinterStatus } from "shared-types";
+import { LinterStatus } from "@ct/shared-types";
 import { ReportStore } from "../../stores/be-report-store";
 import { logger } from "../../utils/logger";
 import {
