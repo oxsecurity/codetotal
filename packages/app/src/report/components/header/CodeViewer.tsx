@@ -5,7 +5,7 @@ import darkStyle from "react-syntax-highlighter/dist/esm/styles/prism/material-d
 import lightStyle from "react-syntax-highlighter/dist/esm/styles/prism/prism";
 import { useReportStore } from "../../stores/fe-report-store";
 
-export const CodeViewer: FC<CodeViewerProps> = ({ code }) => {
+export const CodeViewer: FC<CodeViewerProps> = ({ code, wrapLongLines }) => {
   const theme = useTheme();
   const style = useMemo(
     () => (theme.palette.mode === "dark" ? darkStyle : lightStyle),
@@ -14,7 +14,12 @@ export const CodeViewer: FC<CodeViewerProps> = ({ code }) => {
   const { language } = useReportStore();
 
   return (
-    <SyntaxHighlighter language={language?.name} style={style} showLineNumbers>
+    <SyntaxHighlighter
+      language={language?.name}
+      style={style}
+      showLineNumbers
+      wrapLongLines={wrapLongLines}
+    >
       {code}
     </SyntaxHighlighter>
   );
@@ -22,4 +27,5 @@ export const CodeViewer: FC<CodeViewerProps> = ({ code }) => {
 
 interface CodeViewerProps {
   code: string;
+  wrapLongLines: boolean;
 }

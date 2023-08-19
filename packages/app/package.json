@@ -1,5 +1,5 @@
 {
-  "name": "app",
+  "name": "@ct/app",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -27,7 +27,7 @@
     "react-icons": "^4.10.1",
     "react-router-dom": "^6.13.0",
     "react-syntax-highlighter": "^15.5.0",
-    "shared-types": "^1.0.0",
+    "@ct/shared-types": "^1.0.0",
     "tss-react": "^4.8.6",
     "zustand": "^4.3.8"
   },

@@ -1,5 +1,5 @@
+import { Analysis } from "@ct/shared-types";
 import axios from "axios";
-import { Analysis } from "shared-types";
 import config from "../config";
 import { createReportStore } from "../stores/be-report-store";
 import { logger } from "../utils/logger";

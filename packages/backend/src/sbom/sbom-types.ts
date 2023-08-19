@@ -28,3 +28,14 @@ export interface PackageRequestData {
   version: string;
   purl: string;
 }
+
+export interface RawPackage {
+  name: string;
+  version: string;
+  license?: string;
+  licenses?: NpmLicense[];
+  info?: {
+    license: string;
+    classifiers: string[];
+  };
+}

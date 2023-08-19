@@ -1,12 +1,14 @@
-import { Container, Theme, Typography } from "@mui/material";
+import { Button, Container, Theme, Typography } from "@mui/material";
 import { FC } from "react";
 import { makeStyles } from "tss-react/mui";
 import { ReactComponent as BackgroundSvg } from "../../assets/bg.svg";
 import oxLogo from "../../assets/ox.svg";
+import { ShareButton } from "./ShareButton";
 import { ToggleThemeButton } from "./ToggleThemeButton";
 
 export const Footer: FC = () => {
   const { classes } = useStyles();
+  
 
   return (
     <div className={classes.footer}>
@@ -17,35 +19,41 @@ export const Footer: FC = () => {
             className={classes.footerText}
             component="div"
           >
-            <a
+            <Button
+              size="small"
               href="https://codetotal.io/"
               target="_blank"
               rel="noreferrer"
               className={classes.link}
             >
               CodeTotal
-            </a>
+            </Button>
             brought to you by
             <img src={oxLogo} className={classes.oxLogo} alt="OX Logo" />
-            <a
+            <Button
+              size="small"
               href="https://ox.security"
               target="_blank"
               rel="noreferrer"
               className={classes.link}
             >
               OX Security,
-            </a>
+            </Button>
             <p>powered by</p>
-            <a
+            <Button
+              size="small"
               className={classes.link}
               rel="noreferrer"
               target="_blank"
               href="https://megalinter.io/"
             >
               MegaLinter
-            </a>
+            </Button>
           </Typography>
-          <ToggleThemeButton />
+          <div className={classes.actions}>
+            <ShareButton />
+            <ToggleThemeButton />
+          </div>
         </div>
       </Container>
       <BackgroundSvg />
@@ -88,6 +96,7 @@ const useStyles = makeStyles()((theme: Theme) => ({
   link: {
     color: theme.palette.primary.main,
     textDecoration: "none",
+    textTransform: "none",
     fontWeight: 600,
     "&:focus-within, &:hover": {
       textDecoration: "underline",
@@ -96,5 +105,9 @@ const useStyles = makeStyles()((theme: Theme) => ({
   oxLogo: {
     width: "1.3em",
     height: "1.3em",
+  },
+  actions: {
+    display: "flex",
+    gap: theme.spacing(2),
   },
 }));

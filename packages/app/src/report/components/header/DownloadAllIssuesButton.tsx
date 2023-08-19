@@ -34,11 +34,7 @@ export const DownloadAllIssuesButton: FC = () => {
   );
 
   return (
-    <Tooltip
-      title={disabled ? "No issues found" : "Download issues CSV"}
-      arrow
-      placement="top"
-    >
+    <Tooltip title={disabled ? "No issues found" : "Download issues CSV"} arrow>
       <span>{disabled ? button : downloadLink}</span>
     </Tooltip>
   );

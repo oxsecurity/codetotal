@@ -14,7 +14,7 @@ export const RepositoryForm: FC<AnalysisFormProps> = ({ onSubmit }) => {
   }, []);
 
   return (
-    <div className={classes.repositoryForm}>
+    <form className={classes.repositoryForm}>
       <FormControl fullWidth>
         <TextField
           autoFocus
@@ -27,13 +27,13 @@ export const RepositoryForm: FC<AnalysisFormProps> = ({ onSubmit }) => {
       <SubmitButton
         variant="contained"
         color="primary"
-        onClick={onSubmit}
         loading={sending === "loading"}
         disabled={!repoEnabled()}
+        onClick={onSubmit}
       >
         Check Repository
       </SubmitButton>
-    </div>
+    </form>
   );
 };
 

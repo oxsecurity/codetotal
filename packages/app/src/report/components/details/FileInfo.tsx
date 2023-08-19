@@ -1,6 +1,6 @@
+import { FileDetails } from "@ct/shared-types";
 import { filesize } from "filesize";
 import { FC } from "react";
-import { FileDetails } from "shared-types";
 import { DetailsItem } from "./DetailsItem";
 
 export const FileInfo: FC<FileInfoProps> = ({ fileDetails }) => {

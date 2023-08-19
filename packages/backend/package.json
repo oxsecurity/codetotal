@@ -1,5 +1,5 @@
 {
-  "name": "backend",
+  "name": "@ct/backend",
   "version": "1.0.0",
   "description": "",
   "types": "./src/index.ts",
@@ -30,7 +30,7 @@
     "md5": "^2.3.0",
     "multer": "^1.4.5-lts.1",
     "redis": "^4.6.7",
-    "shared-types": "^1.0.0",
+    "@ct/shared-types": "^1.0.0",
     "ws": "^8.13.0"
   },
   "devDependencies": {

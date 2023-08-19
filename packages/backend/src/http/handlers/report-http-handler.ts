@@ -1,5 +1,5 @@
+import { AnalysisStatus } from "@ct/shared-types";
 import { Request, Response } from "express";
-import { AnalysisStatus } from "shared-types";
 import { getStore } from "../../stores/stores-map";
 
 export const reportHttpHandler = (req: Request, res: Response) => {

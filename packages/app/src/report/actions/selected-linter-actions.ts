@@ -1,4 +1,4 @@
-import { Linter } from "shared-types";
+import { Linter } from "@ct/shared-types";
 import { ReportStore } from "../stores/fe-report-store";
 import { SelectedLinterStore } from "../stores/selected-linter-store";
 
