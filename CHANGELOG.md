@@ -10,9 +10,11 @@ _Can be run using `npm run codetotal:beta`_
 
 - Global
   - Remove unused packages from the project
+
 - Front-end
   
 - Back-End
+  - Fix issue when retrieving license for Pypi packages for SBOM results tab
 
 ## [v0.6.0] - 2023-08-17
 
