@@ -92,6 +92,8 @@ async function fetchDataFromPyPi({
     const url = `https://pypi.org/pypi/${name}/${version}/json`;
     const response = await axios.get(url);
     if (response.status === 200) {
+      response.data.name = name;
+      response.data.version = version;
       return response.data;
     }
     logger.sbom.error(
