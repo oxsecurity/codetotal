@@ -9,9 +9,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 _Can be run using `npm run codetotal:beta`_
 
 - Global
-  - Remove unused packages from the project
 
 - Front-end
+  
+- Back-End
+
+## [v0.7.0] - 2023-08-20
+
+- Global
+  - Remove unused packages from the project
   
 - Back-End
   - Fix issue when retrieving license for Pypi packages for SBOM results tab
