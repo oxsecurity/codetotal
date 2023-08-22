@@ -55,6 +55,7 @@ const useStyles = makeStyles()((theme: Theme) => ({
   text: {
     textTransform: "capitalize",
     fontWeight: 600,
+    wordBreak: 'keep-all'
   },
 }));
 
