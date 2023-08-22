@@ -14,6 +14,13 @@ _Can be run using `npm run codetotal:beta`_
   
 - Back-End
 
+## [v0.7.1] - 2023-08-22
+
+- Front-end
+  - Better text wrapping in ResponsiveTable
+  - Fix severity column text wrapping
+  - Fix footer text in small viewports
+
 ## [v0.7.0] - 2023-08-20
 
 - Global
