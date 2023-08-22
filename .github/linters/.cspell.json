@@ -237,6 +237,7 @@
     "venv",
     "verilog",
     "vhdl",
+    "viewports",
     "vuln",
     "werkzeug",
     "xquery",
