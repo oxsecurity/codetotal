@@ -7,19 +7,15 @@ const CODE_TOTAL_URL = "https://codetotal.io";
 export const ShareButton: FC = () => {
   const { classes } = useStyles();
   const [error, setError] = useState(false);
-  const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
 
   const handleShare = async () => {
     try {
-      setLoading(true);
       await navigator.clipboard.writeText(CODE_TOTAL_URL);
       setSuccess(true);
     } catch (err) {
       setError(true);
       setSuccess(false);
-    } finally {
-      setLoading(false);
     }
   };
 
@@ -32,9 +28,9 @@ export const ShareButton: FC = () => {
     <>
       <Button
         size="small"
+        variant="contained"
         startIcon={<i style={{ fontSize: "1em" }}>&#x1F496;</i>}
         onClick={handleShare}
-        disabled={loading}
       >
         Share
       </Button>
@@ -63,7 +59,7 @@ export const ShareButton: FC = () => {
       <Snackbar
         open={success}
         onClose={handleClose}
-        autoHideDuration={10000}
+        autoHideDuration={6000}
         anchorOrigin={{ vertical: "top", horizontal: "center" }}
         TransitionComponent={Slide}
       >

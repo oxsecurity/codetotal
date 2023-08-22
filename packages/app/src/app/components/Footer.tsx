@@ -8,7 +8,6 @@ import { ToggleThemeButton } from "./ToggleThemeButton";
 
 export const Footer: FC = () => {
   const { classes } = useStyles();
-  
 
   return (
     <div className={classes.footer}>
@@ -87,8 +86,8 @@ const useStyles = makeStyles()((theme: Theme) => ({
   footerText: {
     display: "flex",
     alignItems: "center",
-    gap: "0.5ch",
     flexWrap: "wrap",
+    gap: "0.5ch",
     fontSize: 13,
     fontWeight: 400,
     lineHeight: 1,
@@ -98,6 +97,8 @@ const useStyles = makeStyles()((theme: Theme) => ({
     textDecoration: "none",
     textTransform: "none",
     fontWeight: 600,
+    lineHeight: 1,
+    padding: 0,
     "&:focus-within, &:hover": {
       textDecoration: "underline",
     },

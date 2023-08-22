@@ -19,7 +19,7 @@ export const ResponsiveTable = <P extends object>({
   options,
   data,
 }: ResponsiveTableProps<P>) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.up("md"));
   const { cells } = options;
@@ -93,7 +93,11 @@ export const ResponsiveTable = <P extends object>({
                 <Fragment key={cellIndex}>
                   {cell.key && (
                     <TableCell
-                      className={classes.bodyCell}
+                      className={cx(
+                        classes.bodyCell,
+                        (row[cell.key] as string | number).toString().length <
+                          20 && classes.keepAll
+                      )}
                       style={cell.cellStyle}
                     >
                       {row[cell.key]}
@@ -136,6 +140,10 @@ const useStyles = makeStyles()((theme: Theme) => ({
     display: "flex",
     flexDirection: "column",
     gap: theme.spacing(2),
+  },
+  keepAll: {
+    wordBreak: "keep-all",
+    whiteSpace: "nowrap",
   },
 }));
 
