@@ -6,7 +6,7 @@ description: Analyzes any snippet, file, or repository to detect possible securi
 
 <div align="center">
   <a href="https://codetotal.io/" target="blank" title="Visit CodeTotal Web Site">
-    <img src="https://github.com/oxsecurity/codetotal/blob/main/docs/assets/images/ox-icon.jpg" alt="CodeTotal Logo" height="150px" class="codetotal-logo">
+    <img src="https://github.com/oxsecurity/codetotal/blob/main/docs/assets/images/ox-avatar.png" alt="CodeTotal Logo" height="150px" class="codetotal-logo">
   </a>
 </div>
 
