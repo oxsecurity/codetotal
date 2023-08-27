@@ -1,3 +1,8 @@
+---
+title: CodeTotal by OX Security
+description: Analyzes any snippet, file, or repository to detect possible security flaws such as secret in code, open source vulnerability, code security, vulnerability, insecure infrastructure as code, and potential legal issues with open source licenses. Using a nice UI and powered by MegaLinter.
+---
+<!-- markdownlint-disable MD013 -->
 # CodeTotal
 
 [![GitHub release](https://img.shields.io/github/v/release/oxsecurity/codetotal?sort=semver)](https://github.com/oxsecurity/codetotal/releases)
