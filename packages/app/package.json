@@ -15,7 +15,7 @@
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "@mui/material": "^5.13.5",
-    "axios": "^1.4.0",
+    "axios": "^1.7.4",
     "filesize": "^10.0.7",
     "lodash-es": "^4.17.21",
     "md5": "^2.3.0",
