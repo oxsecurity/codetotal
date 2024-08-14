@@ -20,7 +20,7 @@
   "dependencies": {
     "@supercharge/promise-pool": "^3.0.0",
     "@vscode/vscode-languagedetection": "^1.0.22",
-    "axios": "^1.4.0",
+    "axios": "^1.7.4",
     "axios-retry": "^3.6.0",
     "cors": "^2.8.5",
     "devicon": "^2.15.1",
